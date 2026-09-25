@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Historia Juntos ❤️ - Bri</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title id="pageTitle">Nuestra Historia Juntos ❤️ - Bri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #e11d48;
             --primary-light: #fda4af;
             --bg-gradient: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fce7f3 100%);
-            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-bg: rgba(255, 255, 255, 0.88);
             --text-main: #1f2937;
             --text-muted: #4b5563;
             --border-color: rgba(244, 114, 182, 0.3);
@@ -21,7 +21,7 @@
             --primary: #f43f5e;
             --primary-light: #fb7185;
             --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #2c0b1a 100%);
-            --card-bg: rgba(30, 41, 59, 0.85);
+            --card-bg: rgba(30, 41, 59, 0.88);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(244, 114, 182, 0.2);
@@ -46,9 +46,9 @@
             padding: 20px;
             overflow-x: hidden;
             position: relative;
+            cursor: pointer;
         }
 
-        /* Fondo de corazones animados */
         .hearts-bg {
             position: fixed;
             top: 0;
@@ -80,13 +80,14 @@
             background: var(--card-bg);
             backdrop-filter: blur(16px);
             border: 1px solid var(--border-color);
-            padding: 36px 24px;
+            padding: 38px 26px;
             border-radius: 30px;
             box-shadow: var(--shadow);
             text-align: center;
             position: relative;
             z-index: 1;
             animation: fadeInScale 0.8s ease-out;
+            cursor: default;
         }
 
         @keyframes fadeInScale {
@@ -128,11 +129,13 @@
             animation: heartbeat 1.2s infinite;
         }
 
+        /* Tipografía Cinzel para dar un toque editorial y lujoso */
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 4px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
             background: linear-gradient(135deg, var(--primary), #db2777);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -143,16 +146,16 @@
             font-size: 0.9rem;
             margin-bottom: 24px;
             font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
-        /* Foto estilo Polaroid */
         .polaroid {
             background: white;
             padding: 12px 12px 28px 12px;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             margin-bottom: 24px;
-            transform: rotate(-1.5deg);
+            transform: rotate(-1deg);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -199,28 +202,111 @@
         }
 
         .counter-number {
+            font-family: 'Cinzel', serif;
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
         }
 
         .counter-label {
+            font-family: 'Inter', sans-serif;
             font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--text-muted);
-            margin-top: 2px;
+            margin-top: 3px;
         }
 
         .dedication {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.5;
             border-top: 1px solid var(--border-color);
             padding-top: 16px;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        .dedication::after {
+            content: " 💡 (Toca para otra frase)";
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-style: normal;
+            margin-top: 6px;
+            opacity: 0.6;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            max-width: 420px;
+            width: 90%;
+            padding: 30px 24px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            text-align: left;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-card h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        .modal-card p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .close-modal {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            float: right;
         }
 
         @keyframes heartbeat {
@@ -238,7 +324,8 @@
 
     <div class="container">
         <div class="top-actions">
-            <button class="icon-btn" onclick="toggleAudio()" id="audioBtn" title="Reproducir música">🎵</button>
+            <button class="icon-btn" onclick="abrirCarta()" title="Abrir carta de amor">✉️</button>
+            <button class="icon-btn" onclick="toggleAudio()" id="audioBtn" title="Reproducir música">⏸️</button>
             <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Cambiar tema">🌙</button>
         </div>
         
@@ -278,8 +365,16 @@
             </div>
         </div>
 
-        <div class="dedication">
+        <div class="dedication" id="fraseDedicatoria" onclick="cambiarFrase()">
             "Cada segundo a tu lado es mi lugar favorito. Te amo, Bri." 🌹
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalCarta">
+        <div class="modal-card">
+            <h2>Para ti, Bri ❤️</h2>
+            <p>Desde el 29 de marzo de 2026 mi vida cambió por completo. Cada detalle, cada risa y cada momento compartido a tu lado se han convertido en lo más valioso para mí. Gracias por tu luz, tu estilo y tu hermosa esencia. Te amo hoy y siempre.</p>
+            <button class="close-modal" onclick="cerrarCarta()">Cerrar</button>
         </div>
     </div>
 
@@ -288,6 +383,25 @@
     </audio>
 
     <script>
+        const frases = [
+            "\"Cada segundo a tu lado es mi lugar favorito. Te amo, Bri.\" 🌹",
+            "\"Tu sonrisa es mi casualidad favorita y mi felicidad eterna.\" ✨",
+            "\"Contigo supe lo que significa sumar paz y multiplicar alegrías.\" 💖",
+            "\"Gracias por ser mi refugio y mi persona favorita en este mundo.\" 🌸"
+        ];
+        let indiceFrase = 0;
+        function cambiarFrase() {
+            indiceFrase = (indiceFrase + 1) % frases.length;
+            document.getElementById('fraseDedicatoria').innerText = frases[indiceFrase];
+        }
+
+        function abrirCarta() {
+            document.getElementById('modalCarta').classList.add('active');
+        }
+        function cerrarCarta() {
+            document.getElementById('modalCarta').classList.remove('active');
+        }
+
         function crearCorazonFlotante() {
             const bg = document.getElementById('heartsBg');
             const heart = document.createElement('div');
@@ -301,6 +415,54 @@
         }
         setInterval(crearCorazonFlotante, 600);
 
+        window.addEventListener('click', (e) => {
+            if(e.target.closest('.container') || e.target.closest('.modal-card')) return;
+            const heart = document.createElement('div');
+            heart.innerHTML = '💖';
+            heart.style.position = 'absolute';
+            heart.style.left = (e.pageX - 10) + 'px';
+            heart.style.top = (e.pageY - 10) + 'px';
+            heart.style.fontSize = '1.5rem';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '999';
+            heart.style.transition = 'transform 1s ease, opacity 1s ease';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.style.transform = 'translateY(-60px) scale(1.4)';
+                heart.style.opacity = '0';
+            }, 20);
+
+            setTimeout(() => heart.remove(), 1000);
+        });
+
+        let reproduciendo = true;
+        window.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('bgMusic');
+            audio.play().then(() => {
+                reproduciendo = true;
+                document.getElementById('audioBtn').innerHTML = '⏸️';
+            }).catch(e => {
+                reproduciendo = false;
+                document.getElementById('audioBtn').innerHTML = '🎵';
+            });
+        });
+
+        function toggleAudio() {
+            const audio = document.getElementById('bgMusic');
+            const btn = document.getElementById('audioBtn');
+            if (reproduciendo) {
+                audio.pause();
+                btn.innerHTML = '🎵';
+                reproduciendo = false;
+            } else {
+                audio.play().then(() => {
+                    btn.innerHTML = '⏸️';
+                    reproduciendo = true;
+                }).catch(e => console.log("Audio bloqueado"));
+            }
+        }
+
         const fechaInicio = new Date(2026, 2, 29, 0, 0, 0); 
 
         function actualizarContador() {
@@ -311,6 +473,7 @@
             const segundosTotales = Math.floor(diferencia / 1000);
             const minutosTotales = Math.floor(segundosTotales / 60);
             const horasTotales = Math.floor(minutosTotales / 60);
+            const diasTotales = Math.floor(horasTotales / 24);
 
             const segundos = segundosTotales % 60;
             const minutos = minutosTotales % 60;
@@ -337,6 +500,9 @@
             document.getElementById('horas').innerText = horas;
             document.getElementById('minutos').innerText = minutos;
             document.getElementById('segundos').innerText = segundos;
+
+            // Actualiza también el título de la pestaña del navegador con los días totales
+            document.getElementById('pageTitle').innerText = `❤️ ${diasTotales} Días | Nuestra Historia`;
         }
 
         function toggleTheme() {
@@ -348,22 +514,6 @@
             } else {
                 body.setAttribute('data-theme', 'light');
                 btn.innerHTML = '🌙';
-            }
-        }
-
-        let reproduciendo = false;
-        function toggleAudio() {
-            const audio = document.getElementById('bgMusic');
-            const btn = document.getElementById('audioBtn');
-            if (reproduciendo) {
-                audio.pause();
-                btn.innerHTML = '🎵';
-                reproduciendo = false;
-            } else {
-                audio.play().then(() => {
-                    btn.innerHTML = '⏸️';
-                    reproduciendo = true;
-                }).catch(e => console.log("Audio bloqueado por navegador"));
             }
         }
 
