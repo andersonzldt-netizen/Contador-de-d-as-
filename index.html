@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Días Juntos ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #db2777;
+            --primary-hover: #be185d;
+            --bg-gradient: linear-gradient(135deg, #fff1f2 0%, #fdf4ff 50%, #f0fdf4 100%);
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --border-color: rgba(244, 114, 182, 0.3);
+            --shadow: 0 15px 35px -5px rgba(219, 39, 119, 0.12);
+        }
+
+        [data-theme="dark"] {
+            --primary: #f472b6;
+            --primary-hover: #db2777;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311026 100%);
+            --card-bg: rgba(30, 41, 59, 0.85);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(244, 114, 182, 0.2);
+            --shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 550px;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            padding: 32px 24px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .heart-icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--primary), #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .counter-box {
+            background: var(--border-color);
+            padding: 16px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .counter-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .counter-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .dedication-card {
+            background: var(--border-color);
+            padding: 16px;
+            border-radius: 16px;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.25); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+            60% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <div class="container">
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+        
+        <div class="heart-icon">❤️</div>
+        <h1>Nuestra Historia Juntos</h1>
+        <p class="subtitle" id="fechaInicioTexto">Calculando el tiempo...</p>
+
+        <div class="counter-grid">
+            <div class="counter-box">
+                <span class="counter-number" id="anos">0</span>
+                <span class="counter-label">Años</span>
+            </div>
+            <div class="counter-box">
+                <span class="counter-number" id="meses">0</span>
+                <span class="counter-label">Meses</span>
+            </div>
+            <div class="counter-box">
+                <span class="counter-number" id="dias">0</span>
+                <span class="counter-label">Días</span>
+            </div>
+            <div class="counter-box">
+                <span class="counter-number" id="horas">0</span>
+                <span class="counter-label">Horas</span>
+            </div>
+            <div class="counter-box">
+                <span class="counter-number" id="minutos">0</span>
+                <span class="counter-label">Minutos</span>
+            </div>
+            <div class="counter-box">
+                <span class="counter-number" id="segundos">0</span>
+                <span class="counter-label">Segundos</span>
+            </div>
+        </div>
+
+        <div class="dedication-card">
+            "Cada segundo a tu lado es un regalo maravilloso. Gracias por cada momento, Bri." ✨
+        </div>
+    </div>
+
+    <script>
+        // Fecha configurada: 29 de Marzo de 2026 (mes 2 = Marzo)
+        const fechaInicio = new Date(2026, 2, 29, 0, 0, 0); 
+
+        document.getElementById('fechaInicioTexto').innerText = `Desde el ${fechaInicio.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}`;
+
+        function actualizarContador() {
+            const ahora = new Date();
+            let diferencia = ahora - fechaInicio;
+
+            if (diferencia < 0) diferencia = 0;
+
+            const segundosTotales = Math.floor(diferencia / 1000);
+            const minutosTotales = Math.floor(segundosTotales / 60);
+            const horasTotales = Math.floor(minutosTotales / 60);
+
+            const segundos = segundosTotales % 60;
+            const minutos = minutosTotales % 60;
+            const horas = horasTotales % 24;
+
+            let anos = ahora.getFullYear() - fechaInicio.getFullYear();
+            let meses = ahora.getMonth() - fechaInicio.getMonth();
+            let dias = ahora.getDate() - fechaInicio.getDate();
+
+            if (dias < 0) {
+                meses--;
+                const mesAnterior = new Date(ahora.getFullYear(), ahora.getMonth(), 0);
+                dias += mesAnterior.getDate();
+            }
+
+            if (meses < 0) {
+                anos--;
+                meses += 12;
+            }
+
+            document.getElementById('anos').innerText = anos;
+            document.getElementById('meses').innerText = meses;
+            document.getElementById('dias').innerText = dias;
+            document.getElementById('horas').innerText = horas;
+            document.getElementById('minutos').innerText = minutos;
+            document.getElementById('segundos').innerText = segundos;
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('themeBtn');
+            if (body.getAttribute('data-theme') === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                btn.innerHTML = '☀️';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                btn.innerHTML = '🌙';
+            }
+        }
+
+        setInterval(actualizarContador, 1000);
+        actualizarContador();
+    </script>
+</body>
+</html>
