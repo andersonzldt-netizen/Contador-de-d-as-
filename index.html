@@ -46,7 +46,7 @@ width: 100%;
 background: var(--card-bg);
 backdrop-filter: blur(20px);
 border: 1px solid var(--border-color);
-padding: 40px 25px;
+padding: 30px 25px 40px 25px;
 border-radius: 40px;
 box-shadow: var(--shadow);
 text-align: center;
@@ -55,31 +55,38 @@ z-index: 1;
 animation: slideIn 1s ease-out;
 }
 ​@keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-​.top-actions { position: absolute; top: 25px; right: 25px; display: flex; gap: 12px; }
-.icon-btn {
-background: rgba(255,255,255,0.2);
+​/* Barra de botones superior totalmente libre y limpia */
+.top-actions {
+display: flex;
+justify-content: flex-end;
+gap: 10px;
+margin-bottom: 5px;
+}
+​.icon-btn {
+background: rgba(255,255,255,0.3);
 border: 1px solid var(--border-color);
 color: var(--text-main);
-width: 40px;
-height: 40px;
+width: 38px;
+height: 38px;
 border-radius: 50%;
 cursor: pointer;
 display: flex;
 align-items: center;
 justify-content: center;
-font-size: 1rem;
+font-size: 0.95rem;
 transition: transform 0.2s, background 0.2s, color 0.2s;
 }
 .icon-btn:hover { transform: scale(1.15) rotate(5deg); background: var(--primary); color: white; }
-​.heart-main {
-width: 70px; height: 70px; margin: 0 auto 15px;
+​/* Icono del corazón centrado y separado */
+.heart-main {
+width: 60px; height: 60px; margin: 0 auto 12px;
 fill: var(--primary);
 animation: pulse 1.5s infinite;
 }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
-​h1 { font-family: 'Cinzel', serif; font-size: 1.7rem; letter-spacing: 2px; margin-bottom: 8px; color: var(--primary); }
+​h1 { font-family: 'Cinzel', serif; font-size: 1.7rem; letter-spacing: 2px; margin-bottom: 6px; color: var(--primary); }
 .subtitle { font-size: 0.9rem; margin-bottom: 25px; opacity: 0.8; font-weight: 500; }
-​/* CARRUSEL POLAROID CORREGIDO Y FLUIDO */
+​/* CARRUSEL POLAROID PERFECTO */
 .carousel-container {
 background: white;
 padding: 15px 15px 35px 15px;
@@ -107,7 +114,7 @@ height: 100%;
 will-change: transform;
 }
 .carousel-slide {
-width: 100%;
+width: 33.3333%;
 height: 100%;
 flex-shrink: 0;
 user-select: none;
