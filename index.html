@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestros Días Juntos ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Nuestra Historia Juntos ❤️ - Bri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #db2777;
-            --primary-hover: #be185d;
-            --bg-gradient: linear-gradient(135deg, #fff1f2 0%, #fdf4ff 50%, #f0fdf4 100%);
+            --primary: #e11d48;
+            --primary-light: #fda4af;
+            --bg-gradient: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fce7f3 100%);
             --card-bg: rgba(255, 255, 255, 0.85);
             --text-main: #1f2937;
             --text-muted: #4b5563;
             --border-color: rgba(244, 114, 182, 0.3);
-            --shadow: 0 15px 35px -5px rgba(219, 39, 119, 0.12);
+            --shadow: 0 20px 40px -10px rgba(225, 29, 72, 0.15);
         }
 
         [data-theme="dark"] {
-            --primary: #f472b6;
-            --primary-hover: #db2777;
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311026 100%);
+            --primary: #f43f5e;
+            --primary-light: #fb7185;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #2c0b1a 100%);
             --card-bg: rgba(30, 41, 59, 0.85);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(244, 114, 182, 0.2);
-            --shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.4);
+            --shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -44,114 +44,221 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-        }
-
-        .container {
-            max-width: 550px;
-            width: 100%;
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            padding: 32px 24px;
-            border-radius: 24px;
-            box-shadow: var(--shadow);
-            text-align: center;
+            overflow-x: hidden;
             position: relative;
         }
 
-        .theme-toggle {
+        /* Contenedor de corazones flotantes animados */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: var(--primary);
+            opacity: 0.3;
+            animation: floatUp 6s linear infinite;
+            font-size: 1.2rem;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.6);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            padding: 36px 24px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95) translateY(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .top-actions {
             position: absolute;
             top: 20px;
             right: 20px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
             background: transparent;
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 6px 12px;
-            border-radius: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+            background: var(--border-color);
         }
 
         .heart-icon {
-            font-size: 3rem;
-            margin-bottom: 12px;
-            animation: heartbeat 1.5s infinite;
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            animation: heartbeat 1.2s infinite;
         }
 
         h1 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, var(--primary), #9333ea);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, var(--primary), #db2777);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 28px;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            font-weight: 500;
         }
 
+        /* Foto estilo Polaroid animada */
+        .polaroid {
+            background: white;
+            padding: 12px 12px 28px 12px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            margin-bottom: 24px;
+            transform: rotate(-1.5deg);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.03);
+        }
+
+        .polaroid img {
+            width: 100%;
+            max-height: 260px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .polaroid-caption {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #333;
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+
+        /* Cuadrícula del Contador con efecto hover */
         .counter-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-            margin-bottom: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
         .counter-box {
             background: var(--border-color);
-            padding: 16px;
-            border-radius: 16px;
+            padding: 12px 8px;
+            border-radius: 14px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .counter-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(225, 29, 72, 0.1);
         }
 
         .counter-number {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 2px;
         }
 
         .counter-label {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-muted);
+            margin-top: 2px;
         }
 
-        .dedication-card {
-            background: var(--border-color);
-            padding: 16px;
-            border-radius: 16px;
+        .dedication {
+            font-family: 'Playfair Display', serif;
             font-style: italic;
             color: var(--text-muted);
             font-size: 0.9rem;
             line-height: 1.5;
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
         }
 
         @keyframes heartbeat {
             0% { transform: scale(1); }
-            15% { transform: scale(1.25); }
+            15% { transform: scale(1.2); }
             30% { transform: scale(1); }
-            45% { transform: scale(1.15); }
+            45% { transform: scale(1.1); }
             60% { transform: scale(1); }
         }
     </style>
 </head>
 <body data-theme="light">
 
+    <div class="hearts-bg" id="heartsBg"></div>
+
     <div class="container">
-        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+        <div class="top-actions">
+            <button class="icon-btn" onclick="toggleAudio()" id="audioBtn" title="Reproducir música">🎵</button>
+            <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Cambiar tema">🌙</button>
+        </div>
         
-        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">💖</div>
         <h1>Nuestra Historia Juntos</h1>
-        <p class="subtitle" id="fechaInicioTexto">Calculando el tiempo...</p>
+        <p class="subtitle" id="fechaInicioTexto">Desde el 29 de marzo de 2026</p>
+
+        <div class="polaroid">
+            <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" alt="Nosotros">
+            <div class="polaroid-caption">¿Hacemos esto oficial? ✨</div>
+        </div>
 
         <div class="counter-grid">
             <div class="counter-box">
@@ -180,21 +287,39 @@
             </div>
         </div>
 
-        <div class="dedication-card">
-            "Cada segundo a tu lado es un regalo maravilloso. Gracias por cada momento, Bri." ✨
+        <div class="dedication">
+            "Cada segundo a tu lado es mi lugar favorito. Te amo, Bri." 🌹
         </div>
     </div>
 
-    <script>
-        // Fecha configurada: 29 de Marzo de 2026 (mes 2 = Marzo)
-        const fechaInicio = new Date(2026, 2, 29, 0, 0, 0); 
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mpeg">
+    </audio>
 
-        document.getElementById('fechaInicioTexto').innerText = `Desde el ${fechaInicio.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}`;
+    <script>
+        // Generador dinámico de corazones flotantes de fondo
+        function crearCorazonFlotante() {
+            const bg = document.getElementById('heartsBg');
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's'; // Entre 4 y 7 segundos
+            heart.style.fontSize = (Math.random() * 10 + 12) + 'px';
+            bg.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+        setInterval(crearCorazonFlotante, 600);
+
+        // Fecha oficial: 29 de marzo de 2026
+        const fechaInicio = new Date(2026, 2, 29, 0, 0, 0); 
 
         function actualizarContador() {
             const ahora = new Date();
             let diferencia = ahora - fechaInicio;
-
             if (diferencia < 0) diferencia = 0;
 
             const segundosTotales = Math.floor(diferencia / 1000);
@@ -237,6 +362,22 @@
             } else {
                 body.setAttribute('data-theme', 'light');
                 btn.innerHTML = '🌙';
+            }
+        }
+
+        let reproduciendo = false;
+        function toggleAudio() {
+            const audio = document.getElementById('bgMusic');
+            const btn = document.getElementById('audioBtn');
+            if (reproduciendo) {
+                audio.pause();
+                btn.innerHTML = '🎵';
+                reproduciendo = false;
+            } else {
+                audio.play().then(() => {
+                    btn.innerHTML = '⏸️';
+                    reproduciendo = true;
+                }).catch(e => console.log("Audio bloqueado por navegador"));
             }
         }
 
