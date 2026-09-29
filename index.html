@@ -177,33 +177,35 @@ button{
 
 .hero-heart{
     position:relative;
-    width:190px;
-    height:190px;
+    width:210px;
+    height:210px;
     margin:0 auto 30px;
     display:flex;
     align-items:center;
     justify-content:center;
-    filter:drop-shadow(0 18px 45px rgba(200,91,119,.25));
+    filter:drop-shadow(0 22px 55px rgba(200,91,119,.28));
 }
 
 .heart-svg{
-    width:116px;
-    height:116px;
+    width:145px;
+    height:138px;
     overflow:visible;
-    animation:heartbeat 2.5s infinite ease-in-out;
+    animation:heartbeat 2.8s infinite ease-in-out;
     transform-origin:center;
+    overflow:visible;
 }
 
 .heart-svg path{
     filter:
-        drop-shadow(0 0 18px rgba(200,91,119,.55))
-        drop-shadow(0 0 55px rgba(200,91,119,.24));
+        drop-shadow(0 8px 14px rgba(70,5,22,.32))
+        drop-shadow(0 0 24px rgba(200,91,119,.42))
+        drop-shadow(0 0 65px rgba(200,91,119,.18));
 }
 
 .heart-shine{
     position:absolute;
-    width:34px;
-    height:20px;
+    width:0;
+    height:0;
     border-radius:70% 40% 70% 40%;
     background:linear-gradient(120deg,rgba(255,255,255,.58),rgba(255,255,255,0));
     transform:rotate(-28deg);
@@ -212,6 +214,7 @@ button{
     z-index:3;
     filter:blur(.5px);
     pointer-events:none;
+    display:none;
 }
 
 .halo{
@@ -276,6 +279,45 @@ main{
     width:min(100%,1000px);
     margin:auto;
     padding:25px 18px 80px;
+}
+
+.stage{
+    display:none;
+    animation:stageIn .8s ease both;
+}
+
+.stage.active{
+    display:block;
+}
+
+.stage-nav{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:34px;
+    flex-wrap:wrap;
+}
+
+.stage-button{
+    border:1px solid rgba(230,203,145,.45);
+    background:rgba(255,255,255,.045);
+    color:var(--cream);
+    padding:12px 22px;
+    border-radius:100px;
+    cursor:pointer;
+    transition:.3s ease;
+    backdrop-filter:blur(8px);
+}
+
+.stage-button:hover{
+    transform:translateY(-2px);
+    border-color:rgba(230,203,145,.75);
+    background:rgba(230,203,145,.10);
+}
+
+@keyframes stageIn{
+    from{opacity:0;transform:translateY(18px)}
+    to{opacity:1;transform:translateY(0)}
 }
 
 .main-card{
@@ -529,6 +571,31 @@ main{
 }
 
 /* =========================
+   ETAPAS
+========================= */
+
+const stages = [...document.querySelectorAll(".stage")];
+
+function showStage(index){
+    const target = Math.max(0, Math.min(3, Number(index)));
+    stages.forEach(stage => {
+        stage.classList.toggle("active", Number(stage.dataset.stage) === target);
+    });
+    window.scrollTo({top:0, behavior:"smooth"});
+}
+
+document.querySelectorAll("[data-next]").forEach(button => {
+    button.addEventListener("click", () => showStage(button.dataset.next));
+});
+
+document.querySelectorAll("[data-prev]").forEach(button => {
+    button.addEventListener("click", () => showStage(button.dataset.prev));
+});
+
+showStage(0);
+
+
+/* =========================
    LETTER
 ========================= */
 
@@ -740,25 +807,26 @@ body.light .chapter{
                         <stop offset="100%" stop-color="#26050f" stop-opacity=".22"/>
                     </linearGradient>
                 </defs>
-                <path d="M100 171
-                         C89 160 31 126 20 78
-                         C10 37 37 14 70 18
-                         C84 20 94 29 100 42
-                         C106 29 116 20 130 18
-                         C163 14 190 37 180 78
-                         C169 126 111 160 100 171 Z"
+                <path d="M100 176
+                         C91 166 43 139 26 103
+                         C11 72 18 39 43 25
+                         C66 12 91 22 100 48
+                         C109 22 134 12 157 25
+                         C182 39 189 72 174 103
+                         C157 139 109 166 100 176 Z"
                       fill="url(#heartGlow)"/>
-                <path d="M100 171
-                         C89 160 31 126 20 78
-                         C10 37 37 14 70 18
-                         C84 20 94 29 100 42
-                         C106 29 116 20 130 18
-                         C163 14 190 37 180 78
-                         C169 126 111 160 100 171 Z"
+                <path d="M100 176
+                         C91 166 43 139 26 103
+                         C11 72 18 39 43 25
+                         C66 12 91 22 100 48
+                         C109 22 134 12 157 25
+                         C182 39 189 72 174 103
+                         C157 139 109 166 100 176 Z"
                       fill="url(#heartSheen)"/>
             </svg>
 
-            <div class="heart-shine"></div>
+            <ellipse class="heart-glow" cx="70" cy="54" rx="25" ry="13" fill="rgba(255,255,255,.16)" transform="rotate(-28 70 54)"/>
+            <ellipse class="heart-glow-soft" cx="65" cy="49" rx="10" ry="6" fill="rgba(255,255,255,.28)" transform="rotate(-28 65 49)"/>
 
         </div>
 
@@ -797,7 +865,7 @@ body.light .chapter{
 
 <div class="main-card">
 
-    <header class="header">
+    <header class="header stage active" data-stage="0">
 
         <h2>
             ¡Felices 6 meses, mi amor! ❤️
@@ -815,6 +883,10 @@ body.light .chapter{
             🌙 Cambiar tema
         </button>
 
+        <div class="stage-nav">
+            <button class="stage-button" data-next="1">Entrar en nuestra historia ❤️</button>
+        </div>
+
     </header>
 
 
@@ -822,7 +894,7 @@ body.light .chapter{
          CHAPTER 1
     ========================= -->
 
-    <section class="chapter">
+    <section class="chapter stage" data-stage="1">
 
         <div class="chapter-label">
             Capítulo 01
@@ -863,6 +935,11 @@ body.light .chapter{
 
         </div>
 
+        <div class="stage-nav">
+            <button class="stage-button" data-prev="0">← Volver</button>
+            <button class="stage-button" data-next="2">Continuar →</button>
+        </div>
+
     </section>
 
 
@@ -870,7 +947,7 @@ body.light .chapter{
          CHAPTER 2
     ========================= -->
 
-    <section class="chapter">
+    <section class="chapter stage" data-stage="2">
 
         <div class="chapter-label">
             Capítulo 02
@@ -927,6 +1004,11 @@ body.light .chapter{
 
         </div>
 
+        <div class="stage-nav">
+            <button class="stage-button" data-prev="1">← Volver</button>
+            <button class="stage-button" data-next="3">Continuar →</button>
+        </div>
+
     </section>
 
 
@@ -934,10 +1016,7 @@ body.light .chapter{
          CHAPTER 3
     ========================= -->
 
-    <section class="chapter">
-
-        <div class="chapter-label">
-            Capítulo 03
+    <section class="chapter stage" data-stage="3"
         </div>
 
         <h3>
@@ -970,6 +1049,10 @@ body.light .chapter{
             id="letterButton">
             Leer mi carta para ti 💌
         </button>
+
+        <div class="stage-nav">
+            <button class="stage-button" data-prev="2">← Volver</button>
+        </div>
 
     </section>
 
