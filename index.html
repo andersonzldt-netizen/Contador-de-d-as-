@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Nuestra Historia ❤️ - Bri</title>
+    <title id="pageTitle">6 Meses Juntos ❤️ - Bri</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -141,7 +141,7 @@
         .dot { width: 6px; height: 6px; background: #cbd5e1; border-radius: 50%; cursor: pointer; }
         .dot.active { background: var(--primary); width: 16px; border-radius: 6px; }
 
-        .counter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
+        .counter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
         .counter-box {
             background: var(--border-color);
             padding: 10px 2px;
@@ -150,9 +150,34 @@
         .num { font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 700; color: var(--primary); display: block; }
         .lab { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; opacity: 0.8; }
 
+        .reasons-card {
+            background: var(--border-color);
+            border-radius: 14px;
+            padding: 12px 14px;
+            margin-bottom: 14px;
+            cursor: pointer;
+            position: relative;
+            border: 1px dashed var(--primary);
+        }
+        .reasons-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .reasons-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
         .dedication {
             font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.85rem;
-            padding-top: 12px; border-top: 1px solid var(--border-color);
+            padding-top: 10px; border-top: 1px solid var(--border-color);
             cursor: pointer; line-height: 1.4; color: var(--text-muted);
         }
 
@@ -193,7 +218,7 @@
             c6.3-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
         </svg>
 
-        <h1>Nuestra Historia</h1>
+        <h1>6 Meses Juntos</h1>
         <p class="subtitle">Desde el 29 de marzo de 2026</p>
 
         <div class="carousel-container">
@@ -223,14 +248,19 @@
             <div class="counter-box"><span class="num" id="segundos">0</span><span class="lab">Segs</span></div>
         </div>
 
+        <div class="reasons-card" onclick="changeReason()">
+            <div class="reasons-title">💡 Razones por las que te amo (Toca para ver otra)</div>
+            <div class="reasons-text" id="reasonText">"Por la forma en que tu sonrisa ilumina incluso mis días más grises." 💕</div>
+        </div>
+
         <div class="dedication" id="phrase" onclick="changePhrase()">
-            "Cada segundo a tu lado es mi lugar favorito. Te amo, Bri." 🌹
+            "Cada segundo a tu lado es mi lugar favorito. ¡Felices 6 meses, Bri!" 🌹
         </div>
     </div>
 
     <div class="modal" id="letterModal">
         <div class="modal-content">
-            <h2>Para ti, mi amor, Bri ❤️</h2>
+            <h2>¡Felices 6 Meses, mi amor! ❤️</h2>
             <p>No hay un solo día en que no agradezca tenerte a mi lado. Cada segundo contigo se vuelve inolvidable, y no importa el lugar, mientras sea junto a ti. Gracias por ser esa hermosa casualidad que le da sentido a todo.<br><br>Me encanta cada risa que compartimos y la paz que me das con solo sonreír. Prometo seguir cuidando de lo nuestro y celebrando cada momento a tu lado. Te amo hoy, mañana y siempre.</p>
             <button class="close-btn" onclick="closeLetter()">Cerrar con amor 💋</button>
         </div>
@@ -273,7 +303,6 @@
         view.addEventListener('touchstart', touchStart);
         view.addEventListener('touchend', touchEnd);
         view.addEventListener('touchmove', touchMove);
-
         view.addEventListener('mousedown', touchStart);
         view.addEventListener('mouseup', touchEnd);
         view.addEventListener('mouseleave', touchEnd);
@@ -309,8 +338,20 @@
             updateCarousel();
         }
 
+        const reasons = [
+            "\"Por la forma en que tu sonrisa ilumina incluso mis días más grises.\" 💕",
+            "\"Porque a tu lado aprendí lo que significa sentir paz y hogar al mismo tiempo.\" ✨",
+            "\"Por tus ocurrencias, tus abrazos y cada risa que compartimos.\" 🌹",
+            "\"Porque cada día a tu lado es mi aventura favorita.\" 🌸"
+        ];
+        let rIdx = 0;
+        function changeReason() {
+            rIdx = (rIdx + 1) % reasons.length;
+            document.getElementById('reasonText').innerText = reasons[rIdx];
+        }
+
         const frases = [
-            "\"Cada segundo a tu lado es mi lugar favorito. Te amo, Bri.\" 🌹",
+            "\"Cada segundo a tu lado es mi lugar favorito. ¡Felices 6 meses, Bri!\" 🌹",
             "\"Tu sonrisa es mi casualidad favorita y mi felicidad eterna.\" ✨",
             "\"Contigo supe lo que significa sumar paz y multiplicar alegrías.\" 💖",
             "\"Gracias por ser mi refugio y mi persona favorita en este mundo.\" 🌸"
@@ -318,7 +359,12 @@
         let fIdx = 0;
         function changePhrase() { fIdx = (fIdx + 1) % frases.length; document.getElementById('phrase').innerText = frases[fIdx]; }
 
-        function openLetter() { document.getElementById('letterModal').classList.add('active'); }
+        function openLetter() { 
+            document.getElementById('letterModal').classList.add('active'); 
+            for(let i=0; i<15; i++) {
+                setTimeout(spawnHeart, i * 80);
+            }
+        }
         function closeLetter() { document.getElementById('letterModal').classList.remove('active'); }
 
         function spawnHeart() {
@@ -355,7 +401,7 @@
             document.getElementById('horas').innerText = h;
             document.getElementById('minutos').innerText = m;
             document.getElementById('segundos').innerText = s;
-            document.getElementById('pageTitle').innerText = `❤️ ${dTot} Días | Nuestra Historia`;
+            document.getElementById('pageTitle').innerText = `❤️ ${dTot} Días | 6 Meses Juntos`;
         }
         setInterval(updateCounter, 1000);
 
