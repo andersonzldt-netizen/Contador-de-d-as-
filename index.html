@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Felices 6 Meses, mi amor ❤️</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,18 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
-    --wine:#7f1734;
-    --wine-dark:#350914;
+    --wine:#7f1238;
+    --wine-dark:#350817;
     --ruby:#be123c;
     --rose:#fb7185;
-    --cream:#fff8f5;
-    --gold:#d6ad63;
-    --gold-light:#f1dca5;
-    --text:#32141c;
+    --cream:#fff8f3;
+    --cream-dark:#f8e9e1;
+    --gold:#d6ad62;
+    --gold-light:#f2d99b;
+    --text:#35131f;
     --white:#ffffff;
-    --shadow:0 25px 70px rgba(52,9,20,.18);
+    --shadow:0 25px 70px rgba(50,5,20,.22);
 }
 
 *{
@@ -37,138 +36,93 @@ html{
 
 body{
     font-family:'Montserrat',sans-serif;
-    color:var(--text);
-
     background:
-        radial-gradient(
-            circle at 20% 10%,
-            rgba(251,113,133,.12),
-            transparent 30%
-        ),
-        linear-gradient(
-            145deg,
-            #fffafa,
-            #f9e9e7
-        );
-
+        radial-gradient(circle at 20% 10%,rgba(251,113,133,.16),transparent 30%),
+        radial-gradient(circle at 90% 80%,rgba(214,173,98,.12),transparent 30%),
+        linear-gradient(135deg,#fff9f5,#f8e9e1);
+    color:var(--text);
     min-height:100vh;
     overflow-x:hidden;
 }
 
-body.cover-active{
-    overflow:hidden;
-}
-
-
-/* =====================================================
+/* =========================
    FONDO
-===================================================== */
+========================= */
 
 .background-glow{
     position:fixed;
     inset:0;
     pointer-events:none;
-    z-index:-3;
-
-    background:
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(190,18,60,.10),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(214,173,99,.10),
-            transparent 25%
-        );
+    z-index:-2;
 }
 
+.background-glow::before,
+.background-glow::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.3;
+}
 
-/* =====================================================
-   CORAZONES FLOTANTES
-===================================================== */
+.background-glow::before{
+    width:280px;
+    height:280px;
+    background:#fb7185;
+    top:-80px;
+    left:-80px;
+}
 
-.hearts{
+.background-glow::after{
+    width:320px;
+    height:320px;
+    background:#d6ad62;
+    bottom:-120px;
+    right:-100px;
+}
+
+.heart-bg{
     position:fixed;
-    inset:0;
+    bottom:-40px;
+    color:rgba(190,18,60,.14);
+    animation:floatHeart linear forwards;
     pointer-events:none;
-    overflow:hidden;
     z-index:-1;
 }
 
-.heart{
-    position:absolute;
-    bottom:-40px;
-    color:rgba(190,18,60,.16);
-    font-size:18px;
-    animation:floatHeart linear forwards;
-}
-
 @keyframes floatHeart{
-
-    from{
-        transform:
-            translateY(0)
-            rotate(0deg);
+    0%{
+        transform:translateY(0) rotate(0deg);
         opacity:0;
     }
-
     15%{
-        opacity:1;
+        opacity:.8;
     }
-
-    to{
-        transform:
-            translateY(-110vh)
-            rotate(25deg);
+    100%{
+        transform:translateY(-110vh) rotate(25deg);
         opacity:0;
     }
-
 }
 
-
-/* =====================================================
+/* =========================
    PORTADA
-===================================================== */
+========================= */
 
-.cover{
+#cover{
     position:fixed;
     inset:0;
     z-index:1000;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     padding:25px;
-
     background:
-        radial-gradient(
-            circle at center,
-            rgba(190,18,60,.22),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 50% 120%,
-            rgba(214,173,99,.12),
-            transparent 35%
-        ),
-        linear-gradient(
-            145deg,
-            #130309,
-            #350914 55%,
-            #17050a
-        );
-
-    opacity:1;
-    visibility:visible;
-
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
+        radial-gradient(circle at center,rgba(190,18,60,.25),transparent 35%),
+        linear-gradient(145deg,#16040b,#350817 45%,#16040b);
+    transition:opacity 1s ease,visibility 1s ease;
 }
 
-.cover.hidden{
+#cover.hidden{
     opacity:0;
     visibility:hidden;
     pointer-events:none;
@@ -178,404 +132,225 @@ body.cover-active{
     width:min(440px,100%);
     text-align:center;
     color:white;
-
-    animation:coverEnter 1.4s ease forwards;
+    animation:coverIn 1.5s ease forwards;
 }
 
-@keyframes coverEnter{
-
+@keyframes coverIn{
     from{
         opacity:0;
-        transform:
-            translateY(25px)
-            scale(.97);
+        transform:translateY(30px);
     }
-
     to{
         opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
+        transform:translateY(0);
     }
+}
 
+.cover-heart{
+    width:100px;
+    height:100px;
+    margin:0 auto 28px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.cover-heart::before{
+    content:"♥";
+    font-size:75px;
+    color:#d6ad62;
+    text-shadow:
+        0 0 15px rgba(214,173,98,.7),
+        0 0 45px rgba(190,18,60,.8);
+    animation:heartBeat 2s infinite;
+}
+
+@keyframes heartBeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.12)}
+}
+
+.cover-small{
+    font-size:11px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    margin-bottom:15px;
+}
+
+.cover-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(46px,13vw,72px);
+    line-height:.88;
+    font-weight:500;
+    margin-bottom:20px;
+}
+
+.cover-subtitle{
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;
+    line-height:1.3;
+    color:#f6dedf;
+    margin-bottom:18px;
 }
 
 .cover-date{
     font-size:11px;
-    letter-spacing:5px;
-    color:var(--gold-light);
-    margin-bottom:28px;
-}
-
-.cover-heart{
-    width:115px;
-    height:115px;
-
-    margin:
-        0 auto
-        30px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:
-        1px solid
-        rgba(241,220,165,.35);
-
-    border-radius:50%;
-
-    box-shadow:
-        0 0 0 12px
-        rgba(214,173,99,.04),
-
-        0 0 70px
-        rgba(190,18,60,.35);
-
-    animation:
-        heartGlow 2.8s
-        infinite
-        ease-in-out;
-}
-
-.cover-heart span{
-    font-size:53px;
-
-    animation:
-        heartbeat 1.8s
-        infinite
-        ease-in-out;
-}
-
-@keyframes heartbeat{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.12);
-    }
-
-}
-
-@keyframes heartGlow{
-
-    0%,100%{
-        box-shadow:
-            0 0 0 12px
-            rgba(214,173,99,.04),
-
-            0 0 55px
-            rgba(190,18,60,.25);
-    }
-
-    50%{
-        box-shadow:
-            0 0 0 20px
-            rgba(214,173,99,.05),
-
-            0 0 90px
-            rgba(190,18,60,.45);
-    }
-
-}
-
-.cover-small{
-    font-size:12px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-
-    color:#e8cfcf;
-
-    margin-bottom:12px;
-}
-
-.cover h1{
-    font-family:
-        'Cormorant Garamond',
-        serif;
-
-    font-size:
-        clamp(
-            48px,
-            14vw,
-            76px
-        );
-
-    line-height:.85;
-    font-weight:500;
-
-    margin-bottom:22px;
-}
-
-.cover h1 span{
-    display:block;
-    color:var(--gold-light);
-}
-
-.cover-subtitle{
-    font-family:
-        'Cormorant Garamond',
-        serif;
-
-    font-size:22px;
-    color:#f5dddd;
-
-    margin-bottom:38px;
+    letter-spacing:4px;
+    color:#d6ad62;
+    margin-bottom:35px;
 }
 
 .start-button{
-    border:
-        1px solid
-        rgba(241,220,165,.55);
-
-    background:
-        linear-gradient(
-            135deg,
-            #b88943,
-            #e1bd72
-        );
-
-    color:#29100f;
-
-    padding:
-        15px 27px;
-
-    border-radius:999px;
-
-    font-family:
-        'Montserrat',
-        sans-serif;
-
-    font-weight:600;
-
+    border:1px solid rgba(214,173,98,.7);
+    background:linear-gradient(135deg,#be123c,#7f1238);
+    color:white;
+    padding:15px 27px;
+    border-radius:50px;
+    font-family:'Montserrat',sans-serif;
+    font-size:13px;
+    letter-spacing:.5px;
     cursor:pointer;
-
-    box-shadow:
-        0 12px 35px
-        rgba(0,0,0,.25);
-
-    transition:.3s;
+    box-shadow:0 12px 35px rgba(0,0,0,.35);
+    transition:.3s ease;
 }
 
 .start-button:hover{
     transform:translateY(-3px);
-
-    box-shadow:
-        0 17px 40px
-        rgba(0,0,0,.35);
+    box-shadow:0 18px 40px rgba(0,0,0,.45);
 }
 
-.cover-note{
-    margin-top:18px;
+/* =========================
+   CONTENEDOR
+========================= */
 
-    font-size:10px;
-
-    color:
-        rgba(255,255,255,.55);
-}
-
-
-/* =====================================================
-   CONTENIDO
-===================================================== */
-
-main{
-    width:min(470px,100%);
-
+.page{
+    width:min(520px,100%);
     margin:auto;
-
-    padding:
-        22px
-        15px
-        50px;
+    padding:25px 16px 60px;
 }
 
-.card{
-    background:
-        rgba(255,255,255,.82);
-
-    backdrop-filter:
-        blur(18px);
-
-    border:
-        1px solid
-        rgba(190,18,60,.08);
-
+.main-card{
+    background:rgba(255,255,255,.73);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.8);
     border-radius:30px;
-
-    box-shadow:
-        var(--shadow);
-
+    box-shadow:var(--shadow);
     overflow:hidden;
 }
 
-
-/* =====================================================
-   BARRA
-===================================================== */
-
-.topbar{
-    display:flex;
-    justify-content:flex-end;
-
-    gap:8px;
-
-    padding:
-        14px
-        15px
-        0;
-}
-
-.icon-btn{
-    width:38px;
-    height:38px;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(127,23,52,.10);
-
-    background:
-        rgba(255,255,255,.75);
-
-    cursor:pointer;
-
-    font-size:16px;
-
-    transition:.25s;
-}
-
-.icon-btn:hover{
-    transform:translateY(-2px);
-}
-
-
-/* =====================================================
+/* =========================
    HEADER
-===================================================== */
+========================= */
 
 .header{
+    padding:38px 25px 28px;
     text-align:center;
-
-    padding:
-        25px
-        25px
-        24px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(127,18,56,.96),
+            rgba(53,8,23,.98)
+        );
+    color:white;
+    position:relative;
+    overflow:hidden;
 }
 
-.header .eyebrow{
-    color:var(--wine);
+.header::after{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border:1px solid rgba(214,173,98,.2);
+    border-radius:50%;
+    top:-120px;
+    right:-90px;
+}
 
+.header-kicker{
     font-size:10px;
-
-    letter-spacing:3px;
-
+    letter-spacing:4px;
+    color:var(--gold-light);
     text-transform:uppercase;
-
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
-.header h2{
-    font-family:
-        'Cormorant Garamond',
-        serif;
-
-    font-size:40px;
-
-    line-height:.95;
-
+.header h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
     font-weight:600;
-
-    color:var(--wine-dark);
+    line-height:1;
+    margin-bottom:12px;
 }
 
 .header p{
-    margin-top:14px;
-
-    font-family:
-        'Cormorant Garamond',
-        serif;
-
-    font-size:19px;
-
-    color:#704653;
+    font-family:'Cormorant Garamond',serif;
+    font-size:21px;
+    color:#f8dfe2;
 }
 
+.controls{
+    position:absolute;
+    top:15px;
+    right:15px;
+    display:flex;
+    gap:7px;
+}
 
-/* =====================================================
+.icon-button{
+    width:35px;
+    height:35px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+/* =========================
    NAVEGACIÓN
-===================================================== */
+========================= */
 
-.chapters{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    margin:
-        0 15px;
-
-    padding:5px;
-
-    border-radius:18px;
-
-    background:#f5e4e2;
+.chapter-nav{
+    display:flex;
+    padding:10px;
+    gap:6px;
+    background:rgba(255,255,255,.65);
+    border-bottom:1px solid rgba(127,18,56,.08);
 }
 
 .chapter-btn{
-    border:none;
-
+    flex:1;
+    border:0;
     background:transparent;
-
-    padding:
-        11px
-        5px;
-
-    border-radius:14px;
-
-    font-size:10px;
-
-    font-family:
-        'Montserrat',
-        sans-serif;
-
-    color:#7b5960;
-
+    padding:10px 5px;
+    border-radius:12px;
+    font-family:'Montserrat',sans-serif;
+    font-size:9px;
+    font-weight:600;
+    color:#8b6872;
     cursor:pointer;
-
     transition:.3s;
 }
 
 .chapter-btn.active{
-    background:white;
-
-    color:var(--wine);
-
-    box-shadow:
-        0 4px 15px
-        rgba(70,15,25,.08);
-
-    font-weight:600;
+    background:var(--wine);
+    color:white;
+    box-shadow:0 6px 18px rgba(127,18,56,.25);
 }
 
-
-/* =====================================================
+/* =========================
    CAPÍTULOS
-===================================================== */
+========================= */
 
 .chapter{
     display:none;
-
-    padding:
-        28px
-        20px
-        25px;
-
-    animation:
-        chapterIn .6s ease;
+    padding:28px 22px;
+    animation:chapterIn .55s ease;
 }
 
 .chapter.active{
@@ -583,1146 +358,640 @@ main{
 }
 
 @keyframes chapterIn{
-
     from{
         opacity:0;
-        transform:
-            translateY(12px);
+        transform:translateY(12px);
     }
-
     to{
         opacity:1;
-        transform:
-            translateY(0);
+        transform:translateY(0);
     }
-
 }
 
-.chapter-title{
-    text-align:center;
+.chapter-number{
+    font-size:10px;
+    letter-spacing:3px;
+    color:var(--wine);
+    text-transform:uppercase;
+    margin-bottom:8px;
+}
 
-    font-family:
-        'Cormorant Garamond',
-        serif;
-
-    font-size:31px;
-
+.chapter h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:38px;
+    line-height:1;
     color:var(--wine-dark);
-
-    margin-bottom:7px;
+    margin-bottom:12px;
 }
 
 .chapter-intro{
-    text-align:center;
-
-    font-size:12px;
-
-    line-height:1.7;
-
-    color:#775760;
-
-    margin-bottom:22px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    line-height:1.35;
+    color:#72545f;
+    margin-bottom:25px;
 }
 
-
-/* =====================================================
-   DÍAS
-===================================================== */
+/* =========================
+   CONTADOR DÍAS
+========================= */
 
 .days-box{
+    background:linear-gradient(135deg,#fff,#f8e9e1);
+    border:1px solid rgba(190,18,60,.1);
+    border-radius:22px;
+    padding:25px 15px;
     text-align:center;
-
-    padding:
-        23px
-        15px;
-
-    border-radius:23px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fff,
-            #f8e6e4
-        );
-
-    border:
-        1px solid
-        rgba(190,18,60,.08);
-
-    margin-bottom:22px;
+    margin-bottom:25px;
 }
 
 .days-number{
-    font-family:
-        'Cormorant Garamond',
-        serif;
-
-    font-size:58px;
-
-    line-height:1;
-
+    font-family:'Cormorant Garamond',serif;
+    font-size:64px;
+    line-height:.8;
     color:var(--wine);
 }
 
 .days-label{
+    margin-top:12px;
     font-size:10px;
-
-    letter-spacing:2px;
-
+    letter-spacing:3px;
     text-transform:uppercase;
-
-    color:#80616a;
-
-    margin-top:7px;
+    color:#8d6b74;
 }
 
-.story-text{
+/* =========================
+   SPOTIFY
+========================= */
+
+.music-section{
+    margin-top:22px;
+    padding:18px;
+    border-radius:20px;
+    background:linear-gradient(145deg,#fff,#f7ebe5);
+    border:1px solid rgba(127,18,56,.1);
+}
+
+.music-title{
+    font-family:'Cormorant Garamond',serif;
     text-align:center;
-
-    font-family:
-        'Cormorant Garamond',
-        serif;
-
-    font-size:21px;
-
-    line-height:1.5;
-
-    color:#512530;
+    font-size:23px;
+    color:var(--wine-dark);
+    margin-bottom:13px;
 }
 
+.spotify-frame{
+    width:100%;
+    height:80px;
+    border-radius:12px;
+    border:0;
+    overflow:hidden;
+}
 
-/* =====================================================
-   CARRUSEL
-===================================================== */
+/* =========================
+   CAROUSEL
+========================= */
 
 .carousel{
     position:relative;
 }
 
-.photo-frame{
-    position:relative;
-
+.photo-wrapper{
+    border-radius:24px;
     overflow:hidden;
-
-    border-radius:25px;
-
-    background:#260810;
-
-    box-shadow:
-        0 20px 45px
-        rgba(53,9,20,.18);
+    background:#32101d;
+    box-shadow:0 18px 45px rgba(53,8,23,.18);
 }
 
-.photo-frame img{
-    display:block;
-
+.photo{
     width:100%;
-
-    aspect-ratio:4/5;
-
+    height:390px;
     object-fit:cover;
-
-    transition:
-        transform .8s ease,
-        opacity .45s ease;
+    display:block;
+    transition:opacity .3s ease,transform .5s ease;
 }
 
-.photo-frame.changing img{
-    opacity:.45;
-
-    transform:
-        scale(1.025);
-}
-
-.carousel-arrow{
-    position:absolute;
-
-    top:43%;
-
-    z-index:3;
-
-    width:40px;
-    height:40px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,255,255,.9);
-
-    color:var(--wine);
-
-    box-shadow:
-        0 8px 25px
-        rgba(0,0,0,.15);
-
-    cursor:pointer;
-
-    font-size:22px;
-
-    transition:.25s;
-}
-
-.carousel-arrow:hover{
-    transform:scale(1.08);
-}
-
-.prev{
-    left:10px;
-}
-
-.next{
-    right:10px;
-}
-
-
-/* =====================================================
-   FRASE
-===================================================== */
-
-.caption-panel{
-    min-height:155px;
-
-    margin-top:14px;
-
-    padding:
-        22px
-        19px;
-
-    border-radius:21px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fffdfb,
-            #f9e9e6
-        );
-
-    border:
-        1px solid
-        rgba(214,173,99,.35);
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-.caption-panel::before{
-    content:"";
-
-    position:absolute;
-
-    width:120px;
-    height:120px;
-
-    border-radius:50%;
-
-    background:
-        rgba(214,173,99,.08);
-
-    top:-65px;
-    right:-50px;
-}
-
-.caption-line{
-    width:42px;
-    height:2px;
-
-    background:var(--gold);
-
-    margin-bottom:13px;
-
-    border-radius:20px;
+.photo.fade{
+    opacity:.2;
+    transform:scale(1.02);
 }
 
 .caption{
-    font-family:
-        'Cormorant Garamond',
-        serif;
+    min-height:150px;
+    background:linear-gradient(135deg,#fffaf7,#f8e9e1);
+    padding:24px 22px 20px;
+    text-align:center;
+    position:relative;
+}
 
+.caption::before{
+    content:"";
+    width:42px;
+    height:2px;
+    background:var(--gold);
+    position:absolute;
+    top:16px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.caption-text{
+    font-family:'Cormorant Garamond',serif;
     font-size:23px;
-
-    line-height:1.35;
-
-    color:#4c202b;
-
-    max-width:340px;
-
-    animation:
-        captionIn .55s ease;
+    line-height:1.25;
+    color:var(--wine-dark);
+    animation:captionIn .45s ease;
 }
 
 @keyframes captionIn{
-
     from{
         opacity:0;
-        transform:
-            translateY(8px);
+        transform:translateY(8px);
     }
-
     to{
         opacity:1;
-        transform:
-            translateY(0);
+        transform:translateY(0);
     }
-
 }
 
-.photo-count{
-    margin-top:15px;
+.carousel-button{
+    position:absolute;
+    top:180px;
+    width:42px;
+    height:42px;
+    border:1px solid rgba(255,255,255,.6);
+    border-radius:50%;
+    background:rgba(53,8,23,.55);
+    color:white;
+    cursor:pointer;
+    font-size:22px;
+    z-index:3;
+    backdrop-filter:blur(8px);
+}
 
+.carousel-button.left{
+    left:10px;
+}
+
+.carousel-button.right{
+    right:10px;
+}
+
+.photo-counter{
     text-align:center;
-
+    margin-top:14px;
     font-size:10px;
-
     letter-spacing:3px;
-
-    color:#8d6870;
+    color:#8b6872;
 }
 
-
-/* =====================================================
+/* =========================
    RAZONES
-===================================================== */
+========================= */
 
 .reason-box{
-    min-height:245px;
-
+    min-height:190px;
     display:flex;
-
     flex-direction:column;
-
-    align-items:center;
-
     justify-content:center;
-
-    padding:
-        30px
-        20px;
-
-    border-radius:25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fff,
-            #f8e5e4
-        );
-
-    border:
-        1px solid
-        rgba(190,18,60,.08);
-
+    align-items:center;
     text-align:center;
-
+    padding:25px;
+    border-radius:24px;
+    background:
+        radial-gradient(circle at top,#fff,#f8e8e0);
+    border:1px solid rgba(190,18,60,.08);
+    box-shadow:0 15px 35px rgba(53,8,23,.08);
     cursor:pointer;
-
-    transition:.3s;
-}
-
-.reason-box:hover{
-    transform:translateY(-3px);
 }
 
 .reason-number{
-    font-size:11px;
-
+    font-size:10px;
     letter-spacing:3px;
-
     color:var(--gold);
-
-    margin-bottom:18px;
-}
-
-.reason-heart{
-    font-size:35px;
-
-    margin-bottom:17px;
+    margin-bottom:15px;
 }
 
 .reason-text{
-    font-family:
-        'Cormorant Garamond',
-        serif;
-
-    font-size:25px;
-
-    line-height:1.35;
-
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;
+    line-height:1.15;
     color:var(--wine-dark);
 }
 
 .reason-hint{
-    margin-top:20px;
-
     font-size:9px;
-
-    letter-spacing:1.5px;
-
-    text-transform:uppercase;
-
-    color:#96747b;
+    color:#967b83;
+    margin-top:18px;
+    letter-spacing:1px;
 }
 
-
-/* =====================================================
-   BOTÓN CARTA
-===================================================== */
-
-.final-button-wrap{
-    text-align:center;
-
-    margin-top:25px;
-}
+/* =========================
+   CARTA
+========================= */
 
 .letter-button{
+    width:100%;
+    margin-top:25px;
+    padding:16px;
     border:none;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--wine),
-            var(--ruby)
-        );
-
+    border-radius:50px;
+    background:linear-gradient(135deg,var(--wine),var(--ruby));
     color:white;
-
-    padding:
-        15px
-        25px;
-
-    border-radius:999px;
-
-    font-family:
-        'Montserrat',
-        sans-serif;
-
+    font-family:'Montserrat',sans-serif;
     font-weight:600;
-
     cursor:pointer;
-
-    box-shadow:
-        0 13px 30px
-        rgba(127,23,52,.25);
-
+    box-shadow:0 12px 28px rgba(127,18,56,.25);
     transition:.3s;
 }
 
 .letter-button:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-        0 17px 38px
-        rgba(127,23,52,.33);
+    transform:translateY(-2px);
 }
 
+/* =========================
+   MODAL CARTA
+========================= */
 
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.footer{
-    text-align:center;
-
-    padding:
-        25px
-        15px
-        5px;
-
-    font-family:
-        'Cormorant Garamond',
-        serif;
-
-    font-size:18px;
-
-    color:#79535d;
-}
-
-
-/* =====================================================
-   CARTA
-===================================================== */
-
-.letter-overlay{
+.letter-modal{
     position:fixed;
-
     inset:0;
-
     z-index:2000;
-
+    background:rgba(25,2,10,.82);
+    backdrop-filter:blur(12px);
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    padding:18px;
-
-    background:
-        rgba(25,3,9,.78);
-
-    backdrop-filter:
-        blur(12px);
-
+    padding:20px;
     opacity:0;
-
     visibility:hidden;
-
     transition:.5s;
 }
 
-.letter-overlay.show{
+.letter-modal.show{
     opacity:1;
-
     visibility:visible;
 }
 
-.letter{
-    width:min(520px,100%);
-
+.letter-card{
+    width:min(600px,100%);
     max-height:90vh;
-
     overflow-y:auto;
-
-    padding:
-        35px
-        27px;
-
-    border-radius:30px;
-
     background:
-        radial-gradient(
-            circle at top right,
-            rgba(214,173,99,.12),
-            transparent 30%
-        ),
-        linear-gradient(
-            145deg,
-            #fffdf9,
-            #f9e8e4
-        );
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.35);
-
-    transform:
-        translateY(20px)
-        scale(.97);
-
+        radial-gradient(circle at top right,rgba(214,173,98,.15),transparent 35%),
+        linear-gradient(145deg,#fffaf7,#f7e9e2);
+    border-radius:28px;
+    padding:35px 27px;
+    box-shadow:0 30px 100px rgba(0,0,0,.45);
+    transform:translateY(30px) scale(.96);
     transition:.5s;
 }
 
-.letter-overlay.show .letter{
-    transform:
-        translateY(0)
-        scale(1);
+.letter-modal.show .letter-card{
+    transform:translateY(0) scale(1);
 }
 
 .letter-top{
     text-align:center;
-
     margin-bottom:25px;
 }
 
-.letter-top .small{
-    font-size:9px;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-
-    color:var(--gold);
+.letter-heart{
+    font-size:38px;
+    color:var(--ruby);
+    animation:heartBeat 2s infinite;
 }
 
-.letter h3{
-    font-family:
-        'Cormorant Garamond',
-        serif;
-
-    font-size:39px;
-
+.letter-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:38px;
     color:var(--wine-dark);
-
     margin-top:8px;
 }
 
 .letter-content{
-    font-family:
-        'Cormorant Garamond',
-        serif;
-
+    font-family:'Cormorant Garamond',serif;
     font-size:20px;
-
-    line-height:1.65;
-
-    color:#49232d;
+    line-height:1.55;
+    color:#4e3039;
 }
 
 .letter-content p{
     margin-bottom:18px;
 }
 
-.letter-sign{
-    text-align:center;
-
-    font-family:
-        'Cormorant Garamond',
-        serif;
-
-    font-size:24px;
-
-    color:var(--wine);
-
-    margin-top:25px;
-}
-
 .close-letter{
     display:block;
-
-    margin:
-        25px
-        auto
-        0;
-
-    border:
-        1px solid
-        rgba(127,23,52,.18);
-
+    margin:25px auto 0;
+    border:1px solid rgba(127,18,56,.25);
     background:white;
-
     color:var(--wine);
-
-    padding:
-        11px
-        20px;
-
-    border-radius:999px;
-
+    padding:11px 22px;
+    border-radius:50px;
     cursor:pointer;
+    font-family:'Montserrat',sans-serif;
 }
 
-
-/* =====================================================
-   MODO OSCURO
-===================================================== */
-
-body.dark{
-
-    --text:#f7e7e7;
-
-    background:
-        radial-gradient(
-            circle at 20% 10%,
-            rgba(190,18,60,.20),
-            transparent 30%
-        ),
-        #16070c;
-}
-
-body.dark .card{
-    background:
-        rgba(42,17,24,.88);
-
-    border-color:
-        rgba(255,255,255,.05);
-}
-
-body.dark .header h2,
-body.dark .chapter-title{
-    color:#ffe9e9;
-}
-
-body.dark .header p,
-body.dark .chapter-intro,
-body.dark .story-text{
-    color:#d9bfc5;
-}
-
-body.dark .chapters{
-    background:#351720;
-}
-
-body.dark .chapter-btn{
-    color:#c8aab1;
-}
-
-body.dark .chapter-btn.active{
-    background:#4b202b;
-    color:#fff;
-}
-
-body.dark .days-box,
-body.dark .reason-box,
-body.dark .caption-panel{
-    background:
-        linear-gradient(
-            145deg,
-            #351720,
-            #261018
-        );
-}
-
-body.dark .caption{
-    color:#f5dfe2;
-}
-
-body.dark .reason-text{
-    color:#ffe8eb;
-}
-
-body.dark .letter{
-    background:
-        linear-gradient(
-            145deg,
-            #32151d,
-            #241016
-        );
-}
-
-body.dark .letter h3,
-body.dark .letter-content{
-    color:#ffe8eb;
-}
-
-
-/* =====================================================
+/* =========================
    RESPONSIVE
-===================================================== */
+========================= */
 
-@media(max-width:380px){
+@media(max-width:430px){
 
-    .header h2{
-        font-size:34px;
+    .page{
+        padding:12px 10px 40px;
     }
 
-    .caption{
-        font-size:21px;
+    .main-card{
+        border-radius:25px;
     }
 
-    .reason-text{
-        font-size:23px;
+    .header h1{
+        font-size:38px;
     }
 
-    .letter-content{
-        font-size:18px;
+    .photo{
+        height:350px;
     }
 
+    .carousel-button{
+        top:160px;
+    }
+
+    .chapter{
+        padding:25px 18px;
+    }
 }
-
 </style>
 </head>
 
-
-<body class="cover-active">
-
+<body>
 
 <div class="background-glow"></div>
 
-<div
-    class="hearts"
-    id="hearts">
-</div>
-
-
-<!-- =====================================================
-     PORTADA
-===================================================== -->
-
-<section
-    class="cover"
-    id="cover">
+<!-- PORTADA -->
+<section id="cover">
 
     <div class="cover-content">
 
-        <div class="cover-date">
-            29 · 03 · 2026
-        </div>
-
-        <div class="cover-heart">
-            <span>❤️</span>
-        </div>
+        <div class="cover-heart">♥</div>
 
         <div class="cover-small">
             Una historia que apenas comienza
         </div>
 
-        <h1>
-            Nuestra
-            <span>historia</span>
+        <h1 class="cover-title">
+            Seis meses
         </h1>
 
-        <div class="cover-subtitle">
-            Seis meses, infinitos recuerdos...
+        <p class="cover-subtitle">
+            infinitos recuerdos...
+        </p>
+
+        <div class="cover-date">
+            29 · 03 · 2026
         </div>
 
-        <button
-            class="start-button"
-            id="startButton">
-
+        <button class="start-button" id="startButton">
             Comenzar nuestra historia ❤️
-
         </button>
-
-        <div class="cover-note">
-            Una pequeña sorpresa para la persona que amo.
-        </div>
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     MÚSICA
-===================================================== -->
+<!-- CONTENIDO -->
+<main class="page">
 
-<audio
-    id="bgMusic"
-    loop
-    preload="auto">
+<div class="main-card">
 
-    <source
-        src="risk-it-all.mp3"
-        type="audio/mpeg">
+<header class="header">
 
-</audio>
+    <div class="controls">
 
-
-<!-- =====================================================
-     CONTENIDO
-===================================================== -->
-
-<main>
-
-<div class="card">
-
-
-    <!-- BARRA -->
-
-    <div class="topbar">
-
-        <button
-            class="icon-btn"
-            id="musicButton">
-
-            🔇
-
+        <button class="icon-button" id="musicButton">
+            🔊
         </button>
 
-        <button
-            class="icon-btn"
-            id="themeButton">
+        <button class="icon-button" id="themeButton">
+            ☾
+        </button>
 
-            🌙
+    </div>
 
+    <div class="header-kicker">
+        Para la persona que amo
+    </div>
+
+    <h1>
+        ¡Felices 6 meses, mi amor! ❤️
+    </h1>
+
+    <p>
+        Nuestra historia, nuestros momentos y todo lo que aún nos queda por vivir.
+    </p>
+
+</header>
+
+
+<!-- NAVEGACIÓN -->
+
+<nav class="chapter-nav">
+
+    <button class="chapter-btn active" data-chapter="story">
+        Nuestra historia
+    </button>
+
+    <button class="chapter-btn" data-chapter="us">
+        Tú y yo
+    </button>
+
+    <button class="chapter-btn" data-chapter="why">
+        Mi porqué
+    </button>
+
+</nav>
+
+
+<!-- =========================
+     CAPÍTULO 1
+========================= -->
+
+<section class="chapter active" id="story">
+
+    <div class="chapter-number">
+        Capítulo 01
+    </div>
+
+    <h2>
+        Nuestra historia
+    </h2>
+
+    <p class="chapter-intro">
+        Seis meses pueden parecer solo una fecha...
+        pero para mí son cientos de pequeños momentos que quiero guardar para siempre.
+    </p>
+
+
+    <div class="days-box">
+
+        <div class="days-number" id="daysTogether">
+            0
+        </div>
+
+        <div class="days-label">
+            días escribiendo nuestra historia
+        </div>
+
+    </div>
+
+
+    <!-- SPOTIFY -->
+
+    <div class="music-section">
+
+        <div class="music-title">
+            Una canción para nosotros ❤️
+        </div>
+
+        <iframe
+            class="spotify-frame"
+            src="https://open.spotify.com/embed/track/5Told0PzDeSU8ebqqWcheA?utm_source=generator"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CAPÍTULO 2
+========================= -->
+
+<section class="chapter" id="us">
+
+    <div class="chapter-number">
+        Capítulo 02
+    </div>
+
+    <h2>
+        Tú y yo
+    </h2>
+
+    <p class="chapter-intro">
+        Seis momentos. Seis recuerdos.
+        Y una historia que todavía tiene muchísimo por contar.
+    </p>
+
+
+    <div class="carousel">
+
+        <button class="carousel-button left" id="prevButton">
+            ‹
+        </button>
+
+        <div class="photo-wrapper">
+
+            <img
+                id="carouselImage"
+                class="photo"
+                src="foto1.jpg"
+                alt="Nuestro recuerdo">
+
+            <div class="caption">
+
+                <div
+                    class="caption-text"
+                    id="captionText">
+                    Y sin darnos cuenta, comenzamos a escribir nuestra historia. ❤️
+                </div>
+
+            </div>
+
+        </div>
+
+        <button class="carousel-button right" id="nextButton">
+            ›
         </button>
 
     </div>
 
 
-    <!-- HEADER -->
+    <div class="photo-counter" id="photoCounter">
+        01 / 06
+    </div>
 
-    <header class="header">
+</section>
 
-        <div class="eyebrow">
-            29 · 03 · 2026 — 6 meses
-        </div>
 
-        <h2>
-            ¡Felices 6 meses,<br>
-            mi amor! ❤️
-        </h2>
+<!-- =========================
+     CAPÍTULO 3
+========================= -->
 
-        <p>
-            Una pequeña colección de recuerdos,
-            momentos y todo lo que siento por ti.
-        </p>
+<section class="chapter" id="why">
 
-    </header>
+    <div class="chapter-number">
+        Capítulo 03
+    </div>
 
+    <h2>
+        Mi porqué
+    </h2>
 
-    <!-- NAVEGACIÓN -->
+    <p class="chapter-intro">
+        Porque hay muchas cosas que amo de ti...
+        y estas son solo algunas.
+    </p>
 
-    <nav class="chapters">
 
-        <button
-            class="chapter-btn active"
-            data-chapter="history">
+    <div class="reason-box" id="reasonBox">
 
-            Nuestra historia
-
-        </button>
-
-        <button
-            class="chapter-btn"
-            data-chapter="photos">
-
-            Tú y yo
-
-        </button>
-
-        <button
-            class="chapter-btn"
-            data-chapter="reasons">
-
-            Mi porqué
-
-        </button>
-
-    </nav>
-
-
-    <!-- =================================================
-         HISTORIA
-    ================================================= -->
-
-    <section
-        class="chapter active"
-        id="history">
-
-        <h3 class="chapter-title">
-            Nuestra historia
-        </h3>
-
-        <p class="chapter-intro">
-
-            Desde aquel 29 de marzo hasta hoy,
-            cada día ha ido construyendo algo
-            que para mí significa muchísimo.
-
-        </p>
-
-
-        <div class="days-box">
-
-            <div
-                class="days-number"
-                id="daysTogether">
-
-                0
-
-            </div>
-
-            <div class="days-label">
-
-                días compartiendo nuestra historia
-
-            </div>
-
-        </div>
-
-
-        <p class="story-text">
-
-            Y pensar que todo comenzó con un momento,
-            una conversación y dos personas que no sabían
-            todo lo bonito que les esperaba. ❤️
-
-        </p>
-
-    </section>
-
-
-    <!-- =================================================
-         FOTOS
-    ================================================= -->
-
-    <section
-        class="chapter"
-        id="photos">
-
-        <h3 class="chapter-title">
-            Tú y yo
-        </h3>
-
-        <p class="chapter-intro">
-
-            Seis momentos. Seis recuerdos.
-            Y una historia que todavía tiene
-            muchísimo por contar.
-
-        </p>
-
-
-        <div
-            class="carousel"
-            id="carousel">
-
-
-            <button
-                class="carousel-arrow prev"
-                id="prevPhoto">
-
-                ‹
-
-            </button>
-
-
-            <div
-                class="photo-frame"
-                id="photoFrame">
-
-                <img
-                    id="photo"
-                    src="foto1.jpg"
-                    alt="Nuestro recuerdo">
-
-            </div>
-
-
-            <button
-                class="carousel-arrow next"
-                id="nextPhoto">
-
-                ›
-
-            </button>
-
-
-        </div>
-
-
-        <div class="caption-panel">
-
-            <div class="caption-line"></div>
-
-            <div
-                class="caption"
-                id="caption">
-
-                Y sin darnos cuenta,
-                comenzamos a escribir
-                nuestra historia. ❤️
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="photo-count"
-            id="photoCount">
-
+        <div class="reason-number" id="reasonNumber">
             01 / 06
-
         </div>
 
-    </section>
-
-
-    <!-- =================================================
-         RAZONES
-    ================================================= -->
-
-    <section
-        class="chapter"
-        id="reasons">
-
-        <h3 class="chapter-title">
-            Mi porqué
-        </h3>
-
-        <p class="chapter-intro">
-
-            Hay muchas razones para amarte.
-            Estas son solamente algunas.
-
-        </p>
-
-
-        <div
-            class="reason-box"
-            id="reasonBox">
-
-            <div
-                class="reason-number"
-                id="reasonNumber">
-
-                RAZÓN 01
-
-            </div>
-
-            <div class="reason-heart">
-                ❤️
-            </div>
-
-            <div
-                class="reason-text"
-                id="reasonText">
-
-                Porque contigo puedo ser
-                completamente yo.
-
-            </div>
-
-            <div class="reason-hint">
-
-                Toca para descubrir otra
-
-            </div>
-
+        <div class="reason-text" id="reasonText">
+            Porque contigo puedo ser completamente yo.
         </div>
 
-
-        <div class="final-button-wrap">
-
-            <button
-                class="letter-button"
-                id="openLetter">
-
-                Leer mi carta para ti 💌
-
-            </button>
-
+        <div class="reason-hint">
+            Toca para descubrir la siguiente ❤️
         </div>
-
-    </section>
-
-
-    <div class="footer">
-
-        Con amor, para mi Princesa ❤️
 
     </div>
 
+
+    <button class="letter-button" id="openLetter">
+        Leer mi carta para ti 💌
+    </button>
+
+</section>
 
 </div>
 
 </main>
 
 
-<!-- =====================================================
+<!-- =========================
      CARTA
-===================================================== -->
+========================= -->
 
-<div
-    class="letter-overlay"
-    id="letterOverlay">
+<div class="letter-modal" id="letterModal">
 
-    <article class="letter">
-
+    <div class="letter-card">
 
         <div class="letter-top">
 
-            <div class="small">
-                Una carta para ti
+            <div class="letter-heart">
+                ♥
             </div>
 
-            <h3>
+            <h2 class="letter-title">
                 Para mi Princesa ❤️
-            </h3>
+            </h2>
 
         </div>
 
@@ -1732,368 +1001,188 @@ body.dark .letter-content{
             <p>
                 Hoy no es un día cualquiera, es algo muy especial
                 y es un momento que vengo esperando hace mucho.
-                No hay un solo día en el que no estés en mi mente,
-                solo espero el momento de poder tenerte a mi lado,
-                estar juntos y olvidarnos de todo y que solo seamos
-                tú y yo.
             </p>
 
+            <p>
+                No hay un solo día en el que no estés en mi mente,
+                solo espero el momento de poder tenerte a mi lado,
+                estar juntos y olvidarnos de todo y que solo seamos tú y yo.
+            </p>
 
             <p>
                 Gracias por todos estos días que hemos pasado juntos,
                 por las salidas, las caminatas en la noche,
                 por todos los lugares que hemos visitado,
-                por cada sonrisa que hemos tenido, cada anécdota
-                y por ser mi lugar seguro en el mundo.
+                por cada sonrisa que hemos tenido,
+                cada anécdota y por ser mi lugar seguro en el mundo.
             </p>
-
 
             <p>
                 Prometo seguir cuidando de ti y de lo nuestro,
-                y en verdad deseo poder seguir celebrando cada
-                momento contigo mes a mes.
+                y en verdad deseo poder seguir celebrando
+                cada momento contigo mes a mes.
             </p>
-
 
             <p>
                 No sabes lo feliz que me haces y de todo lo que
                 he llegado a sentir por ti; no deseo a nadie más
-                a mi lado, solo te veo a ti cada día, en mis planes,
-                y en verdad deseo un futuro contigo.
+                a mi lado, solo te veo a ti cada día,
+                en mis planes, y en verdad deseo un futuro contigo.
             </p>
-
 
             <p>
                 Te amo mucho mi vida,
-                ¡feliz 6 meses juntos, mi amor!
-                Espero esta pequeña sorpresa te guste porque
-                es un pequeño recuerdo de tanto que hemos vivido
+                ¡feliz 6 meses juntos, mi amor! ❤️
+            </p>
+
+            <p>
+                Espero esta pequeña sorpresa te guste porque es
+                un pequeño recuerdo de tanto que hemos vivido
                 y aún nos queda mucho más...
             </p>
 
         </div>
 
 
-        <div class="letter-sign">
-
-            Te amo. ❤️
-
-        </div>
-
-
-        <button
-            class="close-letter"
-            id="closeLetter">
-
+        <button class="close-letter" id="closeLetter">
             Volver a nuestra historia
-
         </button>
 
-
-    </article>
+    </div>
 
 </div>
 
 
 <script>
 
-/* =====================================================
-   VARIABLES
-===================================================== */
+/* ==========================================
+   ELEMENTOS
+========================================== */
 
-const startDate =
-    new Date(
-        2026,
-        2,
-        29,
-        0,
-        0,
-        0
-    );
+const cover = document.getElementById("cover");
+const startButton = document.getElementById("startButton");
 
+const musicButton = document.getElementById("musicButton");
 
-const cover =
-    document.getElementById(
-        "cover"
-    );
+const themeButton = document.getElementById("themeButton");
 
-const startButton =
-    document.getElementById(
-        "startButton"
-    );
+const daysTogether = document.getElementById("daysTogether");
 
-const bgMusic =
-    document.getElementById(
-        "bgMusic"
-    );
+const carouselImage = document.getElementById("carouselImage");
+const captionText = document.getElementById("captionText");
+const photoCounter = document.getElementById("photoCounter");
 
-const musicButton =
-    document.getElementById(
-        "musicButton"
-    );
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
 
-const themeButton =
-    document.getElementById(
-        "themeButton"
-    );
+const reasonBox = document.getElementById("reasonBox");
+const reasonNumber = document.getElementById("reasonNumber");
+const reasonText = document.getElementById("reasonText");
 
+const openLetter = document.getElementById("openLetter");
+const closeLetter = document.getElementById("closeLetter");
+const letterModal = document.getElementById("letterModal");
 
-let musicPlaying = false;
 
-let volumeTimer = null;
+/* ==========================================
+   FECHA
+========================================== */
 
-
-/* =====================================================
-   MÚSICA
-===================================================== */
-
-bgMusic.volume = .55;
-
-
-async function tryStartMusic(){
-
-    try{
-
-        await bgMusic.play();
-
-        musicPlaying = true;
-
-        musicButton.textContent =
-            "🔊";
-
-    }catch(error){
-
-        console.log(
-            "El navegador bloqueó la reproducción automática."
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   BOTÓN PRINCIPAL
-===================================================== */
-
-startButton.addEventListener(
-    "click",
-    function(){
-
-        /*
-         * IMPORTANTE:
-         * La portada se oculta primero.
-         * La música no puede impedir
-         * que la página continúe.
-         */
-
-        cover.classList.add(
-            "hidden"
-        );
-
-        document.body.classList.remove(
-            "cover-active"
-        );
-
-
-        /*
-         * Intentamos iniciar la música
-         * después de la interacción.
-         */
-
-        tryStartMusic();
-
-    }
-);
-
-
-/* =====================================================
-   BOTÓN MÚSICA
-===================================================== */
-
-musicButton.addEventListener(
-    "click",
-    async function(){
-
-        if(bgMusic.paused){
-
-            await tryStartMusic();
-
-        }else{
-
-            bgMusic.pause();
-
-            musicPlaying = false;
-
-            musicButton.textContent =
-                "🔇";
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   FADE DE VOLUMEN
-===================================================== */
-
-function fadeVolume(
-    target,
-    duration = 900
-){
-
-    clearInterval(
-        volumeTimer
-    );
-
-    const initial =
-        bgMusic.volume;
-
-    const steps = 25;
-
-    const difference =
-        target - initial;
-
-    let step = 0;
-
-
-    volumeTimer =
-        setInterval(
-            function(){
-
-                step++;
-
-                bgMusic.volume =
-                    Math.min(
-                        1,
-                        Math.max(
-                            0,
-                            initial +
-                            difference *
-                            (step / steps)
-                        )
-                    );
-
-
-                if(step >= steps){
-
-                    clearInterval(
-                        volumeTimer
-                    );
-
-                }
-
-            },
-            duration / steps
-        );
-
-}
-
-
-/* =====================================================
-   CONTADOR DE DÍAS JUNTOS
-===================================================== */
+const startDate = new Date(2026, 2, 29, 0, 0, 0);
 
 function updateDays(){
 
-    const now =
-        new Date();
+    const now = new Date();
 
-    const difference =
-        now.getTime()
-        -
-        startDate.getTime();
+    const difference = now - startDate;
 
-    const days =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
-        );
+    const days = Math.max(
+        0,
+        Math.floor(difference / (1000 * 60 * 60 * 24))
+    );
 
-
-    document.getElementById(
-        "daysTogether"
-    ).textContent =
-        days;
+    daysTogether.textContent = days;
 
 }
 
-
 updateDays();
 
+setInterval(updateDays, 60000);
 
-/* =====================================================
+
+/* ==========================================
+   MÚSICA
+========================================== */
+
+/*
+   Spotify se reproduce desde su reproductor oficial.
+   No intentamos extraer ni ocultar el audio.
+*/
+
+let musicPlaying = false;
+
+
+/* ==========================================
+   PORTADA
+========================================== */
+
+startButton.addEventListener("click", function(){
+
+    cover.classList.add("hidden");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+
+/* ==========================================
    CAPÍTULOS
-===================================================== */
+========================================== */
 
 const chapterButtons =
-    document.querySelectorAll(
-        ".chapter-btn"
-    );
+    document.querySelectorAll(".chapter-btn");
 
 const chapters =
-    document.querySelectorAll(
-        ".chapter"
-    );
+    document.querySelectorAll(".chapter");
 
 
-chapterButtons.forEach(
-    function(button){
+chapterButtons.forEach(button => {
 
-        button.addEventListener(
-            "click",
-            function(){
+    button.addEventListener("click", () => {
 
-                const target =
-                    button.dataset.chapter;
+        const target =
+            button.dataset.chapter;
 
-
-                chapterButtons.forEach(
-                    function(btn){
-
-                        btn.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
-
-
-                chapters.forEach(
-                    function(chapter){
-
-                        chapter.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
-
-
-                button.classList.add(
-                    "active"
-                );
-
-
-                document
-                    .getElementById(
-                        target
-                    )
-                    .classList.add(
-                        "active"
-                    );
-
-            }
+        chapterButtons.forEach(btn =>
+            btn.classList.remove("active")
         );
 
-    }
-);
+        chapters.forEach(chapter =>
+            chapter.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        document
+            .getElementById(target)
+            .classList.add("active");
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    });
+
+});
 
 
-/* =====================================================
-   FOTOS
-===================================================== */
+/* ==========================================
+   CARRUSEL
+========================================== */
 
 const photos = [
 
@@ -2127,523 +1216,294 @@ const captions = [
 let currentPhoto = 0;
 
 
-const photo =
-    document.getElementById(
-        "photo"
-    );
+function updateCarousel(){
 
-const caption =
-    document.getElementById(
-        "caption"
-    );
+    carouselImage.classList.add("fade");
 
-const photoCount =
-    document.getElementById(
-        "photoCount"
-    );
+    setTimeout(() => {
 
-const photoFrame =
-    document.getElementById(
-        "photoFrame"
-    );
+        carouselImage.src =
+            photos[currentPhoto];
 
+        captionText.textContent =
+            captions[currentPhoto];
 
-function renderPhoto(){
+        photoCounter.textContent =
+            String(currentPhoto + 1).padStart(2,"0")
+            + " / 06";
 
-    photoFrame.classList.add(
-        "changing"
-    );
+        captionText.style.animation = "none";
 
+        void captionText.offsetWidth;
 
-    setTimeout(
-        function(){
+        captionText.style.animation =
+            "captionIn .45s ease";
 
-            photo.src =
-                photos[currentPhoto];
+        carouselImage.classList.remove("fade");
 
-
-            caption.textContent =
-                captions[currentPhoto];
-
-
-            photoCount.textContent =
-                String(
-                    currentPhoto + 1
-                ).padStart(2,"0")
-                +
-                " / 06";
-
-
-            caption.style.animation =
-                "none";
-
-
-            void caption.offsetWidth;
-
-
-            caption.style.animation =
-                "captionIn .55s ease";
-
-
-            photoFrame.classList.remove(
-                "changing"
-            );
-
-        },
-        220
-    );
+    },180);
 
 }
 
 
-function nextPhoto(){
+nextButton.addEventListener("click", () => {
 
-    currentPhoto =
-        (currentPhoto + 1)
-        %
-        photos.length;
+    currentPhoto++;
 
-    renderPhoto();
+    if(currentPhoto >= photos.length){
+        currentPhoto = 0;
+    }
 
-}
+    updateCarousel();
 
-
-function previousPhoto(){
-
-    currentPhoto =
-        (
-            currentPhoto
-            -
-            1
-            +
-            photos.length
-        )
-        %
-        photos.length;
-
-    renderPhoto();
-
-}
+});
 
 
-document
-    .getElementById(
-        "nextPhoto"
-    )
-    .addEventListener(
-        "click",
-        nextPhoto
-    );
+prevButton.addEventListener("click", () => {
+
+    currentPhoto--;
+
+    if(currentPhoto < 0){
+        currentPhoto = photos.length - 1;
+    }
+
+    updateCarousel();
+
+});
 
 
-document
-    .getElementById(
-        "prevPhoto"
-    )
-    .addEventListener(
-        "click",
-        previousPhoto
-    );
-
-
-/* =====================================================
+/* ==========================================
    SWIPE
-===================================================== */
+========================================== */
 
 let touchStartX = 0;
-
 let touchEndX = 0;
 
 
-const carousel =
-    document.getElementById(
-        "carousel"
-    );
+carouselImage.addEventListener("touchstart", e => {
+
+    touchStartX =
+        e.changedTouches[0].screenX;
+
+});
 
 
-carousel.addEventListener(
-    "touchstart",
-    function(event){
+carouselImage.addEventListener("touchend", e => {
 
-        touchStartX =
-            event
-                .changedTouches[0]
-                .screenX;
+    touchEndX =
+        e.changedTouches[0].screenX;
 
-    },
-    {
-        passive:true
+    const distance =
+        touchEndX - touchStartX;
+
+    if(Math.abs(distance) < 50){
+        return;
     }
-);
 
-
-carousel.addEventListener(
-    "touchend",
-    function(event){
-
-        touchEndX =
-            event
-                .changedTouches[0]
-                .screenX;
-
-
-        const difference =
-            touchStartX -
-            touchEndX;
-
-
-        if(
-            Math.abs(difference)
-            > 45
-        ){
-
-            if(difference > 0){
-
-                nextPhoto();
-
-            }else{
-
-                previousPhoto();
-
-            }
-
-        }
-
-    },
-    {
-        passive:true
+    if(distance < 0){
+        nextButton.click();
+    }else{
+        prevButton.click();
     }
-);
+
+});
 
 
-/* =====================================================
+/* ==========================================
    RAZONES
-===================================================== */
+========================================== */
 
 const reasons = [
 
     "Porque contigo puedo ser completamente yo.",
 
-    "Porque tu sonrisa tiene una manera especial de cambiar mi día.",
+    "Porque tu sonrisa puede cambiar completamente mi día.",
 
-    "Porque incluso los momentos simples contigo terminan siendo especiales.",
+    "Porque haces que hasta los momentos más simples tengan algo especial.",
 
-    "Porque me haces querer construir recuerdos cada vez más bonitos.",
+    "Porque contigo siento que tengo un lugar donde puedo estar en paz.",
 
-    "Porque contigo siento que puedo imaginar un futuro que realmente deseo.",
+    "Porque cuando pienso en mi futuro, inevitablemente apareces tú.",
 
-    "Porque después de estos seis meses, sigo eligiéndote a ti. ❤️"
+    "Porque simplemente eres tú... y eso es suficiente para amarte cada día más. ❤️"
 
 ];
 
 
-let reasonIndex = 0;
+let currentReason = 0;
 
 
-const reasonBox =
-    document.getElementById(
-        "reasonBox"
-    );
+function updateReason(){
 
-const reasonNumber =
-    document.getElementById(
-        "reasonNumber"
-    );
+    reasonNumber.textContent =
+        String(currentReason + 1).padStart(2,"0")
+        + " / 06";
 
-const reasonText =
-    document.getElementById(
-        "reasonText"
-    );
+    reasonText.style.opacity = "0";
 
-
-reasonBox.addEventListener(
-    "click",
-    function(){
-
-        reasonIndex =
-            (
-                reasonIndex + 1
-            )
-            %
-            reasons.length;
-
-
-        reasonBox.animate(
-            [
-                {
-                    opacity:.4,
-                    transform:"scale(.98)"
-                },
-                {
-                    opacity:1,
-                    transform:"scale(1)"
-                }
-            ],
-            {
-                duration:450,
-                easing:"ease"
-            }
-        );
-
-
-        reasonNumber.textContent =
-            "RAZÓN "
-            +
-            String(
-                reasonIndex + 1
-            ).padStart(2,"0");
-
+    setTimeout(() => {
 
         reasonText.textContent =
-            reasons[reasonIndex];
+            reasons[currentReason];
 
-    }
-);
+        reasonText.style.opacity = "1";
 
-
-/* =====================================================
-   CARTA
-===================================================== */
-
-const letterOverlay =
-    document.getElementById(
-        "letterOverlay"
-    );
-
-const openLetter =
-    document.getElementById(
-        "openLetter"
-    );
-
-const closeLetter =
-    document.getElementById(
-        "closeLetter"
-    );
-
-
-openLetter.addEventListener(
-    "click",
-    function(){
-
-        letterOverlay.classList.add(
-            "show"
-        );
-
-        fadeVolume(
-            .16,
-            1000
-        );
-
-    }
-);
-
-
-closeLetter.addEventListener(
-    "click",
-    function(){
-
-        letterOverlay.classList.remove(
-            "show"
-        );
-
-        fadeVolume(
-            .55,
-            1000
-        );
-
-    }
-);
-
-
-/* =====================================================
-   CERRAR CARTA TOCANDO FUERA
-===================================================== */
-
-letterOverlay.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            event.target ===
-            letterOverlay
-        ){
-
-            letterOverlay.classList.remove(
-                "show"
-            );
-
-            fadeVolume(
-                .55,
-                1000
-            );
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   TEMA
-===================================================== */
-
-themeButton.addEventListener(
-    "click",
-    function(){
-
-        document.body.classList.toggle(
-            "dark"
-        );
-
-
-        themeButton.textContent =
-            document.body.classList.contains(
-                "dark"
-            )
-            ? "☀️"
-            : "🌙";
-
-    }
-);
-
-
-/* =====================================================
-   CORAZONES
-===================================================== */
-
-const hearts =
-    document.getElementById(
-        "hearts"
-    );
-
-
-function createHeart(){
-
-    const heart =
-        document.createElement(
-            "div"
-        );
-
-
-    heart.className =
-        "heart";
-
-
-    heart.textContent =
-        Math.random() > .5
-        ? "♡"
-        : "♥";
-
-
-    heart.style.left =
-        Math.random() * 100
-        +
-        "%";
-
-
-    heart.style.fontSize =
-        (
-            12
-            +
-            Math.random() * 18
-        )
-        +
-        "px";
-
-
-    heart.style.animationDuration =
-        (
-            7
-            +
-            Math.random() * 7
-        )
-        +
-        "s";
-
-
-    hearts.appendChild(
-        heart
-    );
-
-
-    setTimeout(
-        function(){
-
-            heart.remove();
-
-        },
-        15000
-    );
+    },180);
 
 }
 
 
-setInterval(
-    createHeart,
-    1100
-);
+reasonBox.addEventListener("click", () => {
+
+    currentReason++;
+
+    if(currentReason >= reasons.length){
+        currentReason = 0;
+    }
+
+    updateReason();
+
+});
 
 
-/* =====================================================
-   TECLADO
-===================================================== */
+/* ==========================================
+   CARTA
+========================================== */
 
-document.addEventListener(
-    "keydown",
-    function(event){
+openLetter.addEventListener("click", () => {
 
-        const photosChapter =
-            document.getElementById(
-                "photos"
-            );
+    letterModal.classList.add("show");
 
+    document.body.style.overflow = "hidden";
 
-        if(
-            photosChapter.classList.contains(
-                "active"
-            )
-        ){
-
-            if(
-                event.key ===
-                "ArrowRight"
-            ){
-
-                nextPhoto();
-
-            }
+});
 
 
-            if(
-                event.key ===
-                "ArrowLeft"
-            ){
+closeLetter.addEventListener("click", () => {
 
-                previousPhoto();
+    letterModal.classList.remove("show");
 
-            }
+    document.body.style.overflow = "";
 
-        }
+});
 
 
-        if(
-            event.key ===
-            "Escape"
-        ){
+letterModal.addEventListener("click", e => {
 
-            letterOverlay.classList.remove(
-                "show"
-            );
+    if(e.target === letterModal){
 
-            fadeVolume(
-                .55,
-                800
-            );
+        letterModal.classList.remove("show");
 
-        }
+        document.body.style.overflow = "";
 
     }
-);
+
+});
+
+
+/* ==========================================
+   TEMA
+========================================== */
+
+let darkMode = false;
+
+
+themeButton.addEventListener("click", () => {
+
+    darkMode = !darkMode;
+
+    if(darkMode){
+
+        document.body.style.background =
+            "linear-gradient(145deg,#16040b,#350817)";
+
+        document.body.style.color =
+            "#fff";
+
+        themeButton.textContent = "☀";
+
+    }else{
+
+        document.body.style.background =
+            "radial-gradient(circle at 20% 10%,rgba(251,113,133,.16),transparent 30%),radial-gradient(circle at 90% 80%,rgba(214,173,98,.12),transparent 30%),linear-gradient(135deg,#fff9f5,#f8e9e1)";
+
+        document.body.style.color =
+            "var(--text)";
+
+        themeButton.textContent = "☾";
+
+    }
+
+});
+
+
+/* ==========================================
+   BOTÓN MÚSICA
+========================================== */
+
+musicButton.addEventListener("click", () => {
+
+    /*
+       El audio pertenece al reproductor oficial de Spotify.
+       Este botón sirve como indicador visual.
+    */
+
+    musicPlaying = !musicPlaying;
+
+    musicButton.textContent =
+        musicPlaying ? "🔊" : "🔇";
+
+});
+
+
+/* ==========================================
+   CORAZONES FLOTANTES
+========================================== */
+
+function createHeart(){
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart-bg";
+
+    heart.textContent =
+        Math.random() > .5 ? "♥" : "♡";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (12 + Math.random() * 20) + "px";
+
+    heart.style.animationDuration =
+        (7 + Math.random() * 7) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    },14000);
+
+}
+
+
+setInterval(createHeart,1200);
+
+
+/* ==========================================
+   PRELOAD DE FOTOS
+========================================== */
+
+photos.forEach(src => {
+
+    const image =
+        new Image();
+
+    image.src = src;
+
+});
+
 
 </script>
 
