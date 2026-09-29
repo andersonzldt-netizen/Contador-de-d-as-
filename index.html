@@ -12,28 +12,18 @@
 
 <style>
 
-/* =========================================================
-   VARIABLES
-========================================================= */
-
 :root{
     --wine:#7f1734;
     --wine-dark:#350914;
     --ruby:#be123c;
     --rose:#fb7185;
     --cream:#fff8f5;
-    --cream-2:#f8e8e6;
     --gold:#d6ad63;
     --gold-light:#f1dca5;
     --text:#32141c;
     --white:#ffffff;
     --shadow:0 25px 70px rgba(52,9,20,.18);
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     box-sizing:border-box;
@@ -48,9 +38,19 @@ html{
 body{
     font-family:'Montserrat',sans-serif;
     color:var(--text);
+
     background:
-        radial-gradient(circle at 20% 10%,rgba(251,113,133,.12),transparent 30%),
-        linear-gradient(145deg,#fffafa,#f9e9e7);
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(251,113,133,.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #fffafa,
+            #f9e9e7
+        );
+
     min-height:100vh;
     overflow-x:hidden;
 }
@@ -60,24 +60,33 @@ body.cover-active{
 }
 
 
-/* =========================================================
-   BACKGROUND
-========================================================= */
+/* =====================================================
+   FONDO
+===================================================== */
 
 .background-glow{
     position:fixed;
     inset:0;
     pointer-events:none;
     z-index:-3;
+
     background:
-        radial-gradient(circle at 10% 20%,rgba(190,18,60,.10),transparent 25%),
-        radial-gradient(circle at 90% 80%,rgba(214,173,99,.10),transparent 25%);
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(190,18,60,.10),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(214,173,99,.10),
+            transparent 25%
+        );
 }
 
 
-/* =========================================================
-   FLOATING HEARTS
-========================================================= */
+/* =====================================================
+   CORAZONES FLOTANTES
+===================================================== */
 
 .hearts{
     position:fixed;
@@ -96,8 +105,11 @@ body.cover-active{
 }
 
 @keyframes floatHeart{
+
     from{
-        transform:translateY(0) rotate(0deg);
+        transform:
+            translateY(0)
+            rotate(0deg);
         opacity:0;
     }
 
@@ -106,15 +118,18 @@ body.cover-active{
     }
 
     to{
-        transform:translateY(-110vh) rotate(25deg);
+        transform:
+            translateY(-110vh)
+            rotate(25deg);
         opacity:0;
     }
+
 }
 
 
-/* =========================================================
-   COVER
-========================================================= */
+/* =====================================================
+   PORTADA
+===================================================== */
 
 .cover{
     position:fixed;
@@ -128,13 +143,29 @@ body.cover-active{
     padding:25px;
 
     background:
-        radial-gradient(circle at center,rgba(190,18,60,.22),transparent 30%),
-        radial-gradient(circle at 50% 120%,rgba(214,173,99,.12),transparent 35%),
-        linear-gradient(145deg,#130309,#350914 55%,#17050a);
+        radial-gradient(
+            circle at center,
+            rgba(190,18,60,.22),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 120%,
+            rgba(214,173,99,.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #130309,
+            #350914 55%,
+            #17050a
+        );
+
+    opacity:1;
+    visibility:visible;
 
     transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
+        opacity 1s ease,
+        visibility 1s ease;
 }
 
 .cover.hidden{
@@ -147,19 +178,26 @@ body.cover-active{
     width:min(440px,100%);
     text-align:center;
     color:white;
+
     animation:coverEnter 1.4s ease forwards;
 }
 
 @keyframes coverEnter{
+
     from{
         opacity:0;
-        transform:translateY(25px) scale(.97);
+        transform:
+            translateY(25px)
+            scale(.97);
     }
 
     to{
         opacity:1;
-        transform:translateY(0) scale(1);
+        transform:
+            translateY(0)
+            scale(1);
     }
+
 }
 
 .cover-date{
@@ -172,59 +210,102 @@ body.cover-active{
 .cover-heart{
     width:115px;
     height:115px;
-    margin:0 auto 30px;
+
+    margin:
+        0 auto
+        30px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    border:1px solid rgba(241,220,165,.35);
+    border:
+        1px solid
+        rgba(241,220,165,.35);
+
     border-radius:50%;
 
     box-shadow:
-        0 0 0 12px rgba(214,173,99,.04),
-        0 0 70px rgba(190,18,60,.35);
+        0 0 0 12px
+        rgba(214,173,99,.04),
 
-    animation:heartGlow 2.8s infinite ease-in-out;
+        0 0 70px
+        rgba(190,18,60,.35);
+
+    animation:
+        heartGlow 2.8s
+        infinite
+        ease-in-out;
 }
 
 .cover-heart span{
     font-size:53px;
-    animation:heartbeat 1.8s infinite ease-in-out;
+
+    animation:
+        heartbeat 1.8s
+        infinite
+        ease-in-out;
 }
 
 @keyframes heartbeat{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.12)}
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.12);
+    }
+
 }
 
 @keyframes heartGlow{
+
     0%,100%{
         box-shadow:
-            0 0 0 12px rgba(214,173,99,.04),
-            0 0 55px rgba(190,18,60,.25);
+            0 0 0 12px
+            rgba(214,173,99,.04),
+
+            0 0 55px
+            rgba(190,18,60,.25);
     }
 
     50%{
         box-shadow:
-            0 0 0 20px rgba(214,173,99,.05),
-            0 0 90px rgba(190,18,60,.45);
+            0 0 0 20px
+            rgba(214,173,99,.05),
+
+            0 0 90px
+            rgba(190,18,60,.45);
     }
+
 }
 
 .cover-small{
     font-size:12px;
     letter-spacing:3px;
     text-transform:uppercase;
+
     color:#e8cfcf;
+
     margin-bottom:12px;
 }
 
 .cover h1{
-    font-family:'Cormorant Garamond',serif;
-    font-size:clamp(48px,14vw,76px);
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size:
+        clamp(
+            48px,
+            14vw,
+            76px
+        );
+
     line-height:.85;
     font-weight:500;
+
     margin-bottom:22px;
 }
 
@@ -234,72 +315,117 @@ body.cover-active{
 }
 
 .cover-subtitle{
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size:22px;
     color:#f5dddd;
+
     margin-bottom:38px;
 }
 
 .start-button{
-    border:1px solid rgba(241,220,165,.55);
-    background:linear-gradient(135deg,#b88943,#e1bd72);
+    border:
+        1px solid
+        rgba(241,220,165,.55);
+
+    background:
+        linear-gradient(
+            135deg,
+            #b88943,
+            #e1bd72
+        );
+
     color:#29100f;
 
-    padding:15px 27px;
+    padding:
+        15px 27px;
+
     border-radius:999px;
 
-    font-family:'Montserrat',sans-serif;
+    font-family:
+        'Montserrat',
+        sans-serif;
+
     font-weight:600;
-    letter-spacing:.5px;
 
     cursor:pointer;
 
-    box-shadow:0 12px 35px rgba(0,0,0,.25);
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.25);
 
     transition:.3s;
 }
 
 .start-button:hover{
     transform:translateY(-3px);
-    box-shadow:0 17px 40px rgba(0,0,0,.35);
+
+    box-shadow:
+        0 17px 40px
+        rgba(0,0,0,.35);
 }
 
 .cover-note{
     margin-top:18px;
+
     font-size:10px;
-    color:rgba(255,255,255,.55);
+
+    color:
+        rgba(255,255,255,.55);
 }
 
 
-/* =========================================================
-   MAIN
-========================================================= */
+/* =====================================================
+   CONTENIDO
+===================================================== */
 
 main{
     width:min(470px,100%);
+
     margin:auto;
-    padding:22px 15px 50px;
+
+    padding:
+        22px
+        15px
+        50px;
 }
 
 .card{
-    background:rgba(255,255,255,.82);
-    backdrop-filter:blur(18px);
-    border:1px solid rgba(190,18,60,.08);
+    background:
+        rgba(255,255,255,.82);
+
+    backdrop-filter:
+        blur(18px);
+
+    border:
+        1px solid
+        rgba(190,18,60,.08);
+
     border-radius:30px;
-    box-shadow:var(--shadow);
+
+    box-shadow:
+        var(--shadow);
+
     overflow:hidden;
 }
 
 
-/* =========================================================
-   TOP BAR
-========================================================= */
+/* =====================================================
+   BARRA
+===================================================== */
 
 .topbar{
     display:flex;
     justify-content:flex-end;
+
     gap:8px;
-    padding:14px 15px 0;
+
+    padding:
+        14px
+        15px
+        0;
 }
 
 .icon-btn{
@@ -307,11 +433,16 @@ main{
     height:38px;
 
     border-radius:50%;
-    border:1px solid rgba(127,23,52,.10);
 
-    background:rgba(255,255,255,.75);
+    border:
+        1px solid
+        rgba(127,23,52,.10);
+
+    background:
+        rgba(255,255,255,.75);
 
     cursor:pointer;
+
     font-size:16px;
 
     transition:.25s;
@@ -322,84 +453,129 @@ main{
 }
 
 
-/* =========================================================
+/* =====================================================
    HEADER
-========================================================= */
+===================================================== */
 
 .header{
     text-align:center;
-    padding:25px 25px 24px;
+
+    padding:
+        25px
+        25px
+        24px;
 }
 
 .header .eyebrow{
     color:var(--wine);
+
     font-size:10px;
+
     letter-spacing:3px;
+
     text-transform:uppercase;
+
     margin-bottom:10px;
 }
 
 .header h2{
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size:40px;
+
     line-height:.95;
+
     font-weight:600;
+
     color:var(--wine-dark);
 }
 
 .header p{
     margin-top:14px;
-    font-family:'Cormorant Garamond',serif;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size:19px;
+
     color:#704653;
 }
 
 
-/* =========================================================
-   CHAPTER NAV
-========================================================= */
+/* =====================================================
+   NAVEGACIÓN
+===================================================== */
 
 .chapters{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    margin:0 15px;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    margin:
+        0 15px;
+
     padding:5px;
 
     border-radius:18px;
+
     background:#f5e4e2;
 }
 
 .chapter-btn{
     border:none;
+
     background:transparent;
-    padding:11px 5px;
+
+    padding:
+        11px
+        5px;
 
     border-radius:14px;
 
     font-size:10px;
-    font-family:'Montserrat',sans-serif;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
     color:#7b5960;
 
     cursor:pointer;
+
     transition:.3s;
 }
 
 .chapter-btn.active{
     background:white;
+
     color:var(--wine);
-    box-shadow:0 4px 15px rgba(70,15,25,.08);
+
+    box-shadow:
+        0 4px 15px
+        rgba(70,15,25,.08);
+
     font-weight:600;
 }
 
 
-/* =========================================================
-   CHAPTERS
-========================================================= */
+/* =====================================================
+   CAPÍTULOS
+===================================================== */
 
 .chapter{
     display:none;
-    padding:28px 20px 25px;
-    animation:chapterIn .6s ease;
+
+    padding:
+        28px
+        20px
+        25px;
+
+    animation:
+        chapterIn .6s ease;
 }
 
 .chapter.active{
@@ -407,77 +583,117 @@ main{
 }
 
 @keyframes chapterIn{
+
     from{
         opacity:0;
-        transform:translateY(12px);
+        transform:
+            translateY(12px);
     }
 
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:
+            translateY(0);
     }
+
 }
 
 .chapter-title{
     text-align:center;
-    font-family:'Cormorant Garamond',serif;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size:31px;
+
     color:var(--wine-dark);
+
     margin-bottom:7px;
 }
 
 .chapter-intro{
     text-align:center;
+
     font-size:12px;
+
     line-height:1.7;
+
     color:#775760;
+
     margin-bottom:22px;
 }
 
 
-/* =========================================================
-   STORY COUNTER
-========================================================= */
+/* =====================================================
+   DÍAS
+===================================================== */
 
 .days-box{
     text-align:center;
-    padding:23px 15px;
+
+    padding:
+        23px
+        15px;
+
     border-radius:23px;
 
     background:
-        linear-gradient(145deg,#fff,#f8e6e4);
+        linear-gradient(
+            145deg,
+            #fff,
+            #f8e6e4
+        );
 
-    border:1px solid rgba(190,18,60,.08);
+    border:
+        1px solid
+        rgba(190,18,60,.08);
+
     margin-bottom:22px;
 }
 
 .days-number{
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size:58px;
+
     line-height:1;
+
     color:var(--wine);
 }
 
 .days-label{
     font-size:10px;
+
     letter-spacing:2px;
+
     text-transform:uppercase;
+
     color:#80616a;
+
     margin-top:7px;
 }
 
 .story-text{
     text-align:center;
-    font-family:'Cormorant Garamond',serif;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size:21px;
+
     line-height:1.5;
+
     color:#512530;
 }
 
 
-/* =========================================================
-   CAROUSEL
-========================================================= */
+/* =====================================================
+   CARRUSEL
+===================================================== */
 
 .carousel{
     position:relative;
@@ -485,18 +701,25 @@ main{
 
 .photo-frame{
     position:relative;
+
     overflow:hidden;
+
     border-radius:25px;
 
     background:#260810;
 
-    box-shadow:0 20px 45px rgba(53,9,20,.18);
+    box-shadow:
+        0 20px 45px
+        rgba(53,9,20,.18);
 }
 
 .photo-frame img{
     display:block;
+
     width:100%;
+
     aspect-ratio:4/5;
+
     object-fit:cover;
 
     transition:
@@ -506,26 +729,36 @@ main{
 
 .photo-frame.changing img{
     opacity:.45;
-    transform:scale(1.025);
+
+    transform:
+        scale(1.025);
 }
 
 .carousel-arrow{
     position:absolute;
+
     top:43%;
+
     z-index:3;
 
     width:40px;
     height:40px;
 
     border:none;
+
     border-radius:50%;
 
-    background:rgba(255,255,255,.9);
+    background:
+        rgba(255,255,255,.9);
+
     color:var(--wine);
 
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.15);
 
     cursor:pointer;
+
     font-size:22px;
 
     transition:.25s;
@@ -544,41 +777,60 @@ main{
 }
 
 
-/* =========================================================
-   CAPTION
-========================================================= */
+/* =====================================================
+   FRASE
+===================================================== */
 
 .caption-panel{
     min-height:155px;
 
     margin-top:14px;
-    padding:22px 19px;
+
+    padding:
+        22px
+        19px;
 
     border-radius:21px;
 
     background:
-        linear-gradient(145deg,#fffdfb,#f9e9e6);
+        linear-gradient(
+            145deg,
+            #fffdfb,
+            #f9e9e6
+        );
 
-    border:1px solid rgba(214,173,99,.35);
+    border:
+        1px solid
+        rgba(214,173,99,.35);
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
 
     text-align:center;
 
     position:relative;
+
     overflow:hidden;
 }
 
 .caption-panel::before{
     content:"";
+
     position:absolute;
+
     width:120px;
     height:120px;
+
     border-radius:50%;
-    background:rgba(214,173,99,.08);
+
+    background:
+        rgba(214,173,99,.08);
+
     top:-65px;
     right:-50px;
 }
@@ -586,63 +838,91 @@ main{
 .caption-line{
     width:42px;
     height:2px;
+
     background:var(--gold);
+
     margin-bottom:13px;
+
     border-radius:20px;
 }
 
 .caption{
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size:23px;
+
     line-height:1.35;
+
     color:#4c202b;
+
     max-width:340px;
 
-    animation:captionIn .55s ease;
+    animation:
+        captionIn .55s ease;
 }
 
 @keyframes captionIn{
+
     from{
         opacity:0;
-        transform:translateY(8px);
+        transform:
+            translateY(8px);
     }
 
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:
+            translateY(0);
     }
+
 }
 
 .photo-count{
     margin-top:15px;
+
     text-align:center;
 
     font-size:10px;
+
     letter-spacing:3px;
+
     color:#8d6870;
 }
 
 
-/* =========================================================
-   REASONS
-========================================================= */
+/* =====================================================
+   RAZONES
+===================================================== */
 
 .reason-box{
     min-height:245px;
 
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
 
-    padding:30px 20px;
+    padding:
+        30px
+        20px;
 
     border-radius:25px;
 
     background:
-        linear-gradient(145deg,#fff,#f8e5e4);
+        linear-gradient(
+            145deg,
+            #fff,
+            #f8e5e4
+        );
 
-    border:1px solid rgba(190,18,60,.08);
+    border:
+        1px solid
+        rgba(190,18,60,.08);
 
     text-align:center;
 
@@ -657,97 +937,146 @@ main{
 
 .reason-number{
     font-size:11px;
+
     letter-spacing:3px;
+
     color:var(--gold);
+
     margin-bottom:18px;
 }
 
 .reason-heart{
     font-size:35px;
+
     margin-bottom:17px;
 }
 
 .reason-text{
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size:25px;
+
     line-height:1.35;
+
     color:var(--wine-dark);
 }
 
 .reason-hint{
     margin-top:20px;
+
     font-size:9px;
+
     letter-spacing:1.5px;
+
     text-transform:uppercase;
+
     color:#96747b;
 }
 
 
-/* =========================================================
-   FINAL BUTTON
-========================================================= */
+/* =====================================================
+   BOTÓN CARTA
+===================================================== */
 
 .final-button-wrap{
     text-align:center;
+
     margin-top:25px;
 }
 
 .letter-button{
     border:none;
-    background:linear-gradient(135deg,var(--wine),var(--ruby));
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--wine),
+            var(--ruby)
+        );
+
     color:white;
 
-    padding:15px 25px;
+    padding:
+        15px
+        25px;
+
     border-radius:999px;
 
-    font-family:'Montserrat',sans-serif;
+    font-family:
+        'Montserrat',
+        sans-serif;
+
     font-weight:600;
 
     cursor:pointer;
 
-    box-shadow:0 13px 30px rgba(127,23,52,.25);
+    box-shadow:
+        0 13px 30px
+        rgba(127,23,52,.25);
 
     transition:.3s;
 }
 
 .letter-button:hover{
     transform:translateY(-3px);
-    box-shadow:0 17px 38px rgba(127,23,52,.33);
+
+    box-shadow:
+        0 17px 38px
+        rgba(127,23,52,.33);
 }
 
 
-/* =========================================================
+/* =====================================================
    FOOTER
-========================================================= */
+===================================================== */
 
 .footer{
     text-align:center;
-    padding:25px 15px 5px;
-    font-family:'Cormorant Garamond',serif;
+
+    padding:
+        25px
+        15px
+        5px;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size:18px;
+
     color:#79535d;
 }
 
 
-/* =========================================================
-   LETTER MODAL
-========================================================= */
+/* =====================================================
+   CARTA
+===================================================== */
 
 .letter-overlay{
     position:fixed;
+
     inset:0;
+
     z-index:2000;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     padding:18px;
 
-    background:rgba(25,3,9,.78);
-    backdrop-filter:blur(12px);
+    background:
+        rgba(25,3,9,.78);
+
+    backdrop-filter:
+        blur(12px);
 
     opacity:0;
+
     visibility:hidden;
 
     transition:.5s;
@@ -755,55 +1084,89 @@ main{
 
 .letter-overlay.show{
     opacity:1;
+
     visibility:visible;
 }
 
 .letter{
     width:min(520px,100%);
+
     max-height:90vh;
+
     overflow-y:auto;
 
-    padding:35px 27px;
+    padding:
+        35px
+        27px;
 
     border-radius:30px;
 
     background:
-        radial-gradient(circle at top right,rgba(214,173,99,.12),transparent 30%),
-        linear-gradient(145deg,#fffdf9,#f9e8e4);
+        radial-gradient(
+            circle at top right,
+            rgba(214,173,99,.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #fffdf9,
+            #f9e8e4
+        );
 
-    box-shadow:0 30px 100px rgba(0,0,0,.35);
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.35);
 
-    transform:translateY(20px) scale(.97);
+    transform:
+        translateY(20px)
+        scale(.97);
+
     transition:.5s;
 }
 
 .letter-overlay.show .letter{
-    transform:translateY(0) scale(1);
+    transform:
+        translateY(0)
+        scale(1);
 }
 
 .letter-top{
     text-align:center;
+
     margin-bottom:25px;
 }
 
 .letter-top .small{
     font-size:9px;
+
     letter-spacing:3px;
+
     text-transform:uppercase;
+
     color:var(--gold);
 }
 
 .letter h3{
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size:39px;
+
     color:var(--wine-dark);
+
     margin-top:8px;
 }
 
 .letter-content{
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size:20px;
+
     line-height:1.65;
+
     color:#49232d;
 }
 
@@ -813,49 +1176,67 @@ main{
 
 .letter-sign{
     text-align:center;
-    font-family:'Cormorant Garamond',serif;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size:24px;
+
     color:var(--wine);
+
     margin-top:25px;
 }
 
 .close-letter{
     display:block;
-    margin:25px auto 0;
 
-    border:1px solid rgba(127,23,52,.18);
+    margin:
+        25px
+        auto
+        0;
+
+    border:
+        1px solid
+        rgba(127,23,52,.18);
+
     background:white;
 
     color:var(--wine);
 
-    padding:11px 20px;
+    padding:
+        11px
+        20px;
+
     border-radius:999px;
 
     cursor:pointer;
 }
 
 
-/* =========================================================
-   DARK MODE
-========================================================= */
+/* =====================================================
+   MODO OSCURO
+===================================================== */
 
 body.dark{
-    --cream:#1d0b11;
-    --cream-2:#2a1118;
+
     --text:#f7e7e7;
 
     background:
-        radial-gradient(circle at 20% 10%,rgba(190,18,60,.20),transparent 30%),
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(190,18,60,.20),
+            transparent 30%
+        ),
         #16070c;
 }
 
-body.dark main{
-    color:#f7e7e7;
-}
-
 body.dark .card{
-    background:rgba(42,17,24,.88);
-    border-color:rgba(255,255,255,.05);
+    background:
+        rgba(42,17,24,.88);
+
+    border-color:
+        rgba(255,255,255,.05);
 }
 
 body.dark .header h2,
@@ -885,7 +1266,12 @@ body.dark .chapter-btn.active{
 body.dark .days-box,
 body.dark .reason-box,
 body.dark .caption-panel{
-    background:linear-gradient(145deg,#351720,#261018);
+    background:
+        linear-gradient(
+            145deg,
+            #351720,
+            #261018
+        );
 }
 
 body.dark .caption{
@@ -897,7 +1283,12 @@ body.dark .reason-text{
 }
 
 body.dark .letter{
-    background:linear-gradient(145deg,#32151d,#241016);
+    background:
+        linear-gradient(
+            145deg,
+            #32151d,
+            #241016
+        );
 }
 
 body.dark .letter h3,
@@ -906,9 +1297,9 @@ body.dark .letter-content{
 }
 
 
-/* =========================================================
+/* =====================================================
    RESPONSIVE
-========================================================= */
+===================================================== */
 
 @media(max-width:380px){
 
@@ -927,6 +1318,7 @@ body.dark .letter-content{
     .letter-content{
         font-size:18px;
     }
+
 }
 
 </style>
@@ -935,15 +1327,22 @@ body.dark .letter-content{
 
 <body class="cover-active">
 
+
 <div class="background-glow"></div>
-<div class="hearts" id="hearts"></div>
+
+<div
+    class="hearts"
+    id="hearts">
+</div>
 
 
 <!-- =====================================================
      PORTADA
 ===================================================== -->
 
-<section class="cover" id="cover">
+<section
+    class="cover"
+    id="cover">
 
     <div class="cover-content">
 
@@ -968,8 +1367,12 @@ body.dark .letter-content{
             Seis meses, infinitos recuerdos...
         </div>
 
-        <button class="start-button" id="startButton">
+        <button
+            class="start-button"
+            id="startButton">
+
             Comenzar nuestra historia ❤️
+
         </button>
 
         <div class="cover-note">
@@ -982,20 +1385,23 @@ body.dark .letter-content{
 
 
 <!-- =====================================================
-     AUDIO
+     MÚSICA
 ===================================================== -->
 
-<audio id="bgMusic" loop preload="auto">
-    <!--
-        Cuando tengas el MP3:
-        coloca risk-it-all.mp3 junto a este index.html
-    -->
-    <source src="risk-it-all.mp3" type="audio/mpeg">
+<audio
+    id="bgMusic"
+    loop
+    preload="auto">
+
+    <source
+        src="risk-it-all.mp3"
+        type="audio/mpeg">
+
 </audio>
 
 
 <!-- =====================================================
-     CONTENIDO PRINCIPAL
+     CONTENIDO
 ===================================================== -->
 
 <main>
@@ -1003,22 +1409,24 @@ body.dark .letter-content{
 <div class="card">
 
 
-    <!-- TOP BAR -->
+    <!-- BARRA -->
 
     <div class="topbar">
 
         <button
             class="icon-btn"
-            id="musicButton"
-            aria-label="Música">
+            id="musicButton">
+
             🔇
+
         </button>
 
         <button
             class="icon-btn"
-            id="themeButton"
-            aria-label="Cambiar tema">
+            id="themeButton">
+
             🌙
+
         </button>
 
     </div>
@@ -1045,33 +1453,39 @@ body.dark .letter-content{
     </header>
 
 
-    <!-- CHAPTER NAV -->
+    <!-- NAVEGACIÓN -->
 
     <nav class="chapters">
 
         <button
             class="chapter-btn active"
             data-chapter="history">
+
             Nuestra historia
+
         </button>
 
         <button
             class="chapter-btn"
             data-chapter="photos">
+
             Tú y yo
+
         </button>
 
         <button
             class="chapter-btn"
             data-chapter="reasons">
+
             Mi porqué
+
         </button>
 
     </nav>
 
 
     <!-- =================================================
-         CAPÍTULO 1
+         HISTORIA
     ================================================= -->
 
     <section
@@ -1083,9 +1497,11 @@ body.dark .letter-content{
         </h3>
 
         <p class="chapter-intro">
+
             Desde aquel 29 de marzo hasta hoy,
             cada día ha ido construyendo algo
             que para mí significa muchísimo.
+
         </p>
 
 
@@ -1094,27 +1510,33 @@ body.dark .letter-content{
             <div
                 class="days-number"
                 id="daysTogether">
+
                 0
+
             </div>
 
             <div class="days-label">
+
                 días compartiendo nuestra historia
+
             </div>
 
         </div>
 
 
         <p class="story-text">
+
             Y pensar que todo comenzó con un momento,
             una conversación y dos personas que no sabían
             todo lo bonito que les esperaba. ❤️
+
         </p>
 
     </section>
 
 
     <!-- =================================================
-         CAPÍTULO 2
+         FOTOS
     ================================================= -->
 
     <section
@@ -1126,21 +1548,31 @@ body.dark .letter-content{
         </h3>
 
         <p class="chapter-intro">
+
             Seis momentos. Seis recuerdos.
             Y una historia que todavía tiene
             muchísimo por contar.
+
         </p>
 
 
-        <div class="carousel" id="carousel">
+        <div
+            class="carousel"
+            id="carousel">
+
 
             <button
                 class="carousel-arrow prev"
                 id="prevPhoto">
+
                 ‹
+
             </button>
 
-            <div class="photo-frame" id="photoFrame">
+
+            <div
+                class="photo-frame"
+                id="photoFrame">
 
                 <img
                     id="photo"
@@ -1149,11 +1581,15 @@ body.dark .letter-content{
 
             </div>
 
+
             <button
                 class="carousel-arrow next"
                 id="nextPhoto">
+
                 ›
+
             </button>
+
 
         </div>
 
@@ -1165,9 +1601,11 @@ body.dark .letter-content{
             <div
                 class="caption"
                 id="caption">
+
                 Y sin darnos cuenta,
                 comenzamos a escribir
                 nuestra historia. ❤️
+
             </div>
 
         </div>
@@ -1176,14 +1614,16 @@ body.dark .letter-content{
         <div
             class="photo-count"
             id="photoCount">
+
             01 / 06
+
         </div>
 
     </section>
 
 
     <!-- =================================================
-         CAPÍTULO 3
+         RAZONES
     ================================================= -->
 
     <section
@@ -1195,8 +1635,10 @@ body.dark .letter-content{
         </h3>
 
         <p class="chapter-intro">
+
             Hay muchas razones para amarte.
             Estas son solamente algunas.
+
         </p>
 
 
@@ -1207,7 +1649,9 @@ body.dark .letter-content{
             <div
                 class="reason-number"
                 id="reasonNumber">
+
                 RAZÓN 01
+
             </div>
 
             <div class="reason-heart">
@@ -1217,12 +1661,16 @@ body.dark .letter-content{
             <div
                 class="reason-text"
                 id="reasonText">
+
                 Porque contigo puedo ser
                 completamente yo.
+
             </div>
 
             <div class="reason-hint">
+
                 Toca para descubrir otra
+
             </div>
 
         </div>
@@ -1233,7 +1681,9 @@ body.dark .letter-content{
             <button
                 class="letter-button"
                 id="openLetter">
+
                 Leer mi carta para ti 💌
+
             </button>
 
         </div>
@@ -1242,7 +1692,9 @@ body.dark .letter-content{
 
 
     <div class="footer">
+
         Con amor, para mi Princesa ❤️
+
     </div>
 
 
@@ -1260,6 +1712,7 @@ body.dark .letter-content{
     id="letterOverlay">
 
     <article class="letter">
+
 
         <div class="letter-top">
 
@@ -1285,6 +1738,7 @@ body.dark .letter-content{
                 tú y yo.
             </p>
 
+
             <p>
                 Gracias por todos estos días que hemos pasado juntos,
                 por las salidas, las caminatas en la noche,
@@ -1293,11 +1747,13 @@ body.dark .letter-content{
                 y por ser mi lugar seguro en el mundo.
             </p>
 
+
             <p>
                 Prometo seguir cuidando de ti y de lo nuestro,
                 y en verdad deseo poder seguir celebrando cada
                 momento contigo mes a mes.
             </p>
+
 
             <p>
                 No sabes lo feliz que me haces y de todo lo que
@@ -1305,6 +1761,7 @@ body.dark .letter-content{
                 a mi lado, solo te veo a ti cada día, en mis planes,
                 y en verdad deseo un futuro contigo.
             </p>
+
 
             <p>
                 Te amo mucho mi vida,
@@ -1318,15 +1775,20 @@ body.dark .letter-content{
 
 
         <div class="letter-sign">
+
             Te amo. ❤️
+
         </div>
 
 
         <button
             class="close-letter"
             id="closeLetter">
+
             Volver a nuestra historia
+
         </button>
+
 
     </article>
 
@@ -1335,37 +1797,60 @@ body.dark .letter-content{
 
 <script>
 
-/* =========================================================
-   DATOS
-========================================================= */
+/* =====================================================
+   VARIABLES
+===================================================== */
 
-const startDate = new Date(
-    2026,
-    2,
-    29,
-    0,
-    0,
-    0
-);
+const startDate =
+    new Date(
+        2026,
+        2,
+        29,
+        0,
+        0,
+        0
+    );
 
 
-/* =========================================================
-   MÚSICA
-========================================================= */
+const cover =
+    document.getElementById(
+        "cover"
+    );
+
+const startButton =
+    document.getElementById(
+        "startButton"
+    );
 
 const bgMusic =
-    document.getElementById("bgMusic");
+    document.getElementById(
+        "bgMusic"
+    );
 
 const musicButton =
-    document.getElementById("musicButton");
+    document.getElementById(
+        "musicButton"
+    );
+
+const themeButton =
+    document.getElementById(
+        "themeButton"
+    );
+
 
 let musicPlaying = false;
+
 let volumeTimer = null;
 
-bgMusic.volume = 0.55;
+
+/* =====================================================
+   MÚSICA
+===================================================== */
+
+bgMusic.volume = .55;
 
 
-async function startMusic(){
+async function tryStartMusic(){
 
     try{
 
@@ -1373,12 +1858,13 @@ async function startMusic(){
 
         musicPlaying = true;
 
-        musicButton.textContent = "🔊";
+        musicButton.textContent =
+            "🔊";
 
     }catch(error){
 
         console.log(
-            "El navegador bloqueó el autoplay."
+            "El navegador bloqueó la reproducción automática."
         );
 
     }
@@ -1386,13 +1872,52 @@ async function startMusic(){
 }
 
 
+/* =====================================================
+   BOTÓN PRINCIPAL
+===================================================== */
+
+startButton.addEventListener(
+    "click",
+    function(){
+
+        /*
+         * IMPORTANTE:
+         * La portada se oculta primero.
+         * La música no puede impedir
+         * que la página continúe.
+         */
+
+        cover.classList.add(
+            "hidden"
+        );
+
+        document.body.classList.remove(
+            "cover-active"
+        );
+
+
+        /*
+         * Intentamos iniciar la música
+         * después de la interacción.
+         */
+
+        tryStartMusic();
+
+    }
+);
+
+
+/* =====================================================
+   BOTÓN MÚSICA
+===================================================== */
+
 musicButton.addEventListener(
     "click",
-    async () => {
+    async function(){
 
         if(bgMusic.paused){
 
-            await startMusic();
+            await tryStartMusic();
 
         }else{
 
@@ -1400,7 +1925,8 @@ musicButton.addEventListener(
 
             musicPlaying = false;
 
-            musicButton.textContent = "🔇";
+            musicButton.textContent =
+                "🔇";
 
         }
 
@@ -1408,91 +1934,75 @@ musicButton.addEventListener(
 );
 
 
-/* =========================================================
-   VOLUMEN SUAVE
-========================================================= */
+/* =====================================================
+   FADE DE VOLUMEN
+===================================================== */
 
 function fadeVolume(
     target,
     duration = 900
 ){
 
-    clearInterval(volumeTimer);
+    clearInterval(
+        volumeTimer
+    );
 
-    const start =
+    const initial =
         bgMusic.volume;
 
     const steps = 25;
 
     const difference =
-        target - start;
+        target - initial;
 
-    let current = 0;
+    let step = 0;
+
 
     volumeTimer =
-        setInterval(() => {
+        setInterval(
+            function(){
 
-            current++;
+                step++;
 
-            bgMusic.volume =
-                Math.min(
-                    1,
-                    Math.max(
-                        0,
-                        start +
-                        difference *
-                        (current / steps)
-                    )
-                );
+                bgMusic.volume =
+                    Math.min(
+                        1,
+                        Math.max(
+                            0,
+                            initial +
+                            difference *
+                            (step / steps)
+                        )
+                    );
 
-            if(current >= steps){
 
-                clearInterval(volumeTimer);
+                if(step >= steps){
 
-            }
+                    clearInterval(
+                        volumeTimer
+                    );
 
-        }, duration / steps);
+                }
+
+            },
+            duration / steps
+        );
 
 }
 
 
-/* =========================================================
-   PORTADA
-========================================================= */
-
-const cover =
-    document.getElementById("cover");
-
-const startButton =
-    document.getElementById("startButton");
-
-
-startButton.addEventListener(
-    "click",
-    async () => {
-
-        await startMusic();
-
-        cover.classList.add("hidden");
-
-        document.body.classList.remove(
-            "cover-active"
-        );
-
-    }
-);
-
-
-/* =========================================================
-   DÍAS JUNTOS
-========================================================= */
+/* =====================================================
+   CONTADOR DE DÍAS JUNTOS
+===================================================== */
 
 function updateDays(){
 
-    const now = new Date();
+    const now =
+        new Date();
 
     const difference =
-        now.getTime() -
+        now.getTime()
+        -
         startDate.getTime();
 
     const days =
@@ -1501,18 +2011,21 @@ function updateDays(){
             (1000 * 60 * 60 * 24)
         );
 
+
     document.getElementById(
         "daysTogether"
-    ).textContent = days;
+    ).textContent =
+        days;
 
 }
+
 
 updateDays();
 
 
-/* =========================================================
+/* =====================================================
    CAPÍTULOS
-========================================================= */
+===================================================== */
 
 const chapterButtons =
     document.querySelectorAll(
@@ -1525,48 +2038,62 @@ const chapters =
     );
 
 
-chapterButtons.forEach(button => {
+chapterButtons.forEach(
+    function(button){
 
-    button.addEventListener(
-        "click",
-        () => {
+        button.addEventListener(
+            "click",
+            function(){
 
-            const target =
-                button.dataset.chapter;
+                const target =
+                    button.dataset.chapter;
 
-            chapterButtons.forEach(btn => {
 
-                btn.classList.remove(
+                chapterButtons.forEach(
+                    function(btn){
+
+                        btn.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                chapters.forEach(
+                    function(chapter){
+
+                        chapter.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                button.classList.add(
                     "active"
                 );
 
-            });
 
-            chapters.forEach(chapter => {
+                document
+                    .getElementById(
+                        target
+                    )
+                    .classList.add(
+                        "active"
+                    );
 
-                chapter.classList.remove(
-                    "active"
-                );
+            }
+        );
 
-            });
-
-            button.classList.add(
-                "active"
-            );
-
-            document
-                .getElementById(target)
-                .classList.add("active");
-
-        }
-    );
-
-});
+    }
+);
 
 
-/* =========================================================
+/* =====================================================
    FOTOS
-========================================================= */
+===================================================== */
 
 const photos = [
 
@@ -1599,17 +2126,26 @@ const captions = [
 
 let currentPhoto = 0;
 
+
 const photo =
-    document.getElementById("photo");
+    document.getElementById(
+        "photo"
+    );
 
 const caption =
-    document.getElementById("caption");
+    document.getElementById(
+        "caption"
+    );
 
 const photoCount =
-    document.getElementById("photoCount");
+    document.getElementById(
+        "photoCount"
+    );
 
 const photoFrame =
-    document.getElementById("photoFrame");
+    document.getElementById(
+        "photoFrame"
+    );
 
 
 function renderPhoto(){
@@ -1618,30 +2154,44 @@ function renderPhoto(){
         "changing"
     );
 
-    setTimeout(() => {
 
-        photo.src =
-            photos[currentPhoto];
+    setTimeout(
+        function(){
 
-        caption.textContent =
-            captions[currentPhoto];
+            photo.src =
+                photos[currentPhoto];
 
-        photoCount.textContent =
-            `${String(currentPhoto + 1).padStart(2,"0")} / 06`;
 
-        caption.style.animation =
-            "none";
+            caption.textContent =
+                captions[currentPhoto];
 
-        void caption.offsetWidth;
 
-        caption.style.animation =
-            "captionIn .55s ease";
+            photoCount.textContent =
+                String(
+                    currentPhoto + 1
+                ).padStart(2,"0")
+                +
+                " / 06";
 
-        photoFrame.classList.remove(
-            "changing"
-        );
 
-    },220);
+            caption.style.animation =
+                "none";
+
+
+            void caption.offsetWidth;
+
+
+            caption.style.animation =
+                "captionIn .55s ease";
+
+
+            photoFrame.classList.remove(
+                "changing"
+            );
+
+        },
+        220
+    );
 
 }
 
@@ -1649,7 +2199,8 @@ function renderPhoto(){
 function nextPhoto(){
 
     currentPhoto =
-        (currentPhoto + 1) %
+        (currentPhoto + 1)
+        %
         photos.length;
 
     renderPhoto();
@@ -1660,7 +2211,14 @@ function nextPhoto(){
 function previousPhoto(){
 
     currentPhoto =
-        (currentPhoto - 1 + photos.length) %
+        (
+            currentPhoto
+            -
+            1
+            +
+            photos.length
+        )
+        %
         photos.length;
 
     renderPhoto();
@@ -1669,7 +2227,9 @@ function previousPhoto(){
 
 
 document
-    .getElementById("nextPhoto")
+    .getElementById(
+        "nextPhoto"
+    )
     .addEventListener(
         "click",
         nextPhoto
@@ -1677,48 +2237,65 @@ document
 
 
 document
-    .getElementById("prevPhoto")
+    .getElementById(
+        "prevPhoto"
+    )
     .addEventListener(
         "click",
         previousPhoto
     );
 
 
-/* =========================================================
+/* =====================================================
    SWIPE
-========================================================= */
+===================================================== */
 
 let touchStartX = 0;
+
 let touchEndX = 0;
 
 
 const carousel =
-    document.getElementById("carousel");
+    document.getElementById(
+        "carousel"
+    );
 
 
 carousel.addEventListener(
     "touchstart",
-    event => {
+    function(event){
 
         touchStartX =
-            event.changedTouches[0].screenX;
+            event
+                .changedTouches[0]
+                .screenX;
 
     },
-    {passive:true}
+    {
+        passive:true
+    }
 );
 
 
 carousel.addEventListener(
     "touchend",
-    event => {
+    function(event){
 
         touchEndX =
-            event.changedTouches[0].screenX;
+            event
+                .changedTouches[0]
+                .screenX;
+
 
         const difference =
-            touchStartX - touchEndX;
+            touchStartX -
+            touchEndX;
 
-        if(Math.abs(difference) > 45){
+
+        if(
+            Math.abs(difference)
+            > 45
+        ){
 
             if(difference > 0){
 
@@ -1733,13 +2310,15 @@ carousel.addEventListener(
         }
 
     },
-    {passive:true}
+    {
+        passive:true
+    }
 );
 
 
-/* =========================================================
-   6 RAZONES
-========================================================= */
+/* =====================================================
+   RAZONES
+===================================================== */
 
 const reasons = [
 
@@ -1779,11 +2358,15 @@ const reasonText =
 
 reasonBox.addEventListener(
     "click",
-    () => {
+    function(){
 
         reasonIndex =
-            (reasonIndex + 1) %
+            (
+                reasonIndex + 1
+            )
+            %
             reasons.length;
+
 
         reasonBox.animate(
             [
@@ -1802,8 +2385,14 @@ reasonBox.addEventListener(
             }
         );
 
+
         reasonNumber.textContent =
-            `RAZÓN ${String(reasonIndex + 1).padStart(2,"0")}`;
+            "RAZÓN "
+            +
+            String(
+                reasonIndex + 1
+            ).padStart(2,"0");
+
 
         reasonText.textContent =
             reasons[reasonIndex];
@@ -1812,9 +2401,9 @@ reasonBox.addEventListener(
 );
 
 
-/* =========================================================
+/* =====================================================
    CARTA
-========================================================= */
+===================================================== */
 
 const letterOverlay =
     document.getElementById(
@@ -1834,18 +2423,16 @@ const closeLetter =
 
 openLetter.addEventListener(
     "click",
-    () => {
+    function(){
 
         letterOverlay.classList.add(
             "show"
         );
 
-        /*
-           Cuando la carta se abra,
-           la música baja suavemente.
-        */
-
-        fadeVolume(.16,1000);
+        fadeVolume(
+            .16,
+            1000
+        );
 
     }
 );
@@ -1853,38 +2440,42 @@ openLetter.addEventListener(
 
 closeLetter.addEventListener(
     "click",
-    () => {
+    function(){
 
         letterOverlay.classList.remove(
             "show"
         );
 
-        /*
-           Al cerrar la carta,
-           vuelve el volumen normal.
-        */
-
-        fadeVolume(.55,1000);
+        fadeVolume(
+            .55,
+            1000
+        );
 
     }
 );
 
 
-/* =========================================================
-   CERRAR CARTA TOCANDO AFUERA
-========================================================= */
+/* =====================================================
+   CERRAR CARTA TOCANDO FUERA
+===================================================== */
 
 letterOverlay.addEventListener(
     "click",
-    event => {
+    function(event){
 
-        if(event.target === letterOverlay){
+        if(
+            event.target ===
+            letterOverlay
+        ){
 
             letterOverlay.classList.remove(
                 "show"
             );
 
-            fadeVolume(.55,1000);
+            fadeVolume(
+                .55,
+                1000
+            );
 
         }
 
@@ -1892,26 +2483,23 @@ letterOverlay.addEventListener(
 );
 
 
-/* =========================================================
+/* =====================================================
    TEMA
-========================================================= */
-
-const themeButton =
-    document.getElementById(
-        "themeButton"
-    );
-
+===================================================== */
 
 themeButton.addEventListener(
     "click",
-    () => {
+    function(){
 
         document.body.classList.toggle(
             "dark"
         );
 
+
         themeButton.textContent =
-            document.body.classList.contains("dark")
+            document.body.classList.contains(
+                "dark"
+            )
             ? "☀️"
             : "🌙";
 
@@ -1919,43 +2507,73 @@ themeButton.addEventListener(
 );
 
 
-/* =========================================================
-   CORAZONES FLOTANTES
-========================================================= */
+/* =====================================================
+   CORAZONES
+===================================================== */
 
 const hearts =
-    document.getElementById("hearts");
+    document.getElementById(
+        "hearts"
+    );
 
 
 function createHeart(){
 
     const heart =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
-    heart.className = "heart";
+
+    heart.className =
+        "heart";
+
 
     heart.textContent =
         Math.random() > .5
         ? "♡"
         : "♥";
 
+
     heart.style.left =
-        Math.random() * 100 + "%";
+        Math.random() * 100
+        +
+        "%";
+
 
     heart.style.fontSize =
-        (12 + Math.random() * 18) + "px";
+        (
+            12
+            +
+            Math.random() * 18
+        )
+        +
+        "px";
+
 
     heart.style.animationDuration =
-        (7 + Math.random() * 7) + "s";
+        (
+            7
+            +
+            Math.random() * 7
+        )
+        +
+        "s";
 
-    hearts.appendChild(heart);
+
+    hearts.appendChild(
+        heart
+    );
 
 
-    setTimeout(() => {
+    setTimeout(
+        function(){
 
-        heart.remove();
+            heart.remove();
 
-    },15000);
+        },
+        15000
+    );
 
 }
 
@@ -1966,37 +2584,61 @@ setInterval(
 );
 
 
-/* =========================================================
+/* =====================================================
    TECLADO
-========================================================= */
+===================================================== */
 
 document.addEventListener(
     "keydown",
-    event => {
+    function(event){
+
+        const photosChapter =
+            document.getElementById(
+                "photos"
+            );
+
 
         if(
-            document
-                .getElementById("photos")
-                .classList.contains("active")
+            photosChapter.classList.contains(
+                "active"
+            )
         ){
 
-            if(event.key === "ArrowRight"){
+            if(
+                event.key ===
+                "ArrowRight"
+            ){
+
                 nextPhoto();
+
             }
 
-            if(event.key === "ArrowLeft"){
+
+            if(
+                event.key ===
+                "ArrowLeft"
+            ){
+
                 previousPhoto();
+
             }
 
         }
 
-        if(event.key === "Escape"){
+
+        if(
+            event.key ===
+            "Escape"
+        ){
 
             letterOverlay.classList.remove(
                 "show"
             );
 
-            fadeVolume(.55,800);
+            fadeVolume(
+                .55,
+                800
+            );
 
         }
 
