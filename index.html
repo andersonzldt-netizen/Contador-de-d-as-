@@ -1,41 +1,24 @@
-1. "index.html"
-
-Reemplaza todo el contenido de tu "index.html" por esto:
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>Seis meses ❤️</title>
 
-<!-- PWA -->
 <link rel="manifest" href="manifest.json">
-
 <meta name="theme-color" content="#5b1828">
-
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="6 Meses ❤️">
-
 <link rel="apple-touch-icon" href="icon.svg">
 
-<!-- FUENTES -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
-    rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
     --wine:#5b1828;
     --wine-dark:#250b14;
@@ -143,9 +126,6 @@ body.locked{
     border-radius:15px;
     background:rgba(255,255,255,.045);
     backdrop-filter:blur(15px);
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.25),
-        inset 0 0 20px rgba(255,255,255,.025);
 }
 
 .time-number{
@@ -169,7 +149,6 @@ body.locked{
     font-family:'Cormorant Garamond',serif;
     font-size:32px;
     color:var(--gold);
-    margin-top:-18px;
 }
 
 .countdown-date{
@@ -242,8 +221,7 @@ body.locked{
     content:"";
     position:absolute;
     inset:-20%;
-    background:
-        radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);
+    background:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);
     background-size:35px 35px;
     opacity:.35;
     animation:starsMove 30s linear infinite;
@@ -254,8 +232,6 @@ body.locked{
     z-index:2;
     width:min(90%,750px);
 }
-
-/* CORAZÓN */
 
 .hero-heart{
     position:relative;
@@ -287,9 +263,6 @@ body.locked{
     height:185px;
     border-radius:50%;
     border:1px solid rgba(201,163,91,.27);
-    box-shadow:
-        inset 0 0 35px rgba(201,163,91,.05),
-        0 0 25px rgba(201,163,91,.04);
     animation:ringRotate 15s linear infinite;
 }
 
@@ -324,9 +297,7 @@ body.locked{
     box-shadow:
         0 0 20px rgba(218,111,137,.85),
         0 0 55px rgba(170,54,83,.65),
-        0 0 100px rgba(170,54,83,.32),
-        inset 10px 10px 18px rgba(255,255,255,.12),
-        inset -10px -10px 18px rgba(0,0,0,.16);
+        0 0 100px rgba(170,54,83,.32);
     animation:heartBeat 2.2s ease-in-out infinite;
     z-index:3;
 }
@@ -362,7 +333,6 @@ body.locked{
     filter:blur(4px);
     transform:rotate(-45deg);
     z-index:5;
-    animation:shineMove 3s ease-in-out infinite;
 }
 
 .heart-particle{
@@ -372,13 +342,12 @@ body.locked{
     border-radius:50%;
     background:var(--gold-light);
     box-shadow:0 0 8px var(--gold-light);
-    animation:particleFloat 4s ease-in-out infinite;
 }
 
 .p1{top:28px;left:35px}
-.p2{top:45px;right:28px;animation-delay:1s}
-.p3{bottom:35px;left:42px;animation-delay:1.7s}
-.p4{bottom:52px;right:40px;animation-delay:2.5s}
+.p2{top:45px;right:28px}
+.p3{bottom:35px;left:42px}
+.p4{bottom:52px;right:40px}
 
 .cover-small{
     font-size:10px;
@@ -393,7 +362,6 @@ body.locked{
     font-size:clamp(62px,12vw,115px);
     line-height:.75;
     font-weight:500;
-    letter-spacing:-2px;
 }
 
 .cover-subtitle{
@@ -416,29 +384,18 @@ body.locked{
     border:1px solid rgba(230,203,145,.7);
     padding:15px 28px;
     border-radius:50px;
-    background:
-        linear-gradient(135deg,
-        rgba(255,255,255,.09),
-        rgba(201,163,91,.08));
+    background:rgba(255,255,255,.06);
     color:var(--cream);
     font-family:'Montserrat',sans-serif;
     font-size:10px;
     text-transform:uppercase;
     letter-spacing:2px;
     cursor:pointer;
-    transition:
-        transform .3s ease,
-        background .3s ease,
-        box-shadow .3s ease;
 }
 
-.primary-button:hover{
-    transform:translateY(-3px);
-    background:rgba(201,163,91,.16);
-    box-shadow:0 12px 35px rgba(0,0,0,.3);
-}
-
-/* PÁGINA */
+/* =========================
+   PÁGINA
+========================= */
 
 .page{
     width:min(1100px,94%);
@@ -457,8 +414,6 @@ body.locked{
     box-shadow:0 40px 100px rgba(0,0,0,.35);
     backdrop-filter:blur(20px);
 }
-
-/* HEADER */
 
 .header{
     padding:60px 30px 40px;
@@ -493,7 +448,6 @@ body.locked{
     justify-content:center;
     gap:10px;
     margin-top:25px;
-    flex-wrap:wrap;
 }
 
 .control-button{
@@ -507,15 +461,7 @@ body.locked{
     cursor:pointer;
     font-family:'Montserrat',sans-serif;
     font-size:10px;
-    transition:.3s ease;
 }
-
-.control-button:hover{
-    background:rgba(201,163,91,.14);
-    border-color:rgba(201,163,91,.4);
-}
-
-/* NAVEGACIÓN */
 
 .chapter-nav{
     display:flex;
@@ -538,15 +484,12 @@ body.locked{
     text-transform:uppercase;
     letter-spacing:1.5px;
     cursor:pointer;
-    transition:.3s ease;
 }
 
 .chapter-button.active{
     background:rgba(201,163,91,.14);
     color:var(--gold-light);
 }
-
-/* CAPÍTULOS */
 
 .chapter{
     display:none;
@@ -581,8 +524,6 @@ body.locked{
     margin-bottom:30px;
 }
 
-/* DÍAS */
-
 .days-counter{
     display:inline-flex;
     flex-direction:column;
@@ -597,7 +538,6 @@ body.locked{
     font-family:'Cormorant Garamond',serif;
     font-size:58px;
     color:var(--gold-light);
-    line-height:1;
 }
 
 .days-label{
@@ -606,12 +546,6 @@ body.locked{
     letter-spacing:2px;
     text-transform:uppercase;
     color:rgba(248,240,229,.5);
-}
-
-/* YOUTUBE */
-
-.music-section{
-    margin-top:35px;
 }
 
 .music-title{
@@ -630,7 +564,6 @@ body.locked{
     border-radius:18px;
     border:1px solid rgba(255,255,255,.12);
     background:#090306;
-    box-shadow:0 25px 60px rgba(0,0,0,.35);
 }
 
 .youtube-wrapper iframe{
@@ -655,8 +588,6 @@ body.locked{
     border-radius:22px;
     background:#1c0d12;
     border:1px solid rgba(255,255,255,.1);
-    box-shadow:0 30px 70px rgba(0,0,0,.3);
-    touch-action:pan-y;
 }
 
 .photo-frame img{
@@ -664,13 +595,7 @@ body.locked{
     height:100%;
     object-fit:cover;
     display:block;
-    opacity:1;
     transition:opacity .45s ease,transform .7s ease;
-}
-
-.photo-frame.changing img{
-    opacity:.15;
-    transform:scale(1.03);
 }
 
 .carousel-arrow{
@@ -682,24 +607,16 @@ body.locked{
     border:1px solid rgba(255,255,255,.35);
     border-radius:50%;
     background:rgba(20,5,10,.65);
-    backdrop-filter:blur(8px);
     color:white;
     font-size:22px;
     cursor:pointer;
     z-index:5;
-    transition:.3s ease;
-}
-
-.carousel-arrow:hover{
-    background:rgba(91,24,40,.9);
-    border-color:var(--gold);
 }
 
 .carousel-arrow.left{left:18px}
 .carousel-arrow.right{right:18px}
 
 .photo-caption{
-    position:relative;
     text-align:center;
     padding:28px 30px 10px;
 }
@@ -716,9 +633,6 @@ body.locked{
     font-size:clamp(24px,4vw,35px);
     line-height:1.15;
     color:var(--cream);
-    max-width:750px;
-    margin:auto;
-    animation:captionIn .5s ease;
 }
 
 .photo-counter{
@@ -755,10 +669,7 @@ body.locked{
     padding:40px;
     border:1px solid rgba(201,163,91,.3);
     border-radius:25px;
-    background:
-        linear-gradient(145deg,
-        rgba(255,255,255,.06),
-        rgba(255,255,255,.02));
+    background:rgba(255,255,255,.04);
     cursor:pointer;
 }
 
@@ -774,7 +685,6 @@ body.locked{
     font-family:'Cormorant Garamond',serif;
     font-size:clamp(28px,5vw,45px);
     line-height:1.15;
-    animation:captionIn .5s ease;
 }
 
 .reason-hint{
@@ -821,12 +731,6 @@ body.locked{
     background:linear-gradient(145deg,#fffaf2,#f1e4d3);
     color:var(--text);
     box-shadow:0 40px 100px rgba(0,0,0,.55);
-    transform:translateY(25px);
-    transition:transform .6s ease;
-}
-
-.letter-modal.open .letter-card{
-    transform:translateY(0);
 }
 
 .letter-close{
@@ -888,36 +792,6 @@ body.locked{
     animation:floatHeart linear forwards;
 }
 
-/* TEMA CLARO */
-
-body.light-mode{
-    background:linear-gradient(135deg,#f4e9df,#ead6d0);
-    color:var(--text);
-}
-
-body.light-mode .main-card{
-    background:rgba(255,250,245,.72);
-    border-color:rgba(91,24,40,.12);
-}
-
-body.light-mode .chapter-intro,
-body.light-mode .header p{
-    color:rgba(43,23,28,.68);
-}
-
-body.light-mode .chapter-button{
-    color:rgba(43,23,28,.55);
-}
-
-body.light-mode .chapter-button.active{
-    color:var(--wine);
-}
-
-body.light-mode .control-button{
-    color:var(--wine);
-    border-color:rgba(91,24,40,.2);
-}
-
 /* ANIMACIONES */
 
 @keyframes heartBeat{
@@ -947,22 +821,6 @@ body.light-mode .control-button{
     to{transform:rotate(0deg)}
 }
 
-@keyframes shineMove{
-    0%,100%{
-        opacity:.35;
-        transform:rotate(-45deg) translate(0,0)
-    }
-    50%{
-        opacity:.8;
-        transform:rotate(-45deg) translate(8px,-5px)
-    }
-}
-
-@keyframes particleFloat{
-    0%,100%{transform:translateY(0);opacity:.3}
-    50%{transform:translateY(-12px);opacity:1}
-}
-
 @keyframes starsMove{
     from{transform:translate(0,0)}
     to{transform:translate(35px,35px)}
@@ -970,11 +828,6 @@ body.light-mode .control-button{
 
 @keyframes chapterIn{
     from{opacity:0;transform:translateY(18px)}
-    to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes captionIn{
-    from{opacity:0;transform:translateY(12px)}
     to{opacity:1;transform:translateY(0)}
 }
 
@@ -989,8 +842,6 @@ body.light-mode .control-button{
         opacity:0;
     }
 }
-
-/* MÓVIL */
 
 @media(max-width:650px){
 
@@ -1027,89 +878,44 @@ body.light-mode .control-button{
         height:130px;
     }
 
-    .heart-core,
+    .heart-core{
+        width:72px;
+        height:72px;
+    }
+
     .heart-core::before,
     .heart-core::after{
-        width:75px;
-        height:75px;
+        width:72px;
+        height:72px;
     }
 
     .heart-core::before{
-        top:-37.5px;
+        top:-36px;
     }
 
     .heart-core::after{
-        left:37.5px;
-    }
-
-    .heart-highlight{
-        top:24px;
-        left:25px;
-    }
-
-    .page{
-        width:94%;
-        padding-top:25px;
-    }
-
-    .main-card{
-        border-radius:22px;
-    }
-
-    .header{
-        padding:45px 20px 30px;
+        left:36px;
     }
 
     .chapter{
-        padding:40px 7%;
-    }
-
-    .photo-frame{
-        aspect-ratio:4/3;
-        border-radius:18px;
-    }
-
-    .carousel-arrow{
-        width:42px;
-        height:42px;
-    }
-
-    .carousel-arrow.left{
-        left:10px;
-    }
-
-    .carousel-arrow.right{
-        right:10px;
-    }
-
-    .photo-caption{
-        padding:25px 15px 10px;
-    }
-
-    .photo-caption p{
-        font-size:27px;
+        padding:45px 6%;
     }
 
     .letter-card{
         padding:45px 25px;
     }
 
-    .letter-card h2{
-        font-size:40px;
-    }
-
     .letter-card p{
         font-size:19px;
     }
 }
-
 </style>
 </head>
 
 <body class="locked">
 
 <!-- =========================
-     CONTADOR 10 SEGUNDOS
+     CONTADOR
 ========================= -->
 
 <section id="countdownScreen">
@@ -1117,56 +923,59 @@ body.light-mode .control-button{
     <div class="countdown-content" id="countdownContent">
 
         <div class="countdown-kicker">
-            Una pequeña sorpresa
+            Algo especial está por comenzar
         </div>
 
         <h1 class="countdown-title">
-            Algo especial está por comenzar...
+            Nuestra historia
         </h1>
 
         <p class="countdown-subtitle">
-            Espera unos segundos. ❤️
+            Un pequeño recuerdo de todo lo que hemos vivido
+            juntos. ❤️
         </p>
 
         <div class="countdown-clock">
 
             <div class="time-box">
                 <span class="time-number" id="days">00</span>
-                <span class="time-label">días</span>
+                <span class="time-label">Días</span>
             </div>
 
-            <div class="time-separator">:</div>
+            <span class="time-separator">:</span>
 
             <div class="time-box">
                 <span class="time-number" id="hours">00</span>
-                <span class="time-label">horas</span>
+                <span class="time-label">Horas</span>
             </div>
 
-            <div class="time-separator">:</div>
+            <span class="time-separator">:</span>
 
             <div class="time-box">
                 <span class="time-number" id="minutes">00</span>
-                <span class="time-label">minutos</span>
+                <span class="time-label">Minutos</span>
             </div>
 
-            <div class="time-separator">:</div>
+            <span class="time-separator">:</span>
 
             <div class="time-box">
                 <span class="time-number" id="seconds">10</span>
-                <span class="time-label">segundos</span>
+                <span class="time-label">Segundos</span>
             </div>
 
         </div>
 
         <div class="countdown-date">
-            Con amor, para ti
+            29 · 03 · 2026
         </div>
 
     </div>
 
     <div class="unlock-message" id="unlockMessage">
 
-        <div class="unlock-heart">♥</div>
+        <div class="unlock-heart">
+            ♥
+        </div>
 
         <div class="unlock-title">
             Ya llegó el momento...
@@ -1188,9 +997,12 @@ body.light-mode .control-button{
         <div class="hero-heart">
 
             <div class="heart-aura"></div>
+
             <div class="heart-ring"></div>
             <div class="heart-ring second"></div>
+
             <div class="heart-core"></div>
+
             <div class="heart-highlight"></div>
 
             <span class="heart-particle p1"></span>
@@ -1201,12 +1013,12 @@ body.light-mode .control-button{
         </div>
 
         <div class="cover-small">
-            Nuestra historia
+            nuestra historia
         </div>
 
-        <h1 class="cover-title">
+        <div class="cover-title">
             Seis meses
-        </h1>
+        </div>
 
         <div class="cover-subtitle">
             infinitos recuerdos...
@@ -1231,223 +1043,238 @@ body.light-mode .control-button{
 
 <main class="page">
 
-<div class="main-card">
+    <div class="main-card">
 
-<header class="header">
+        <header class="header">
 
-    <div class="header-kicker">
-        29 · 03 · 2026
-    </div>
-
-    <h1>
-        ¡Felices 6 meses, mi amor! ❤️
-    </h1>
-
-    <p>
-        Seis meses pueden parecer solamente una fecha,
-        pero para mí son cientos de momentos,
-        sonrisas, lugares y recuerdos que quiero
-        guardar siempre contigo.
-    </p>
-
-    <div class="header-controls">
-
-        <button class="control-button" id="themeButton">
-            🌙 Tema
-        </button>
-
-    </div>
-
-</header>
-
-
-<nav class="chapter-nav">
-
-    <button class="chapter-button active" data-chapter="chapter1">
-        Nuestra historia
-    </button>
-
-    <button class="chapter-button" data-chapter="chapter2">
-        Tú y yo
-    </button>
-
-    <button class="chapter-button" data-chapter="chapter3">
-        Mi porqué
-    </button>
-
-</nav>
-
-
-<!-- CAPÍTULO 1 -->
-
-<section class="chapter active" id="chapter1">
-
-    <div class="chapter-number">
-        Capítulo 01
-    </div>
-
-    <h2>
-        Nuestra historia
-    </h2>
-
-    <p class="chapter-intro">
-        Todo comenzó el 29 de marzo de 2026.
-        Desde entonces, cada día contigo ha
-        ido formando una historia que quiero
-        seguir escribiendo.
-    </p>
-
-    <div class="days-counter">
-
-        <span class="days-number" id="daysTogether">
-            0
-        </span>
-
-        <span class="days-label">
-            días juntos
-        </span>
-
-    </div>
-
-    <div class="music-section">
-
-        <div class="music-title">
-            Una canción para nosotros
-        </div>
-
-        <p class="chapter-intro">
-            Porque algunas canciones consiguen
-            decir cosas que a veces las palabras
-            no pueden.
-        </p>
-
-        <div class="youtube-wrapper">
-
-            <iframe
-                id="youtubePlayer"
-                src="https://www.youtube.com/embed/lY5V4hSLWY8?enablejsapi=1&rel=0&playsinline=1"
-                title="Bruno Mars - Risk It All"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CAPÍTULO 2 -->
-
-<section class="chapter" id="chapter2">
-
-    <div class="chapter-number">
-        Capítulo 02
-    </div>
-
-    <h2>
-        Tú y yo
-    </h2>
-
-    <p class="chapter-intro">
-        Algunos momentos duran solamente unos
-        segundos, pero se quedan para siempre.
-    </p>
-
-    <div class="carousel">
-
-        <div class="photo-frame" id="photoFrame">
-
-            <img
-                id="photo"
-                src="foto1.jpg"
-                alt="Nuestro recuerdo 1"
-                loading="eager"
-            >
-
-            <div class="photo-error" id="photoError">
-                No pudimos cargar esta fotografía. ❤️
+            <div class="header-kicker">
+                una pequeña sorpresa
             </div>
 
-        </div>
+            <h1>
+                ¡Felices 6 meses, mi amor! ❤️
+            </h1>
 
-        <button
-            class="carousel-arrow left"
-            id="prevPhoto"
-            aria-label="Fotografía anterior">
-            ‹
-        </button>
-
-        <button
-            class="carousel-arrow right"
-            id="nextPhoto"
-            aria-label="Fotografía siguiente">
-            ›
-        </button>
-
-        <div class="photo-caption">
-
-            <div class="caption-line"></div>
-
-            <p id="photoCaption">
-                Y sin darnos cuenta, comenzamos
-                a escribir nuestra historia. ❤️
+            <p>
+                Seis meses pueden parecer poco,
+                pero contigo han significado muchísimo.
+                Esta es una pequeña parte de nuestra historia.
             </p>
 
-            <div class="photo-counter" id="photoCounter">
-                01 / 06
+            <div class="header-controls">
+
+                <button class="control-button" id="themeButton">
+                    🌙 Tema
+                </button>
+
             </div>
 
-        </div>
+        </header>
+
+
+        <!-- NAVEGACIÓN -->
+
+        <nav class="chapter-nav">
+
+            <button
+                class="chapter-button active"
+                data-chapter="chapter1">
+                Nuestra historia
+            </button>
+
+            <button
+                class="chapter-button"
+                data-chapter="chapter2">
+                Tú y yo
+            </button>
+
+            <button
+                class="chapter-button"
+                data-chapter="chapter3">
+                Mi porqué
+            </button>
+
+        </nav>
+
+
+        <!-- CAPÍTULO 1 -->
+
+        <section class="chapter active" id="chapter1">
+
+            <div class="chapter-number">
+                Capítulo 01
+            </div>
+
+            <h2>
+                Nuestra historia
+            </h2>
+
+            <p class="chapter-intro">
+                Desde aquel 29 de marzo de 2026,
+                cada día se ha convertido en una parte
+                de algo que quiero seguir construyendo contigo.
+            </p>
+
+            <div class="days-counter">
+
+                <span
+                    class="days-number"
+                    id="daysTogether">
+                    0
+                </span>
+
+                <span class="days-label">
+                    días compartiendo nuestra historia
+                </span>
+
+            </div>
+
+
+            <div class="music-section">
+
+                <div class="music-title">
+                    Una canción para nosotros
+                </div>
+
+                <p class="chapter-intro">
+                    Porque algunas canciones consiguen decir
+                    cosas que a veces nosotros no sabemos explicar.
+                </p>
+
+                <div class="youtube-wrapper">
+
+                    <iframe
+                        id="youtubePlayer"
+                        src="https://www.youtube.com/embed/lY5V4hSLWY8?enablejsapi=1&rel=0&playsinline=1"
+                        title="Bruno Mars - Risk It All"
+                        allow="autoplay; encrypted-media; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CAPÍTULO 2 -->
+
+        <section class="chapter" id="chapter2">
+
+            <div class="chapter-number">
+                Capítulo 02
+            </div>
+
+            <h2>
+                Tú y yo
+            </h2>
+
+            <p class="chapter-intro">
+                Algunos momentos pasan rápido,
+                pero cuando se viven con la persona correcta,
+                terminan quedándose para siempre.
+            </p>
+
+
+            <div class="carousel">
+
+                <div class="photo-frame" id="photoFrame">
+
+                    <img
+                        id="photo"
+                        src="foto1.jpg"
+                        alt="Nuestro recuerdo 1">
+
+                    <div
+                        class="photo-error"
+                        id="photoError">
+                        No se pudo cargar esta fotografía.
+                    </div>
+
+                    <button
+                        class="carousel-arrow left"
+                        id="prevPhoto">
+                        ‹
+                    </button>
+
+                    <button
+                        class="carousel-arrow right"
+                        id="nextPhoto">
+                        ›
+                    </button>
+
+                </div>
+
+
+                <div class="photo-caption">
+
+                    <div class="caption-line"></div>
+
+                    <p id="photoCaption"></p>
+
+                    <div
+                        class="photo-counter"
+                        id="photoCounter">
+                        01 / 06
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CAPÍTULO 3 -->
+
+        <section class="chapter" id="chapter3">
+
+            <div class="chapter-number">
+                Capítulo 03
+            </div>
+
+            <h2>
+                Mi porqué
+            </h2>
+
+            <p class="chapter-intro">
+                Podría darte muchísimas razones.
+                Estas son solamente algunas de ellas.
+            </p>
+
+
+            <div class="reason-box" id="reasonBox">
+
+                <div
+                    class="reason-number"
+                    id="reasonNumber">
+                    Razón 01
+                </div>
+
+                <div
+                    class="reason-text"
+                    id="reasonText">
+                    Porque contigo puedo ser completamente yo.
+                </div>
+
+                <div class="reason-hint">
+                    Toca para descubrir otra razón
+                </div>
+
+            </div>
+
+
+            <button
+                class="primary-button letter-button"
+                id="letterButton">
+                Leer mi carta para ti 💌
+            </button>
+
+        </section>
 
     </div>
 
-</section>
-
-
-<!-- CAPÍTULO 3 -->
-
-<section class="chapter" id="chapter3">
-
-    <div class="chapter-number">
-        Capítulo 03
-    </div>
-
-    <h2>
-        Mi porqué
-    </h2>
-
-    <p class="chapter-intro">
-        Hay muchas razones por las que te amo.
-        Estas son solamente algunas.
-    </p>
-
-    <div class="reason-box" id="reasonBox">
-
-        <div class="reason-number" id="reasonNumber">
-            Razón 01
-        </div>
-
-        <div class="reason-text" id="reasonText">
-            Porque contigo puedo ser completamente yo.
-        </div>
-
-        <div class="reason-hint">
-            Toca para descubrir otra razón ❤️
-        </div>
-
-    </div>
-
-    <button
-        class="primary-button letter-button"
-        id="letterButton">
-        Leer mi carta para ti 💌
-    </button>
-
-</section>
-
-</div>
 </main>
 
 
@@ -1461,13 +1288,12 @@ body.light-mode .control-button{
 
         <button
             class="letter-close"
-            id="letterClose"
-            aria-label="Cerrar carta">
+            id="letterClose">
             ×
         </button>
 
         <div class="letter-kicker">
-            Para ti
+            una carta para ti
         </div>
 
         <h2>
@@ -1475,25 +1301,23 @@ body.light-mode .control-button{
         </h2>
 
         <p>
-            Hoy no es un día cualquiera, es algo muy
-            especial y es un momento que vengo esperando
-            hace mucho.
+            Hoy no es un día cualquiera, es algo muy especial
+            y es un momento que vengo esperando hace mucho.
         </p>
 
         <p>
-            No hay un solo día en el que no estés en mi
-            mente, solo espero el momento de poder tenerte
-            a mi lado, estar juntos y olvidarnos de todo
-            y que solo seamos tú y yo.
+            No hay un solo día en el que no estés en mi mente,
+            solo espero el momento de poder tenerte a mi lado,
+            estar juntos y olvidarnos de todo y que solo seamos
+            tú y yo.
         </p>
 
         <p>
-            Gracias por todos estos días que hemos pasado
-            juntos, por las salidas, las caminatas en la
-            noche, por todos los lugares que hemos
-            visitado, por cada sonrisa que hemos tenido,
-            cada anécdota y por ser mi lugar seguro en
-            el mundo.
+            Gracias por todos estos días que hemos pasado juntos,
+            por las salidas, las caminatas en la noche,
+            por todos los lugares que hemos visitado,
+            por cada sonrisa que hemos tenido, cada anécdota
+            y por ser mi lugar seguro en el mundo.
         </p>
 
         <p>
@@ -1503,11 +1327,10 @@ body.light-mode .control-button{
         </p>
 
         <p>
-            No sabes lo feliz que me haces y de todo lo
-            que he llegado a sentir por ti; no deseo a
-            nadie más a mi lado, solo te veo a ti cada día,
-            en mis planes, y en verdad deseo un futuro
-            contigo.
+            No sabes lo feliz que me haces y de todo lo que
+            he llegado a sentir por ti; no deseo a nadie más
+            a mi lado, solo te veo a ti cada día, en mis planes,
+            y en verdad deseo un futuro contigo.
         </p>
 
         <p>
@@ -1516,9 +1339,9 @@ body.light-mode .control-button{
         </p>
 
         <p>
-            Espero esta pequeña sorpresa te guste porque
-            es un pequeño recuerdo de tanto que hemos
-            vivido y aún nos queda mucho más...
+            Espero esta pequeña sorpresa te guste porque es
+            un pequeño recuerdo de tanto que hemos vivido
+            y aún nos queda mucho más...
         </p>
 
         <div class="letter-signature">
@@ -1532,14 +1355,14 @@ body.light-mode .control-button{
 
 <script>
 
-/* =====================================================
-   CONTADOR DE PRUEBA — 10 SEGUNDOS
-===================================================== */
+/* =========================
+   CONTADOR DE PRUEBA
+   10 SEGUNDOS
+========================= */
 
 const TEST_DURATION = 10;
 
 let remainingSeconds = TEST_DURATION;
-let countdownTimer = null;
 
 const countdownScreen =
     document.getElementById("countdownScreen");
@@ -1577,6 +1400,7 @@ function updateCountdown(){
     const seconds =
         remainingSeconds % 60;
 
+
     daysElement.textContent =
         String(days).padStart(2,"0");
 
@@ -1605,11 +1429,6 @@ function unlockPage(){
 
     clearInterval(countdownTimer);
 
-    daysElement.textContent = "00";
-    hoursElement.textContent = "00";
-    minutesElement.textContent = "00";
-    secondsElement.textContent = "00";
-
     countdownContent.classList.add("fade");
     unlockMessage.classList.add("show");
 
@@ -1625,13 +1444,13 @@ function unlockPage(){
 
 updateCountdown();
 
-countdownTimer =
+const countdownTimer =
     setInterval(updateCountdown,1000);
 
 
-/* =====================================================
+/* =========================
    YOUTUBE
-===================================================== */
+========================= */
 
 let youtubePlayer = null;
 let youtubeReady = false;
@@ -1644,33 +1463,22 @@ window.onYouTubeIframeAPIReady = function(){
         new YT.Player(
             "youtubePlayer",
             {
-
                 events:{
 
                     onReady:function(){
 
                         youtubeReady = true;
 
-                        /*
-                         * Si Anderson ya pulsó el botón
-                         * mientras YouTube estaba cargando,
-                         * intentamos reproducir ahora.
-                         */
-
                         if(startExperience){
 
                             try{
-
                                 youtubePlayer.unMute();
                                 youtubePlayer.playVideo();
-
                             }catch(error){
-
                                 console.log(
                                     "YouTube no pudo iniciar:",
                                     error
                                 );
-
                             }
 
                         }
@@ -1686,7 +1494,6 @@ window.onYouTubeIframeAPIReady = function(){
                     }
 
                 }
-
             }
         );
 };
@@ -1701,9 +1508,9 @@ youtubeScript.src =
 document.head.appendChild(youtubeScript);
 
 
-/* =====================================================
-   COMENZAR HISTORIA + MÚSICA
-===================================================== */
+/* =========================
+   COMENZAR HISTORIA
+========================= */
 
 const startButton =
     document.getElementById("startButton");
@@ -1718,28 +1525,19 @@ startButton.addEventListener(
 
         startExperience = true;
 
-        /*
-         * La interacción del usuario
-         * es la que dispara la música.
-         */
-
         if(
             youtubeReady &&
             youtubePlayer
         ){
 
             try{
-
                 youtubePlayer.unMute();
                 youtubePlayer.playVideo();
-
             }catch(error){
-
                 console.log(
                     "YouTube no pudo iniciar:",
                     error
                 );
-
             }
 
         }
@@ -1750,9 +1548,9 @@ startButton.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================
    NAVEGACIÓN
-===================================================== */
+========================= */
 
 const chapterButtons =
     document.querySelectorAll(".chapter-button");
@@ -1771,15 +1569,11 @@ chapterButtons.forEach(button => {
                 button.dataset.chapter;
 
             chapterButtons.forEach(item => {
-
                 item.classList.remove("active");
-
             });
 
             chapters.forEach(chapter => {
-
                 chapter.classList.remove("active");
-
             });
 
             button.classList.add("active");
@@ -1794,9 +1588,9 @@ chapterButtons.forEach(button => {
 });
 
 
-/* =====================================================
+/* =========================
    DÍAS JUNTOS
-===================================================== */
+========================= */
 
 const startDate =
     new Date(2026,2,29,0,0,0);
@@ -1826,9 +1620,9 @@ function updateDaysTogether(){
 updateDaysTogether();
 
 
-/* =====================================================
+/* =========================
    FOTOS
-===================================================== */
+========================= */
 
 const photos = [
     "foto1.jpg",
@@ -1868,9 +1662,6 @@ const photoCaption =
 const photoCounter =
     document.getElementById("photoCounter");
 
-const photoFrame =
-    document.getElementById("photoFrame");
-
 const photoError =
     document.getElementById("photoError");
 
@@ -1884,25 +1675,18 @@ function showPhoto(index){
     photoError.style.display = "none";
     photo.style.display = "block";
 
-    photoFrame.classList.add("changing");
+    photo.src =
+        photos[currentPhoto];
 
-    setTimeout(() => {
+    photo.alt =
+        `Nuestro recuerdo ${currentPhoto + 1}`;
 
-        photo.src =
-            photos[currentPhoto];
+    photoCaption.textContent =
+        captions[currentPhoto];
 
-        photo.alt =
-            `Nuestro recuerdo ${currentPhoto + 1}`;
+    photoCounter.textContent =
+        `${String(currentPhoto + 1).padStart(2,"0")} / 06`;
 
-        photoCaption.textContent =
-            captions[currentPhoto];
-
-        photoCounter.textContent =
-            `${String(currentPhoto + 1).padStart(2,"0")} / 06`;
-
-        photoFrame.classList.remove("changing");
-
-    },180);
 }
 
 
@@ -1944,78 +1728,79 @@ let touchStartX = 0;
 let touchStartY = 0;
 
 
-photoFrame.addEventListener(
-    "touchstart",
-    event => {
+document
+    .getElementById("photoFrame")
+    .addEventListener(
+        "touchstart",
+        event => {
 
-        touchStartX =
-            event.touches[0].clientX;
+            touchStartX =
+                event.touches[0].clientX;
 
-        touchStartY =
-            event.touches[0].clientY;
+            touchStartY =
+                event.touches[0].clientY;
 
-    },
-    {passive:true}
-);
-
-
-photoFrame.addEventListener(
-    "touchend",
-    event => {
-
-        const touchEndX =
-            event.changedTouches[0].clientX;
-
-        const touchEndY =
-            event.changedTouches[0].clientY;
-
-        const differenceX =
-            touchEndX - touchStartX;
-
-        const differenceY =
-            touchEndY - touchStartY;
-
-        if(Math.abs(differenceX) < 45)
-            return;
-
-        if(Math.abs(differenceX) <
-           Math.abs(differenceY))
-            return;
-
-        if(differenceX < 0){
-
-            showPhoto(currentPhoto + 1);
-
-        }else{
-
-            showPhoto(currentPhoto - 1);
-
-        }
-
-    },
-    {passive:true}
-);
+        },
+        {passive:true}
+    );
 
 
-/* Primera foto */
+document
+    .getElementById("photoFrame")
+    .addEventListener(
+        "touchend",
+        event => {
+
+            const touchEndX =
+                event.changedTouches[0].clientX;
+
+            const touchEndY =
+                event.changedTouches[0].clientY;
+
+            const differenceX =
+                touchEndX - touchStartX;
+
+            const differenceY =
+                touchEndY - touchStartY;
+
+            if(Math.abs(differenceX) < 45)
+                return;
+
+            if(
+                Math.abs(differenceX) <
+                Math.abs(differenceY)
+            )
+                return;
+
+            if(differenceX < 0){
+                showPhoto(currentPhoto + 1);
+            }else{
+                showPhoto(currentPhoto - 1);
+            }
+
+        },
+        {passive:true}
+    );
+
 
 showPhoto(0);
 
 
-/* Precarga */
+/* PRECARGA */
 
 photos.forEach(source => {
 
-    const image = new Image();
+    const image =
+        new Image();
 
     image.src = source;
 
 });
 
 
-/* =====================================================
+/* =========================
    RAZONES
-===================================================== */
+========================= */
 
 const reasons = [
 
@@ -2047,36 +1832,27 @@ const reasonText =
     document.getElementById("reasonText");
 
 
-function showReason(index){
-
-    currentReason =
-        (index + reasons.length) %
-        reasons.length;
-
-    reasonNumber.textContent =
-        `Razón ${String(currentReason + 1).padStart(2,"0")}`;
-
-    reasonText.textContent =
-        reasons[currentReason];
-
-    reasonText.style.animation = "none";
-
-    void reasonText.offsetWidth;
-
-    reasonText.style.animation =
-        "captionIn .5s ease";
-}
-
-
 reasonBox.addEventListener(
     "click",
-    () => showReason(currentReason + 1)
+    () => {
+
+        currentReason =
+            (currentReason + 1) %
+            reasons.length;
+
+        reasonNumber.textContent =
+            `Razón ${String(currentReason + 1).padStart(2,"0")}`;
+
+        reasonText.textContent =
+            reasons[currentReason];
+
+    }
 );
 
 
-/* =====================================================
+/* =========================
    CARTA
-===================================================== */
+========================= */
 
 const letterButton =
     document.getElementById("letterButton");
@@ -2093,7 +1869,6 @@ letterButton.addEventListener(
     () => {
 
         letterModal.classList.add("open");
-
         document.body.style.overflow = "hidden";
 
     }
@@ -2111,9 +1886,7 @@ letterModal.addEventListener(
     event => {
 
         if(event.target === letterModal){
-
             closeLetter();
-
         }
 
     }
@@ -2123,7 +1896,6 @@ letterModal.addEventListener(
 function closeLetter(){
 
     letterModal.classList.remove("open");
-
     document.body.style.overflow = "";
 
 }
@@ -2146,9 +1918,9 @@ document.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================
    TEMA
-===================================================== */
+========================= */
 
 const themeButton =
     document.getElementById("themeButton");
@@ -2160,25 +1932,18 @@ themeButton.addEventListener(
 
         document.body.classList.toggle("light-mode");
 
-        if(
+        themeButton.textContent =
             document.body.classList.contains("light-mode")
-        ){
-
-            themeButton.textContent = "☀️ Tema";
-
-        }else{
-
-            themeButton.textContent = "🌙 Tema";
-
-        }
+            ? "☀️ Tema"
+            : "🌙 Tema";
 
     }
 );
 
 
-/* =====================================================
+/* =========================
    CORAZONES
-===================================================== */
+========================= */
 
 function createHeart(){
 
@@ -2186,7 +1951,6 @@ function createHeart(){
         document.createElement("div");
 
     heart.className = "heart-bg";
-
     heart.textContent = "♥";
 
     heart.style.left =
@@ -2204,15 +1968,16 @@ function createHeart(){
         () => heart.remove(),
         17000
     );
+
 }
 
 
 setInterval(createHeart,1200);
 
 
-/* =====================================================
+/* =========================
    PWA
-===================================================== */
+========================= */
 
 if("serviceWorker" in navigator){
 
@@ -2252,294 +2017,3 @@ if("serviceWorker" in navigator){
 
 </body>
 </html>
-
----
-
-2. "manifest.json"
-
-{
-  "name": "Nuestra Historia ❤️",
-  "short_name": "6 Meses ❤️",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#090306",
-  "theme_color": "#5b1828",
-  "orientation": "portrait",
-  "description": "Un pequeño recuerdo de nuestra historia.",
-  "icons": [
-    {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ]
-}
-
----
-
-3. "sw.js"
-
-const CACHE_NAME = "nuestra-historia-v4";
-
-const FILES = [
-    "./",
-    "./index.html",
-    "./manifest.json",
-    "./icon.svg",
-
-    "./foto1.jpg",
-    "./foto2.jpg",
-    "./foto3.jpg",
-    "./foto4.jpg",
-    "./foto5.jpg",
-    "./foto6.jpg"
-];
-
-
-self.addEventListener("install", event => {
-
-    event.waitUntil(
-
-        caches
-            .open(CACHE_NAME)
-            .then(cache => cache.addAll(FILES))
-
-    );
-
-    self.skipWaiting();
-
-});
-
-
-self.addEventListener("activate", event => {
-
-    event.waitUntil(
-
-        caches
-            .keys()
-            .then(keys =>
-
-                Promise.all(
-
-                    keys
-                        .filter(key =>
-                            key !== CACHE_NAME
-                        )
-                        .map(key =>
-                            caches.delete(key)
-                        )
-
-                )
-
-            )
-
-    );
-
-    self.clients.claim();
-
-});
-
-
-self.addEventListener("fetch", event => {
-
-    /*
-     * Solo usamos la caché para archivos
-     * locales de nuestra aplicación.
-     *
-     * YouTube y Google Fonts continúan
-     * funcionando desde Internet.
-     */
-
-    const url =
-        new URL(event.request.url);
-
-    if(
-        url.origin !== location.origin
-    ){
-
-        return;
-    }
-
-
-    event.respondWith(
-
-        caches
-            .match(event.request)
-            .then(cached => {
-
-                return (
-                    cached ||
-                    fetch(event.request)
-                );
-
-            })
-
-    );
-
-});
-
----
-
-4. "icon.svg"
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-
-<defs>
-
-    <linearGradient
-        id="bg"
-        x1="0"
-        y1="0"
-        x2="1"
-        y2="1">
-
-        <stop
-            offset="0%"
-            stop-color="#12050a"/>
-
-        <stop
-            offset="55%"
-            stop-color="#5b1828"/>
-
-        <stop
-            offset="100%"
-            stop-color="#210914"/>
-
-    </linearGradient>
-
-
-    <linearGradient
-        id="heart"
-        x1="0"
-        y1="0"
-        x2="1"
-        y2="1">
-
-        <stop
-            offset="0%"
-            stop-color="#f1b0bc"/>
-
-        <stop
-            offset="45%"
-            stop-color="#c85b77"/>
-
-        <stop
-            offset="100%"
-            stop-color="#711c3a"/>
-
-    </linearGradient>
-
-
-    <filter
-        id="glow"
-        x="-50%"
-        y="-50%"
-        width="200%"
-        height="200%">
-
-        <feGaussianBlur
-            stdDeviation="14"
-            result="blur"/>
-
-        <feMerge>
-
-            <feMergeNode in="blur"/>
-            <feMergeNode in="SourceGraphic"/>
-
-        </feMerge>
-
-    </filter>
-
-</defs>
-
-
-<rect
-    width="512"
-    height="512"
-    rx="110"
-    fill="url(#bg)"/>
-
-
-<circle
-    cx="256"
-    cy="256"
-    r="175"
-    fill="none"
-    stroke="#c9a35b"
-    stroke-opacity=".35"
-    stroke-width="3"/>
-
-
-<circle
-    cx="256"
-    cy="256"
-    r="145"
-    fill="none"
-    stroke="#e6cb91"
-    stroke-opacity=".18"
-    stroke-width="2"/>
-
-
-<path
-    d="
-        M256 385
-        C238 369 139 292 139 205
-        C139 153 177 120 220 120
-        C239 120 251 130 256 146
-        C261 130 273 120 292 120
-        C335 120 373 153 373 205
-        C373 292 274 369 256 385Z
-    "
-    fill="url(#heart)"
-    filter="url(#glow)"/>
-
-
-<ellipse
-    cx="215"
-    cy="185"
-    rx="34"
-    ry="16"
-    fill="#ffffff"
-    opacity=".28"
-    transform="rotate(-25 215 185)"/>
-
-
-<circle
-    cx="256"
-    cy="72"
-    r="5"
-    fill="#e6cb91"/>
-
-</svg>
-
-📁 La carpeta final
-
-Debe quedar exactamente así:
-
-aniversario/
-│
-├── index.html
-├── manifest.json
-├── sw.js
-├── icon.svg
-│
-├── foto1.jpg
-├── foto2.jpg
-├── foto3.jpg
-├── foto4.jpg
-├── foto5.jpg
-└── foto6.jpg
-
-⚠️ Un último detalle importante
-
-Para que realmente aparezca como aplicación instalable, abrir "index.html" con doble clic no es suficiente. Necesitamos servirla mediante HTTPS. Cuando la carpeta esté lista, el siguiente paso será publicarla, por ejemplo con GitHub Pages o Netlify.
-
-Una vez publicada, podremos instalarla en el teléfono y comprobarla como aplicación real antes de poner la fecha definitiva.
-
-Y por ahora queda deliberadamente:
-
-10 segundos → portada → botón → canción → experiencia. ❤️
-
-No activamos todavía el contador real del aniversario.
