@@ -7,26 +7,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #e11d48;
-            --bg-gradient: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fce7f3 100%);
-            --card-bg: #ffffff;
+            --primary: #f43f5e;
+            --primary-hover: #e11d48;
+            --bg-gradient: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fbcfe8 100%);
+            --card-bg: rgba(255, 255, 255, 0.85);
             --text-main: #1f2937;
-            --text-muted: #4b5563;
-            --border-color: rgba(244, 114, 182, 0.25);
-            --shadow: 0 20px 40px -15px rgba(225, 29, 72, 0.15);
+            --text-muted: #6b7280;
+            --border-color: rgba(244, 114, 182, 0.3);
+            --shadow: 0 20px 40px -15px rgba(225, 29, 72, 0.18);
+            --glass-blur: blur(12px);
         }
 
         [data-theme="dark"] {
-            --primary: #f43f5e;
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #2c0b1a 100%);
-            --card-bg: #1e293b;
+            --primary: #fb7185;
+            --primary-hover: #f43f5e;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #310d21 100%);
+            --card-bg: rgba(30, 41, 59, 0.75);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border-color: rgba(244, 114, 182, 0.15);
-            --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            --border-color: rgba(244, 114, 182, 0.2);
+            --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+            --glass-blur: blur(16px);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s ease, color 0.3s ease; }
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease; }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -41,11 +45,11 @@
         }
 
         .hearts-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-        .floating-heart { position: absolute; color: var(--primary); opacity: 0.2; animation: floatUp 7s linear infinite; }
+        .floating-heart { position: absolute; color: var(--primary); opacity: 0.25; animation: floatUp 7s linear infinite; }
 
         @keyframes floatUp {
             0% { transform: translateY(110vh) rotate(0deg) scale(0.5); opacity: 0; }
-            50% { opacity: 0.4; }
+            50% { opacity: 0.5; }
             100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
         }
 
@@ -53,70 +57,138 @@
             max-width: 420px;
             width: 100%;
             background: var(--card-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
             border: 1px solid var(--border-color);
-            padding: 28px 22px;
-            border-radius: 30px;
+            padding: 30px 24px;
+            border-radius: 32px;
             box-shadow: var(--shadow);
             text-align: center;
             position: relative;
             z-index: 1;
-            animation: fadeIn 0.8s ease-out;
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(24px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-        .top-actions { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 6px; }
+        .top-actions { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 8px; }
         .icon-btn {
             background: var(--border-color); border: none; color: var(--text-main);
-            width: 34px; height: 34px; border-radius: 50%; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+            width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+            backdrop-filter: blur(4px);
         }
-        .icon-btn:hover { background: var(--primary); color: white; transform: scale(1.05); }
+        .icon-btn:hover { background: var(--primary); color: white; transform: scale(1.1); }
 
         .heart-main {
-            width: 50px; height: 50px; margin: 0 auto 10px;
+            width: 54px; height: 54px; margin: 0 auto 12px;
             fill: var(--primary);
-            animation: pulse 1.5s infinite;
+            filter: drop-shadow(0 4px 10px rgba(244, 63, 94, 0.3));
+            animation: pulse 1.8s infinite ease-in-out;
         }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
 
-        h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 700; margin-bottom: 6px; color: var(--primary); }
-        .subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; margin-bottom: 20px; opacity: 0.9; font-weight: 600; }
+        h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.1rem; font-weight: 700; margin-bottom: 4px; color: var(--primary); letter-spacing: 0.5px; }
+        .subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; margin-bottom: 22px; opacity: 0.9; font-weight: 600; color: var(--text-muted); }
 
-        .chapters-nav { display: flex; justify-content: center; gap: 6px; margin-bottom: 18px; }
-        .chap-dot { font-size: 0.7rem; padding: 6px 10px; border-radius: 20px; background: var(--border-color); color: var(--text-muted); cursor: pointer; font-weight: 600; }
-        .chap-dot.active { background: var(--primary); color: white; }
+        /* NAVEGACIÓN DE CAPÍTULOS ESTILIZADA */
+        .chapters-nav { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; background: rgba(0,0,0,0.03); padding: 4px; border-radius: 20px; border: 1px solid var(--border-color); }
+        [data-theme="dark"] .chapters-nav { background: rgba(255,255,255,0.03); }
+        .chap-dot { font-size: 0.72rem; padding: 7px 12px; border-radius: 16px; background: transparent; color: var(--text-muted); cursor: pointer; font-weight: 600; }
+        .chap-dot.active { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3); }
 
         .chapter-section { display: none; }
-        .chapter-section.active { display: block; animation: fadeIn 0.5s ease; }
+        .chapter-section.active { display: block; animation: fadeIn 0.4s ease; }
 
-        /* CARRUSEL */
-        .carousel-container { background: #ffffff; padding: 10px 10px 22px 10px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); margin-bottom: 16px; position: relative; }
-        .carousel-view { width: 100%; height: 220px; overflow: hidden; border-radius: 8px; position: relative; touch-action: pan-y; background: #e2e8f0; }
+        /* TARJETA DE DÍAS */
+        .days-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+        }
+        [data-theme="dark"] .days-card { background: rgba(15, 23, 42, 0.4); }
+
+        /* CARRUSEL MEJORADO */
+        .carousel-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 10px 22px 10px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 16px;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+        [data-theme="dark"] .carousel-container { background: rgba(30, 41, 59, 0.6); }
+        .carousel-view { width: 100%; height: 230px; overflow: hidden; border-radius: 14px; position: relative; touch-action: pan-y; background: #e2e8f0; }
         .carousel-track { display: flex; width: 300%; height: 100%; }
         .carousel-slide { width: 33.3333%; height: 100%; flex-shrink: 0; }
         .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
-        .nav-btn { position: absolute; top: 44%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; z-index: 5; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; }
-        .prev { left: 14px; } .next { right: 14px; }
-        .dots { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
+        .nav-btn {
+            position: absolute; top: 45%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); color: white; border: none;
+            width: 32px; height: 32px; border-radius: 50%; cursor: pointer; z-index: 5; font-size: 0.85rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .nav-btn:hover { background: var(--primary); }
+        .prev { left: 16px; } .next { right: 16px; }
+        .dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
         .dot { width: 6px; height: 6px; background: #cbd5e1; border-radius: 50%; cursor: pointer; }
-        .dot.active { background: var(--primary); width: 16px; border-radius: 6px; }
+        .dot.active { background: var(--primary); width: 18px; border-radius: 6px; }
 
-        /* RAZONES */
-        .reasons-card { background: var(--border-color); border-radius: 14px; padding: 14px; margin-bottom: 14px; cursor: pointer; border: 1px dashed var(--primary); }
-        .reasons-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
-        .reasons-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--text-main); line-height: 1.4; }
+        /* RAZONES MEJORADAS */
+        .reasons-card {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 18px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            border: 1px dashed var(--primary);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+        }
+        [data-theme="dark"] .reasons-card { background: rgba(15, 23, 42, 0.4); }
+        .reasons-card:hover { transform: translateY(-2px); border-style: solid; }
+        .reasons-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .reasons-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: var(--text-main); line-height: 1.5; }
 
-        .next-chap-btn { background: var(--primary); color: white; border: none; padding: 10px 18px; border-radius: 12px; font-weight: 600; cursor: pointer; font-size: 0.85rem; margin-top: 10px; width: 100%; font-family: 'Montserrat', sans-serif; }
+        .next-chap-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 6px;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 8px 20px rgba(244, 63, 94, 0.3);
+        }
+        .next-chap-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
 
-        /* MODAL */
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        /* MODAL ELEGANTE */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
         .modal.active { opacity: 1; pointer-events: auto; }
-        .modal-content { background: var(--card-bg); width: 90%; max-width: 340px; padding: 24px 20px; border-radius: 24px; position: relative; transform: translateY(20px); transition: transform 0.3s ease; }
+        .modal-content {
+            background: var(--card-bg);
+            backdrop-filter: var(--glass-blur);
+            width: 90%; max-width: 360px;
+            padding: 30px 24px;
+            border-radius: 28px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+        }
         .modal.active .modal-content { transform: translateY(0); }
-        .modal h2 { font-family: 'Cormorant Garamond', serif; color: var(--primary); margin-bottom: 10px; font-size: 1.3rem; }
-        .modal p { line-height: 1.6; font-size: 1.05rem; margin-bottom: 16px; text-align: left; color: var(--text-main); font-family: 'Cormorant Garamond', serif; }
-        .close-btn { background: var(--primary); color: white; border: none; padding: 10px 16px; border-radius: 12px; font-weight: 600; cursor: pointer; width: 100%; font-size: 0.9rem; font-family: 'Montserrat', sans-serif; }
+        .modal h2 { font-family: 'Cormorant Garamond', serif; color: var(--primary); margin-bottom: 12px; font-size: 1.5rem; }
+        .modal p { line-height: 1.6; font-size: 1.1rem; margin-bottom: 20px; text-align: left; color: var(--text-main); font-family: 'Cormorant Garamond', serif; }
+        .close-btn { background: var(--primary); color: white; border: none; padding: 12px 18px; border-radius: 14px; font-weight: 600; cursor: pointer; width: 100%; font-size: 0.9rem; font-family: 'Montserrat', sans-serif; }
+        .close-btn:hover { background: var(--primary-hover); }
     </style>
 </head>
 <body data-theme="light">
@@ -145,11 +217,11 @@
         </div>
 
         <div class="chapter-section active" id="chap1">
-            <div style="background: var(--border-color); padding: 18px; border-radius: 16px; margin-bottom: 14px;">
-                <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--primary); display: block;" id="totalDaysNum">184</span>
-                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Días juntos de puro amor</span>
+            <div class="days-card">
+                <span style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700; color: var(--primary); display: block;" id="totalDaysNum">184</span>
+                <span style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; opacity: 0.8;">Días juntos de puro amor</span>
             </div>
-            <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--text-muted); margin-bottom: 12px;">Gracias por todos estos días a tu lado, amochito de mi vida.</p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--text-muted); margin-bottom: 14px;">Gracias por todos estos días a tu lado, amochito de mi vida.</p>
             <button class="next-chap-btn" onclick="switchChap(2)">Ver nuestros momentos ➔</button>
         </div>
 
@@ -175,7 +247,7 @@
 
         <div class="chapter-section" id="chap3">
             <div class="reasons-card" onclick="changeReason()">
-                <div class="reasons-title" id="reasonHeader">💡 Razón 1 de 6 (Toca la tarjeta)</div>
+                <div class="reasons-title" id="reasonHeader">💡 Mi porqué 1 de 6</div>
                 <div class="reasons-text" id="reasonText">"Por la forma en que tu sonrisa ilumina incluso mis días más grises." 💕</div>
             </div>
             <button class="next-chap-btn" onclick="openLetter()">La carta secreta 💌</button>
