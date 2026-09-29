@@ -180,6 +180,10 @@ button{
     pointer-events:none;
 }
 
+.cover.hidden.removed{
+    display:none;
+}
+
 .cover-content{
     position:relative;
     z-index:3;
@@ -1302,20 +1306,18 @@ showStage(0);
 startButton.addEventListener("click",() => {
 
     cover.classList.add("hidden");
-
     document.body.classList.remove("locked");
 
     if(youtubeReady && youtubePlayer){
-
         try{
             youtubePlayer.playVideo();
         }catch(error){
             console.log("YouTube no pudo iniciar automáticamente.");
         }
-
     }
 
     setTimeout(() => {
+        cover.classList.add("removed");
 
         document
             .querySelector(".main-card")
@@ -1323,9 +1325,32 @@ startButton.addEventListener("click",() => {
                 behavior:"smooth",
                 block:"start"
             });
+    },700);
 
-    },500);
+});
 
+
+function goToStage(index){
+    showStage(index);
+
+    const mainCard = document.querySelector(".main-card");
+
+    if(mainCard){
+        setTimeout(() => {
+            mainCard.scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
+        },80);
+    }
+}
+
+document.querySelectorAll("[data-next]").forEach(button => {
+    button.onclick = () => goToStage(button.dataset.next);
+});
+
+document.querySelectorAll("[data-prev]").forEach(button => {
+    button.onclick = () => goToStage(button.dataset.prev);
 });
 
 
