@@ -617,25 +617,7 @@ main{
    ETAPAS
 ========================= */
 
-const stages = [...document.querySelectorAll(".stage")];
 
-function showStage(index){
-    const target = Math.max(0, Math.min(3, Number(index)));
-    stages.forEach(stage => {
-        stage.classList.toggle("active", Number(stage.dataset.stage) === target);
-    });
-    window.scrollTo({top:0, behavior:"smooth"});
-}
-
-document.querySelectorAll("[data-next]").forEach(button => {
-    button.addEventListener("click", () => showStage(button.dataset.next));
-});
-
-document.querySelectorAll("[data-prev]").forEach(button => {
-    button.addEventListener("click", () => showStage(button.dataset.prev));
-});
-
-showStage(0);
 
 
 /* =========================
@@ -1279,6 +1261,43 @@ const startButton =
 
 const cover =
     document.getElementById("cover");
+
+/* =========================
+   ETAPAS
+========================= */
+
+const stages = [...document.querySelectorAll(".stage")];
+
+function showStage(index){
+    const target = Math.max(0, Math.min(3, Number(index)));
+
+    stages.forEach(stage => {
+        stage.classList.toggle(
+            "active",
+            Number(stage.dataset.stage) === target
+        );
+    });
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+document.querySelectorAll("[data-next]").forEach(button => {
+    button.addEventListener("click",() => {
+        showStage(button.dataset.next);
+    });
+});
+
+document.querySelectorAll("[data-prev]").forEach(button => {
+    button.addEventListener("click",() => {
+        showStage(button.dataset.prev);
+    });
+});
+
+showStage(0);
+
 
 startButton.addEventListener("click",() => {
 
