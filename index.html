@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">6 Meses Juntos ❤️ - Bri</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title id="pageTitle">Sorpresa Especial ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #e11d48;
@@ -29,7 +29,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s ease, color 0.3s ease; }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             background: var(--bg-gradient);
             color: var(--text-main);
             min-height: 100vh;
@@ -37,6 +37,7 @@
             align-items: center;
             justify-content: center;
             padding: 16px;
+            overflow-x: hidden;
         }
 
         .hearts-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
@@ -49,157 +50,84 @@
         }
 
         .container {
-            max-width: 400px;
+            max-width: 420px;
             width: 100%;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 24px 20px 28px 20px;
-            border-radius: 28px;
+            padding: 28px 22px;
+            border-radius: 30px;
             box-shadow: var(--shadow);
             text-align: center;
             position: relative;
             z-index: 1;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        .top-actions { 
-            display: flex; 
-            justify-content: flex-end; 
-            gap: 8px; 
-            margin-bottom: 4px;
-        }
-        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .top-actions { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 6px; }
         .icon-btn {
-            background: var(--border-color);
-            border: none;
-            color: var(--text-main);
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
+            background: var(--border-color); border: none; color: var(--text-main);
+            width: 34px; height: 34px; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
         }
         .icon-btn:hover { background: var(--primary); color: white; transform: scale(1.05); }
 
         .heart-main {
-            width: 45px; height: 45px; margin: 0 auto 8px;
+            width: 50px; height: 50px; margin: 0 auto 10px;
             fill: var(--primary);
             animation: pulse 1.5s infinite;
         }
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
-        h1 { font-family: 'Cinzel', serif; font-size: 1.35rem; letter-spacing: 1px; margin-bottom: 4px; color: var(--primary); }
-        .subtitle { font-size: 0.8rem; margin-bottom: 16px; opacity: 0.8; font-weight: 500; }
+        h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 700; margin-bottom: 6px; color: var(--primary); }
+        .subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; margin-bottom: 20px; opacity: 0.9; font-weight: 600; }
 
-        .carousel-container {
-            background: #ffffff;
-            padding: 10px 10px 22px 10px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-            margin-bottom: 16px;
-            position: relative;
-        }
-        .carousel-view {
-            width: 100%;
-            height: 230px;
-            overflow: hidden;
-            border-radius: 8px;
-            position: relative;
-            touch-action: pan-y;
-            background: #e2e8f0;
-        }
+        /* PANTALLA BLOQUEADA HASTA EL 29 DE SEPTIEMBRE (SIN MENCIONAR LOS 6 MESES) */
+        #lockScreen { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 0; }
+        .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 15px 0 20px 0; width: 100%; }
+        .countdown-box { background: var(--border-color); padding: 10px 2px; border-radius: 12px; }
+        .c-num { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--primary); display: block; }
+        .c-lab { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; opacity: 0.8; }
+        
+        .locked-msg { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.4; }
 
-        .carousel-track {
-            display: flex;
-            width: 300%;
-            height: 100%;
-        }
-        .carousel-slide {
-            width: 33.3333%;
-            height: 100%;
-            flex-shrink: 0;
-        }
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            pointer-events: none;
-        }
+        #mainContent { display: none; }
 
-        .nav-btn {
-            position: absolute; top: 44%; transform: translateY(-50%);
-            background: rgba(0,0,0,0.5); color: white; border: none;
-            width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
-            z-index: 5; font-size: 0.8rem; display: flex; align-items: center; justify-content: center;
-        }
+        .chapters-nav { display: flex; justify-content: center; gap: 6px; margin-bottom: 18px; }
+        .chap-dot { font-size: 0.7rem; padding: 6px 10px; border-radius: 20px; background: var(--border-color); color: var(--text-muted); cursor: pointer; font-weight: 600; }
+        .chap-dot.active { background: var(--primary); color: white; }
+
+        .chapter-section { display: none; }
+        .chapter-section.active { display: block; animation: fadeIn 0.5s ease; }
+
+        /* CARRUSEL */
+        .carousel-container { background: #ffffff; padding: 10px 10px 22px 10px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); margin-bottom: 16px; position: relative; }
+        .carousel-view { width: 100%; height: 220px; overflow: hidden; border-radius: 8px; position: relative; touch-action: pan-y; background: #e2e8f0; }
+        .carousel-track { display: flex; width: 300%; height: 100%; }
+        .carousel-slide { width: 33.3333%; height: 100%; flex-shrink: 0; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+        .nav-btn { position: absolute; top: 44%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; z-index: 5; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; }
         .prev { left: 14px; } .next { right: 14px; }
-
         .dots { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
         .dot { width: 6px; height: 6px; background: #cbd5e1; border-radius: 50%; cursor: pointer; }
         .dot.active { background: var(--primary); width: 16px; border-radius: 6px; }
 
-        .counter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
-        .counter-box {
-            background: var(--border-color);
-            padding: 10px 2px;
-            border-radius: 12px;
-        }
-        .num { font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 700; color: var(--primary); display: block; }
-        .lab { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; opacity: 0.8; }
+        /* RAZONES */
+        .reasons-card { background: var(--border-color); border-radius: 14px; padding: 14px; margin-bottom: 14px; cursor: pointer; border: 1px dashed var(--primary); }
+        .reasons-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+        .reasons-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--text-main); line-height: 1.4; }
 
-        .reasons-card {
-            background: var(--border-color);
-            border-radius: 14px;
-            padding: 12px 14px;
-            margin-bottom: 14px;
-            cursor: pointer;
-            position: relative;
-            border: 1px dashed var(--primary);
-        }
-        .reasons-title {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-        .reasons-text {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 0.85rem;
-            color: var(--text-main);
-            line-height: 1.4;
-        }
+        .next-chap-btn { background: var(--primary); color: white; border: none; padding: 10px 18px; border-radius: 12px; font-weight: 600; cursor: pointer; font-size: 0.85rem; margin-top: 10px; width: 100%; font-family: 'Montserrat', sans-serif; }
 
-        .dedication {
-            font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.85rem;
-            padding-top: 10px; border-top: 1px solid var(--border-color);
-            cursor: pointer; line-height: 1.4; color: var(--text-muted);
-        }
-
-        .modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
-            display: flex; align-items: center; justify-content: center;
-            z-index: 100; opacity: 0; pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
+        /* MODAL */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
         .modal.active { opacity: 1; pointer-events: auto; }
-        .modal-content {
-            background: var(--card-bg); width: 90%; max-width: 340px;
-            padding: 24px 20px; border-radius: 24px; position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-        }
+        .modal-content { background: var(--card-bg); width: 90%; max-width: 340px; padding: 24px 20px; border-radius: 24px; position: relative; transform: translateY(20px); transition: transform 0.3s ease; }
         .modal.active .modal-content { transform: translateY(0); }
-        .modal h2 { font-family: 'Cinzel', serif; color: var(--primary); margin-bottom: 10px; font-size: 1.1rem; }
-        .modal p { line-height: 1.6; font-size: 0.88rem; margin-bottom: 16px; text-align: left; color: var(--text-main); }
-        .close-btn { background: var(--primary); color: white; border: none; padding: 10px 16px; border-radius: 12px; font-weight: 600; cursor: pointer; width: 100%; font-size: 0.9rem; }
+        .modal h2 { font-family: 'Cormorant Garamond', serif; color: var(--primary); margin-bottom: 10px; font-size: 1.3rem; }
+        .modal p { line-height: 1.6; font-size: 1.05rem; margin-bottom: 16px; text-align: left; color: var(--text-main); font-family: 'Cormorant Garamond', serif; }
+        .close-btn { background: var(--primary); color: white; border: none; padding: 10px 16px; border-radius: 12px; font-weight: 600; cursor: pointer; width: 100%; font-size: 0.9rem; font-family: 'Montserrat', sans-serif; }
     </style>
 </head>
 <body data-theme="light">
@@ -207,62 +135,89 @@
     <div class="hearts-bg" id="heartsBg"></div>
 
     <div class="container">
-        <div class="top-actions">
-            <button class="icon-btn" onclick="openLetter()" title="Abrir carta">✉️</button>
-            <button class="icon-btn" onclick="toggleAudio()" id="audioBtn" title="Música">⏸️</button>
-            <button class="icon-btn" onclick="toggleTheme()" title="Tema">🌙</button>
+        <div id="lockScreen">
+            <svg class="heart-main" viewBox="0 0 32 29.6">
+                <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+                c6.3-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+            </svg>
+            <h1>Para mi Princesa ❤️</h1>
+            <p class="locked-msg">Algo muy especial se está preparando para ti. La sorpresa se abrirá en:</p>
+            
+            <div class="countdown-grid">
+                <div class="countdown-box"><span class="c-num" id="l-dias">0</span><span class="c-lab">Días</span></div>
+                <div class="countdown-box"><span class="c-num" id="l-horas">0</span><span class="c-lab">Horas</span></div>
+                <div class="countdown-box"><span class="c-num" id="l-mins">0</span><span class="c-lab">Mins</span></div>
+                <div class="countdown-box"><span class="c-num" id="l-segs">0</span><span class="c-lab">Segs</span></div>
+            </div>
+            
+            <p style="font-size: 0.75rem; opacity: 0.7;">Espera a que el tiempo se complete, mi amor ✨</p>
         </div>
 
-        <svg class="heart-main" viewBox="0 0 32 29.6">
-            <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-            c6.3-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
-        </svg>
+        <div id="mainContent">
+            <div class="top-actions">
+                <button class="icon-btn" onclick="openLetter()" title="Carta final">✉️</button>
+                <button class="icon-btn" onclick="toggleAudio()" id="audioBtn" title="Música">⏸️</button>
+                <button class="icon-btn" onclick="toggleTheme()" title="Tema">🌙</button>
+            </div>
 
-        <h1>6 Meses Juntos</h1>
-        <p class="subtitle">Desde el 29 de marzo de 2026</p>
+            <svg class="heart-main" viewBox="0 0 32 29.6">
+                <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+                c6.3-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+            </svg>
 
-        <div class="carousel-container">
-            <button class="nav-btn prev" onclick="moveSlide(-1)">❮</button>
-            <button class="nav-btn next" onclick="moveSlide(1)">❯</button>
-            <div class="carousel-view" id="carouselView">
-                <div class="carousel-track" id="track">
-                    <div class="carousel-slide"><img src="foto1.jpg" alt="Momento 1"></div>
-                    <div class="carousel-slide"><img src="foto2.jpg" alt="Momento 2"></div>
-                    <div class="carousel-slide"><img src="foto3.jpg" alt="Momento 3"></div>
+            <h1>¡Felices 6 meses, mi amor! ❤️</h1>
+            <p class="subtitle" id="daysTogetherText">Gracias por todos estos días a tu lado</p>
+
+            <div class="chapters-nav">
+                <div class="chap-dot active" onclick="switchChap(1)">Nuestra historia</div>
+                <div class="chap-dot" onclick="switchChap(2)">Tú y yo</div>
+                <div class="chap-dot" onclick="switchChap(3)">Mi porqué</div>
+            </div>
+
+            <div class="chapter-section active" id="chap1">
+                <div style="background: var(--border-color); padding: 18px; border-radius: 16px; margin-bottom: 14px;">
+                    <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--primary); display: block;" id="totalDaysNum">184</span>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Días juntos de puro amor</span>
                 </div>
+                <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--text-muted); margin-bottom: 12px;">Gracias por todos estos días a tu lado, amochito de mi vida.</p>
+                <button class="next-chap-btn" onclick="switchChap(2)">Ver nuestros momentos ➔</button>
             </div>
-            <div class="dots" id="dotsContainer">
-                <div class="dot active" onclick="currentSlide(0)"></div>
-                <div class="dot" onclick="currentSlide(1)"></div>
-                <div class="dot" onclick="currentSlide(2)"></div>
+
+            <div class="chapter-section" id="chap2">
+                <div class="carousel-container">
+                    <button class="nav-btn prev" onclick="moveSlide(-1)">❮</button>
+                    <button class="nav-btn next" onclick="moveSlide(1)">❯</button>
+                    <div class="carousel-view" id="carouselView">
+                        <div class="carousel-track" id="track">
+                            <div class="carousel-slide"><img src="foto1.jpg" alt="Momento 1"></div>
+                            <div class="carousel-slide"><img src="foto2.jpg" alt="Momento 2"></div>
+                            <div class="carousel-slide"><img src="foto3.jpg" alt="Momento 3"></div>
+                        </div>
+                    </div>
+                    <div class="dots" id="dotsContainer">
+                        <div class="dot active" onclick="currentSlide(0)"></div>
+                        <div class="dot" onclick="currentSlide(1)"></div>
+                        <div class="dot" onclick="currentSlide(2)"></div>
+                    </div>
+                </div>
+                <button class="next-chap-btn" onclick="switchChap(3)">¿Por qué te amo tanto? ➔</button>
             </div>
-            <div style="margin-top: 6px; font-family: 'Playfair Display', serif; font-style: italic; color: #666; font-size: 0.8rem;">Nuestros Momentos ✨</div>
-        </div>
 
-        <div class="counter-grid">
-            <div class="counter-box"><span class="num" id="anos">0</span><span class="lab">Años</span></div>
-            <div class="counter-box"><span class="num" id="meses">0</span><span class="lab">Meses</span></div>
-            <div class="counter-box"><span class="num" id="dias">0</span><span class="lab">Días</span></div>
-            <div class="counter-box"><span class="num" id="horas">0</span><span class="lab">Horas</span></div>
-            <div class="counter-box"><span class="num" id="minutos">0</span><span class="lab">Mins</span></div>
-            <div class="counter-box"><span class="num" id="segundos">0</span><span class="lab">Segs</span></div>
-        </div>
-
-        <div class="reasons-card" onclick="changeReason()">
-            <div class="reasons-title">💡 Razones por las que te amo (Toca para ver otra)</div>
-            <div class="reasons-text" id="reasonText">"Por la forma en que tu sonrisa ilumina incluso mis días más grises." 💕</div>
-        </div>
-
-        <div class="dedication" id="phrase" onclick="changePhrase()">
-            "Cada segundo a tu lado es mi lugar favorito. ¡Felices 6 meses, Bri!" 🌹
+            <div class="chapter-section" id="chap3">
+                <div class="reasons-card" onclick="changeReason()">
+                    <div class="reasons-title" id="reasonHeader">💡 Razón 1 de 6 (Toca la tarjeta)</div>
+                    <div class="reasons-text" id="reasonText">"Por la forma en que tu sonrisa ilumina incluso mis días más grises." 💕</div>
+                </div>
+                <button class="next-chap-btn" onclick="openLetter()">La carta secreta 💌</button>
+            </div>
         </div>
     </div>
 
     <div class="modal" id="letterModal">
         <div class="modal-content">
-            <h2>¡Felices 6 Meses, mi amor! ❤️</h2>
-            <p>No hay un solo día en que no agradezca tenerte a mi lado. Cada segundo contigo se vuelve inolvidable, y no importa el lugar, mientras sea junto a ti. Gracias por ser esa hermosa casualidad que le da sentido a todo.<br><br>Me encanta cada risa que compartimos y la paz que me das con solo sonreír. Prometo seguir cuidando de lo nuestro y celebrando cada momento a tu lado. Te amo hoy, mañana y siempre.</p>
-            <button class="close-btn" onclick="closeLetter()">Cerrar con amor 💋</button>
+            <h2>¡Felices 6 meses, mi amor! ❤️</h2>
+            <p>No hay un solo día en que no agradezca tenerte a mi lado. ¡Te amo mucho con demasiado! Gracias por todos estos días a tu lado, por cada risa compartida y por ser mi lugar favorito en el mundo.<br><br>Prometo seguir cuidando de lo nuestro y celebrando cada momento contigo. Te amo hoy, mañana y siempre.</p>
+            <button class="close-btn" onclick="closeLetter()">Cerrar con un beso 💋</button>
         </div>
     </div>
 
@@ -271,100 +226,87 @@
     </audio>
 
     <script>
+        const targetDate = new Date(2026, 8, 29, 0, 0, 0); 
+        let unlockedTriggered = false;
+
+        function checkCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                if (!unlockedTriggered) {
+                    unlockedTriggered = true;
+                    document.getElementById('lockScreen').style.display = 'none';
+                    document.getElementById('mainContent').style.display = 'block';
+                    
+                    for(let i=0; i<35; i++) { 
+                        setTimeout(spawnHeart, i * 80); 
+                    }
+                    
+                    document.getElementById('bgMusic').play().catch(e => console.log("Audio pendiente de interacción"));
+                }
+            } else {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const m = Math.floor((diff / 1000 / 60) % 60);
+                const s = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('l-dias').innerText = d;
+                document.getElementById('l-horas').innerText = h;
+                document.getElementById('l-mins').innerText = m;
+                document.getElementById('l-segs').innerText = s;
+            }
+        }
+        setInterval(checkCountdown, 1000);
+        checkCountdown();
+
+        const startDate = new Date(2026, 2, 29, 0, 0, 0);
+        const calcDays = Math.floor((new Date() - startDate) / (1000 * 60 * 60 * 24));
+        if(calcDays >= 0) {
+            document.getElementById('totalDaysNum').innerText = calcDays;
+        }
+
+        function switchChap(n) {
+            document.querySelectorAll('.chapter-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.chap-dot').forEach(el => el.classList.remove('active'));
+            document.getElementById('chap' + n).classList.add('active');
+            document.querySelectorAll('.chap-dot')[n-1].classList.add('active');
+        }
+
         const track = document.getElementById('track');
         const view = document.getElementById('carouselView');
         const dots = document.getElementsByClassName('dot');
         let slideIndex = 0;
         const totalSlides = 3;
-
-        let startX = 0;
-        let prevTranslate = 0;
-        let isDragging = false;
+        let startX = 0, prevTranslate = 0, isDragging = false;
 
         function updateCarousel() {
             track.style.transition = "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)";
             track.style.transform = `translateX(-${slideIndex * (100 / totalSlides)}%)`;
             prevTranslate = -slideIndex * view.clientWidth;
-            
             for (let dot of dots) dot.classList.remove('active');
             if(dots[slideIndex]) dots[slideIndex].classList.add('active');
         }
 
-        function moveSlide(n) {
-            slideIndex = (slideIndex + n + totalSlides) % totalSlides;
-            updateCarousel();
-        }
+        function moveSlide(n) { slideIndex = (slideIndex + n + totalSlides) % totalSlides; updateCarousel(); }
+        function currentSlide(n) { slideIndex = n; updateCarousel(); }
 
-        function currentSlide(n) {
-            slideIndex = n;
-            updateCarousel();
-        }
-
-        view.addEventListener('touchstart', touchStart);
-        view.addEventListener('touchend', touchEnd);
-        view.addEventListener('touchmove', touchMove);
-        view.addEventListener('mousedown', touchStart);
-        view.addEventListener('mouseup', touchEnd);
-        view.addEventListener('mouseleave', touchEnd);
-        view.addEventListener('mousemove', touchMove);
-
-        function getPositionX(e) {
-            return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-        }
-
-        function touchStart(e) {
-            startX = getPositionX(e);
-            isDragging = true;
-            track.style.transition = "none";
-        }
-
-        function touchMove(e) {
-            if (!isDragging) return;
-            const currentX = getPositionX(e);
-            const currentDiff = currentX - startX;
-            track.style.transform = `translateX(${prevTranslate + currentDiff}px)`;
-        }
-
-        function touchEnd(e) {
-            if (!isDragging) return;
-            isDragging = false;
-            const movedBy = getPositionX(e) - startX;
-
-            if (movedBy < -50 && slideIndex < totalSlides - 1) {
-                slideIndex++;
-            } else if (movedBy > 50 && slideIndex > 0) {
-                slideIndex--;
-            }
-            updateCarousel();
-        }
+        view.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isDragging = true; track.style.transition = "none"; });
+        view.addEventListener('touchmove', (e) => { if (!isDragging) return; const currentDiff = e.touches[0].clientX - startX; track.style.transform = `translateX(${prevTranslate + currentDiff}px)`; });
+        view.addEventListener('touchend', (e) => { if (!isDragging) return; isDragging = false; const movedBy = e.changedTouches[0].clientX - startX; if (movedBy < -50 && slideIndex < totalSlides - 1) slideIndex++; else if (movedBy > 50 && slideIndex > 0) slideIndex--; updateCarousel(); });
 
         const reasons = [
             "\"Por la forma en que tu sonrisa ilumina incluso mis días más grises.\" 💕",
             "\"Porque a tu lado aprendí lo que significa sentir paz y hogar al mismo tiempo.\" ✨",
             "\"Por tus ocurrencias, tus abrazos y cada risa que compartimos.\" 🌹",
-            "\"Porque cada día a tu lado es mi aventura favorita.\" 🌸"
+            "\"Porque cada detalle tuyo hace que me enamore un poquito más cada día.\" 🌸",
+            "\"Porque me inspiras a ser mejor persona y apoyas mis sueños con todo tu cariño.\" 🌟",
+            "\"Porque eres mi refugio favorito y te amo mucho con demasiado.\" 💖"
         ];
         let rIdx = 0;
-        function changeReason() {
-            rIdx = (rIdx + 1) % reasons.length;
-            document.getElementById('reasonText').innerText = reasons[rIdx];
-        }
+        function changeReason() { rIdx = (rIdx + 1) % reasons.length; document.getElementById('reasonHeader').innerText = `💡 Mi porqué ${rIdx + 1} de 6`; document.getElementById('reasonText').innerText = reasons[rIdx]; }
 
-        const frases = [
-            "\"Cada segundo a tu lado es mi lugar favorito. ¡Felices 6 meses, Bri!\" 🌹",
-            "\"Tu sonrisa es mi casualidad favorita y mi felicidad eterna.\" ✨",
-            "\"Contigo supe lo que significa sumar paz y multiplicar alegrías.\" 💖",
-            "\"Gracias por ser mi refugio y mi persona favorita en este mundo.\" 🌸"
-        ];
-        let fIdx = 0;
-        function changePhrase() { fIdx = (fIdx + 1) % frases.length; document.getElementById('phrase').innerText = frases[fIdx]; }
-
-        function openLetter() { 
-            document.getElementById('letterModal').classList.add('active'); 
-            for(let i=0; i<15; i++) {
-                setTimeout(spawnHeart, i * 80);
-            }
-        }
+        function openLetter() { document.getElementById('letterModal').classList.add('active'); for(let i=0; i<20; i++) { setTimeout(spawnHeart, i * 80); } }
         function closeLetter() { document.getElementById('letterModal').classList.remove('active'); }
 
         function spawnHeart() {
@@ -372,47 +314,15 @@
             h.classList.add('floating-heart');
             h.innerHTML = '❤️';
             h.style.left = Math.random() * 100 + 'vw';
-            h.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            h.style.fontSize = (Math.random() * 22 + 12) + 'px';
             h.style.animationDuration = (Math.random() * 3 + 4) + 's';
             document.getElementById('heartsBg').appendChild(h);
             setTimeout(() => h.remove(), 7000);
         }
         setInterval(spawnHeart, 700);
 
-        const start = new Date(2026, 2, 29, 0, 0, 0);
-        function updateCounter() {
-            const now = new Date();
-            let diff = now - start;
-            if (diff < 0) diff = 0;
-            const s = Math.floor(diff/1000)%60;
-            const m = Math.floor(diff/1000/60)%60;
-            const h = Math.floor(diff/1000/60/60)%24;
-            const dTot = Math.floor(diff/1000/60/60/24);
-            
-            let y = now.getFullYear() - start.getFullYear();
-            let mon = now.getMonth() - start.getMonth();
-            let d = now.getDate() - start.getDate();
-            if (d < 0) { mon--; d += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); }
-            if (mon < 0) { y--; mon += 12; }
-
-            document.getElementById('anos').innerText = y;
-            document.getElementById('meses').innerText = mon;
-            document.getElementById('dias').innerText = d;
-            document.getElementById('horas').innerText = h;
-            document.getElementById('minutos').innerText = m;
-            document.getElementById('segundos').innerText = s;
-            document.getElementById('pageTitle').innerText = `❤️ ${dTot} Días | 6 Meses Juntos`;
-        }
-        setInterval(updateCounter, 1000);
-
         let playing = true;
-        const audio = document.getElementById('bgMusic');
-        window.addEventListener('click', () => { if(playing) audio.play(); }, {once: true});
-        function toggleAudio() { 
-            playing ? audio.pause() : audio.play(); 
-            playing = !playing; 
-            document.getElementById('audioBtn').innerText = playing ? '⏸️' : '🎵';
-        }
+        function toggleAudio() { playing ? document.getElementById('bgMusic').pause() : document.getElementById('bgMusic').play(); playing = !playing; document.getElementById('audioBtn').innerText = playing ? '⏸️' : '🎵'; }
         function toggleTheme() { document.body.setAttribute('data-theme', document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); }
     </script>
 </body>
