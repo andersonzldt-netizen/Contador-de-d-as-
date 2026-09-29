@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Sorpresa Especial ❤️</title>
+    <title id="pageTitle">Felices 6 Meses, mi amor ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -83,17 +83,6 @@
         h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 700; margin-bottom: 6px; color: var(--primary); }
         .subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; margin-bottom: 20px; opacity: 0.9; font-weight: 600; }
 
-        /* PANTALLA BLOQUEADA HASTA EL 29 DE SEPTIEMBRE (SIN MENCIONAR LOS 6 MESES) */
-        #lockScreen { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 0; }
-        .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 15px 0 20px 0; width: 100%; }
-        .countdown-box { background: var(--border-color); padding: 10px 2px; border-radius: 12px; }
-        .c-num { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--primary); display: block; }
-        .c-lab { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; opacity: 0.8; }
-        
-        .locked-msg { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.4; }
-
-        #mainContent { display: none; }
-
         .chapters-nav { display: flex; justify-content: center; gap: 6px; margin-bottom: 18px; }
         .chap-dot { font-size: 0.7rem; padding: 6px 10px; border-radius: 20px; background: var(--border-color); color: var(--text-muted); cursor: pointer; font-weight: 600; }
         .chap-dot.active { background: var(--primary); color: white; }
@@ -135,81 +124,61 @@
     <div class="hearts-bg" id="heartsBg"></div>
 
     <div class="container">
-        <div id="lockScreen">
-            <svg class="heart-main" viewBox="0 0 32 29.6">
-                <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-                c6.3-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
-            </svg>
-            <h1>Para mi Princesa ❤️</h1>
-            <p class="locked-msg">Algo muy especial se está preparando para ti. La sorpresa se abrirá en:</p>
-            
-            <div class="countdown-grid">
-                <div class="countdown-box"><span class="c-num" id="l-dias">0</span><span class="c-lab">Días</span></div>
-                <div class="countdown-box"><span class="c-num" id="l-horas">0</span><span class="c-lab">Horas</span></div>
-                <div class="countdown-box"><span class="c-num" id="l-mins">0</span><span class="c-lab">Mins</span></div>
-                <div class="countdown-box"><span class="c-num" id="l-segs">0</span><span class="c-lab">Segs</span></div>
-            </div>
-            
-            <p style="font-size: 0.75rem; opacity: 0.7;">Espera a que el tiempo se complete, mi amor ✨</p>
+        <div class="top-actions">
+            <button class="icon-btn" onclick="openLetter()" title="Carta final">✉️</button>
+            <button class="icon-btn" onclick="toggleAudio()" id="audioBtn" title="Música">⏸️</button>
+            <button class="icon-btn" onclick="toggleTheme()" title="Tema">🌙</button>
         </div>
 
-        <div id="mainContent">
-            <div class="top-actions">
-                <button class="icon-btn" onclick="openLetter()" title="Carta final">✉️</button>
-                <button class="icon-btn" onclick="toggleAudio()" id="audioBtn" title="Música">⏸️</button>
-                <button class="icon-btn" onclick="toggleTheme()" title="Tema">🌙</button>
+        <svg class="heart-main" viewBox="0 0 32 29.6">
+            <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+            c6.3-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+        </svg>
+
+        <h1>¡Felices 6 meses, mi amor! ❤️</h1>
+        <p class="subtitle" id="daysTogetherText">Gracias por todos estos días a tu lado</p>
+
+        <div class="chapters-nav">
+            <div class="chap-dot active" onclick="switchChap(1)">Nuestra historia</div>
+            <div class="chap-dot" onclick="switchChap(2)">Tú y yo</div>
+            <div class="chap-dot" onclick="switchChap(3)">Mi porqué</div>
+        </div>
+
+        <div class="chapter-section active" id="chap1">
+            <div style="background: var(--border-color); padding: 18px; border-radius: 16px; margin-bottom: 14px;">
+                <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--primary); display: block;" id="totalDaysNum">184</span>
+                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Días juntos de puro amor</span>
             </div>
+            <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--text-muted); margin-bottom: 12px;">Gracias por todos estos días a tu lado, amochito de mi vida.</p>
+            <button class="next-chap-btn" onclick="switchChap(2)">Ver nuestros momentos ➔</button>
+        </div>
 
-            <svg class="heart-main" viewBox="0 0 32 29.6">
-                <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-                c6.3-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
-            </svg>
-
-            <h1>¡Felices 6 meses, mi amor! ❤️</h1>
-            <p class="subtitle" id="daysTogetherText">Gracias por todos estos días a tu lado</p>
-
-            <div class="chapters-nav">
-                <div class="chap-dot active" onclick="switchChap(1)">Nuestra historia</div>
-                <div class="chap-dot" onclick="switchChap(2)">Tú y yo</div>
-                <div class="chap-dot" onclick="switchChap(3)">Mi porqué</div>
-            </div>
-
-            <div class="chapter-section active" id="chap1">
-                <div style="background: var(--border-color); padding: 18px; border-radius: 16px; margin-bottom: 14px;">
-                    <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--primary); display: block;" id="totalDaysNum">184</span>
-                    <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Días juntos de puro amor</span>
-                </div>
-                <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--text-muted); margin-bottom: 12px;">Gracias por todos estos días a tu lado, amochito de mi vida.</p>
-                <button class="next-chap-btn" onclick="switchChap(2)">Ver nuestros momentos ➔</button>
-            </div>
-
-            <div class="chapter-section" id="chap2">
-                <div class="carousel-container">
-                    <button class="nav-btn prev" onclick="moveSlide(-1)">❮</button>
-                    <button class="nav-btn next" onclick="moveSlide(1)">❯</button>
-                    <div class="carousel-view" id="carouselView">
-                        <div class="carousel-track" id="track">
-                            <div class="carousel-slide"><img src="foto1.jpg" alt="Momento 1"></div>
-                            <div class="carousel-slide"><img src="foto2.jpg" alt="Momento 2"></div>
-                            <div class="carousel-slide"><img src="foto3.jpg" alt="Momento 3"></div>
-                        </div>
-                    </div>
-                    <div class="dots" id="dotsContainer">
-                        <div class="dot active" onclick="currentSlide(0)"></div>
-                        <div class="dot" onclick="currentSlide(1)"></div>
-                        <div class="dot" onclick="currentSlide(2)"></div>
+        <div class="chapter-section" id="chap2">
+            <div class="carousel-container">
+                <button class="nav-btn prev" onclick="moveSlide(-1)">❮</button>
+                <button class="nav-btn next" onclick="moveSlide(1)">❯</button>
+                <div class="carousel-view" id="carouselView">
+                    <div class="carousel-track" id="track">
+                        <div class="carousel-slide"><img src="foto1.jpg" alt="Momento 1"></div>
+                        <div class="carousel-slide"><img src="foto2.jpg" alt="Momento 2"></div>
+                        <div class="carousel-slide"><img src="foto3.jpg" alt="Momento 3"></div>
                     </div>
                 </div>
-                <button class="next-chap-btn" onclick="switchChap(3)">¿Por qué te amo tanto? ➔</button>
-            </div>
-
-            <div class="chapter-section" id="chap3">
-                <div class="reasons-card" onclick="changeReason()">
-                    <div class="reasons-title" id="reasonHeader">💡 Razón 1 de 6 (Toca la tarjeta)</div>
-                    <div class="reasons-text" id="reasonText">"Por la forma en que tu sonrisa ilumina incluso mis días más grises." 💕</div>
+                <div class="dots" id="dotsContainer">
+                    <div class="dot active" onclick="currentSlide(0)"></div>
+                    <div class="dot" onclick="currentSlide(1)"></div>
+                    <div class="dot" onclick="currentSlide(2)"></div>
                 </div>
-                <button class="next-chap-btn" onclick="openLetter()">La carta secreta 💌</button>
             </div>
+            <button class="next-chap-btn" onclick="switchChap(3)">¿Por qué te amo tanto? ➔</button>
+        </div>
+
+        <div class="chapter-section" id="chap3">
+            <div class="reasons-card" onclick="changeReason()">
+                <div class="reasons-title" id="reasonHeader">💡 Razón 1 de 6 (Toca la tarjeta)</div>
+                <div class="reasons-text" id="reasonText">"Por la forma en que tu sonrisa ilumina incluso mis días más grises." 💕</div>
+            </div>
+            <button class="next-chap-btn" onclick="openLetter()">La carta secreta 💌</button>
         </div>
     </div>
 
@@ -226,40 +195,6 @@
     </audio>
 
     <script>
-        const targetDate = new Date(2026, 8, 29, 0, 0, 0); 
-        let unlockedTriggered = false;
-
-        function checkCountdown() {
-            const now = new Date();
-            const diff = targetDate - now;
-
-            if (diff <= 0) {
-                if (!unlockedTriggered) {
-                    unlockedTriggered = true;
-                    document.getElementById('lockScreen').style.display = 'none';
-                    document.getElementById('mainContent').style.display = 'block';
-                    
-                    for(let i=0; i<35; i++) { 
-                        setTimeout(spawnHeart, i * 80); 
-                    }
-                    
-                    document.getElementById('bgMusic').play().catch(e => console.log("Audio pendiente de interacción"));
-                }
-            } else {
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const m = Math.floor((diff / 1000 / 60) % 60);
-                const s = Math.floor((diff / 1000) % 60);
-
-                document.getElementById('l-dias').innerText = d;
-                document.getElementById('l-horas').innerText = h;
-                document.getElementById('l-mins').innerText = m;
-                document.getElementById('l-segs').innerText = s;
-            }
-        }
-        setInterval(checkCountdown, 1000);
-        checkCountdown();
-
         const startDate = new Date(2026, 2, 29, 0, 0, 0);
         const calcDays = Math.floor((new Date() - startDate) / (1000 * 60 * 60 * 24));
         if(calcDays >= 0) {
