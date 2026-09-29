@@ -1,0 +1,19 @@
+{
+  "name": "Nuestra Historia ❤️",
+  "short_name": "6 Meses ❤️",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090306",
+  "theme_color": "#5b1828",
+  "orientation": "portrait",
+  "description": "Un pequeño recuerdo de nuestra historia.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
